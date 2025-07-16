@@ -1,0 +1,168 @@
+﻿
+<header>
+    <!--<div id="nav-popup-error">
+        <div style="position: relative; float:right">
+            <button id="nav-closePopup-error" style="position: relative; float: right; font-size: 30px; top: -10px; background: none; color: inherit; border: none; padding: 0; cursor: pointer; outline: inherit; right: 20px; top: 10px">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div style="margin-top: 100px; padding-top: 20px; padding-right: 20px; padding-left: 20px; background-color: white">
+            <h2>Error Detector</h2>-->
+    @*<button id="retrySync" class="tableIcon" style="right: 40px; font-size: 35px">
+            <i class="fas fa-sync-alt" title="Retry Sync SO"></i>
+        </button>*@
+    <!--<table id="ErrTable-nav" class="table tabel-striped table-bordered display compact" style="font-size: 12px; width: 100%;">
+        <thead>
+            <tr style="background-color: #DEF5FC">
+                <th>Action</th>
+                <th>Error Type</th>
+                <th>SO Number</th>
+                <th>Customer</th>
+                <th>Market SKU</th>
+                <th>Detail</th>-->
+    @*<th>Solved</th>*@
+    <!--<th>Created Time</th>-->
+    @*<th>Resolved Time</th>*@
+    <!--</tr>
+                </thead>
+            </table>
+        </div>
+    </div>-->
+
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <img src="~/img/Chameleon.gif" height="30" alt="" loading="lazy" />
+            @*For Test Server switching*@
+            @*<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ChameleonTestServer</a>*@
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Chameleon</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Inventory
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="width:auto; font-size: 11px">
+                            @*<a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Inventory" asp-action="Index">Item List</a>*@
+                            <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Inventory" asp-action="Index">AT SKU</a>
+                            <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Inventory" asp-action="InvFeedsSKUMarketStatusIdx">ICR </a>
+              <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Inventory" asp-action="InvMainslBancIdx">Inventory Status(BANC, BASC, Tracy, Chs, &#38; MainSL) - <span class="blue02">I</span></a>
+                            @*<a class="nav-link text-dark" asp-area="" asp-controller="Inventory" asp-action="InvMainslBancCnddIndx">Mainsl & BANC Candidate 02</a>*@
+                            <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Inventory" asp-action="InvSalesHistoryIdx">Sales History</a>
+                            <div class="child-dropdown">
+                                <a class="dropdown-item">Feeds</a>
+                                <div class="dropdown-content">
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Inventory" asp-action="InvFeedsIdx">Feeds - <span class="blue03">II</span></a>
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Inventory" asp-action="InvFeedsAmzIdx">Amazon Feeds - <span class="blue05">III</span></a>
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Inventory" asp-action="InvFeedsOstIdx">Overstock Feeds - <span class="blue05">III</span></a>
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Inventory" asp-action="InvFeedsWlmrtIdx">Walmart Feeds - <span class="blue05">III</span></a>
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Inventory" asp-action="InvFeedsWyfrIdx">Wayfair Feeds - <span class="blue05">III</span></a>
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Inventory" asp-action="InvFeedsHomeDepotIdx">Home Depot Feeds - <span class="blue05">III</span></a>
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Inventory" asp-action="InvFeedsTargetIdx">Target Feeds - <span class="blue05">III</span></a>
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Inventory" asp-action="InvFeedseBayIdx">eBay Feeds - <span class="blue05">III</span></a>
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Inventory" asp-action="InvFeedsBPMWebIdx">BPM Web Feeds - <span class="blue05">III</span></a>
+                                    @*<a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Inventory" asp-action="InvFeedsHouzzIdx">Houzz Feeds - <span class="blue05">III</span></a>*@
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Inventory" asp-action="InvFeedsMellowHomeIdx">Mellow Home Feeds - <span class="blue05">III</span></a>
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Inventory" asp-action="InvFeedsComparingIdx">Compare Feeds <span class="blink" style="font-size: 20px;">*</span></a>
+                                </div>
+                            </div>
+                            <div class="child-dropdown">
+                                <a class="dropdown-item">ICR Feeding Status</a>
+                                <div class="dropdown-content">
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Inventory" asp-action="InvFeedsAmzFeedsStatusIdx">Amazon ICR Feeding Status</a>
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Inventory" asp-action="InvFeedsOstFeedsStatusIdx">Overstock ICR Feeding Status</a>
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Inventory" asp-action="InvFeedsWlmrtFeedsStatusIdx">Walmart ICR Feeding Status</a>
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Inventory" asp-action="InvFeedsWyfrFeedsStatusIdx">Wayfair ICR Feeding Status</a>
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Inventory" asp-action="InvFeedsHomeDepotFeedsStatusIdx">Home Depot ICR Feeding Status</a>
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Inventory" asp-action="InvFeedsTargetFeedsStatusIdx">Target ICR Feeding Status</a>
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Inventory" asp-action="InvFeedsBPMFeedsStatusIdx">BPM Web ICR Feeding Status</a>
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Inventory" asp-action="InvFeedseBayFeedsStatusIdx">eBay ICR Feeding Status</a>
+                                    <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Inventory" asp-action="InvFeedsMellowFeedsStatusIdx">Mellow Home ICR Feeding Status</a>
+                                    @*<a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Inventory" asp-action="InvFeedsHouzzFeedsStatusIdx">Houzz Feeding SKUs Status</a>*@
+                                    @*</div>*@
+                                    @*<a class="nav-link text-dark" asp-area="" asp-controller="Inventory" asp-action="InvFeedsHistoryIdx">Feeds History</a>*@
+                                </div>
+                            </div>
+                            @*<a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Inventory" asp-action="InvFeedsRemarkGrouping">Remark Grouping</a>*@
+                            <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Inventory" asp-action="InvFeedsSetting">General Feed Setting</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Sales
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="width:auto; font-size: 11px">
+                            @*<a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Wayfair" asp-action="Index">Wayfair</a>*@
+                            @*<a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Amazon" asp-action="Index">Amazon</a>*@
+                            <!--<div class="child-dropdown">
+                            <a class="dropdown-item">Amazon</a>
+                            <div class="dropdown-content">
+                                <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="amazon" asp-action="Index">Amazon SO</a>-->
+                            @*<a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Amazon" asp-action="amzReport">OB Report</a>*@
+                            <!--</div>
+                            </div>-->
+                            <!--<div class="child-dropdown">
+                            <a class="dropdown-item">Walmart</a>
+                            <div class="dropdown-content">
+                                <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="walmart" asp-action="Index">Walmart SO</a>-->
+                            @*<a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Amazon" asp-action="amzReport">OB Report</a>*@
+                            <!--<a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="eBay" asp-action="Index">eBay SO</a>
+                                </div>
+                            </div>-->
+                            <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="walmart" asp-action="Index">Walmart SO</a>
+                            @*<a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Amazon" asp-action="amzReport">OB Report</a>*@
+                            <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="eBay" asp-action="Index">eBay SO</a>
+@*                            <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="SalesReports" asp-action="AmazonPerformanceMarketingReport">Amazon Performance Marketing Report</a>
+*@                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Purchase
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="width:200px; font-size: 11px">
+                            <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Purchase" asp-action="POAcceptanceDashboard">(Stage 0) PO Review Dashboard</a>
+                            <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Purchase" asp-action="SKUStausUpdate">SKU Status Update</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Account
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="width:200px; font-size: 11px">
+                            <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Account" asp-action="AuthorizationAdmin">Employee Authorization Admin.</a>
+                            <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Account" asp-action="Preference">Preferance</a>
+                            <a class="nav-link text-dark dropdown-item" asp-area="" asp-controller="Account" asp-action="Logout">Sign out</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    </li>
+                    @*For Test Server switching*@
+                    <li class="nav navbar-nav navbar-right" style="float: right; padding-left: 20px">
+                        <a id="A5" href="https://bestpricequality.net:9467/" target="_blank" rel="noopener noreferrer">
+                            <img src="~/img/Chameleon.gif" height="30" alt="" loading="lazy" />GoToChameleonTestServer
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li id="curTimeDate"></li>
+        </ul>
+        &nbsp;&nbsp;
+        @*<button id="nav-button-errorDetect" class="tableIcon" style="right:5px; margin-left:10px;margin-top:15px;font-size:25px">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span id="nav-errCount" class="nav-errCountIcon" style="font-size:15px"></span>
+            </button>*@
+    </nav>
+</header>

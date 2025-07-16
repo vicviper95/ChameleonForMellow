@@ -1,0 +1,68 @@
+﻿@{
+  ViewBag.Title = "Login";
+}
+
+<h2 class="offset-sm-1">Login</h2>
+<div class="wrapper_login fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="~/img/Logos/MLLW_LOGO_180x.png" id="logo" alt="Company Logo" />
+    </div>
+
+    <!-- Login Form -->
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+    {
+      <div class="login">
+        <input type="text" id="LoginId" class="fadeIn second" name="LoginId" placeholder="login">
+        <input type="password" id="Password" class="fadeIn third" name="Password" placeholder="password">
+        @*<div><input type="checkbox" class="fadeIn fifth" onclick="showPassword()"> Show Password</div>*@
+        <br /><h3 style="color:red">@ViewBag.Message</h3> <br />
+        <input type="submit" class="fadeIn fourth" value="Log In">
+      </div>
+    }
+   <div>
+      @*Forgot your password?
+      <a asp-action="PasswordReset">Click Here!</a>
+      <a id="sendEmailTmpPassword">Click here!</a>
+    </div>*@
+    <div>
+      Use same ID and password as our sister site "Koala"
+    </div>
+    <!-- Remind Passowrd -->
+    @*<div id="formFooter">
+        <a class="underlineHover" href="#">Forgot Password?</a>
+      </div>*@
+
+  </div>
+</div>
+
+@*<div class="modal fade" id="resetPasswordModal" role="dialog" data-backdrop="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-bs-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Your login ID(email) please</h4>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-group">
+        <label class="modal_note">Email:</label>
+        <input class="form-control form-control-sm" id="myEmailInput" />
+        </div>
+      </div>
+
+      <div class="modal-footer narr_footer">
+       <button type="button" id="sendEmailPassword" class="btn btn-primary" data-bs-dismiss="modal">Send</button>
+       <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+      </div>
+
+    </div>
+  </div>
+</div>*@
+@*    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <script src="~/js/Account/ResetMyPassowrd.js">
+  </script>*@

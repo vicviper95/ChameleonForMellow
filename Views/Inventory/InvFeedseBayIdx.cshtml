@@ -1,0 +1,44 @@
+﻿@{
+  ViewData["Title"] = "Inventory Feeds";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>&nbsp;&nbsp;@ViewData["Title"] - eBay</h1>
+<input type="hidden" id="historyDateHidden" name="historyDateHidden" />
+
+<br />
+<div class="invFeed-container">
+  <div class="col-6">
+    <div>
+      <h2 class="text-info">eBay Inventory Feeds</h2>
+      <h7><p id="invFeedsRepDate"></p></h7>
+    </div>
+
+    <div style=" padding-top: 10px">
+      Past Feeds: <input type="text" id="historyDatePicker">
+      <button id="reloadeBayFeedsHistory"> reload</button>
+    </div>
+  </div>
+  <div class="col-12 border p-3">
+    
+    <table id="invFeedseBayMIPItems" class="table tabel-striped table-bordered display compact" style="width:45%; font-size: 10px;">
+      <thead>
+        <tr style="font-size: 10px;">
+          <th>SKU</th>
+          <th>Channel ID</th>
+          <th>Total Ship to Home Quantity</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>
+
+<div class="modal"><!-- For waiting indicator--></div>
+
+@section Scripts{
+<script>
+    function lastmod() { }
+</script>
+<script src="~/js/InvFeedseBayList.js">
+</script>
+}

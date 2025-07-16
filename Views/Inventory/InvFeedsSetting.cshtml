@@ -1,0 +1,618 @@
+﻿@model Chameleon.DTOs.Inventory.InvFeedsGeneralSettingDTO
+
+@{
+  ViewData["Title"] = "Inventory General Feeds Setting";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2 class="text-info" style="margin-left:10px">Feed Setting</h2>
+<br />
+
+<div class="container-fluid" style="font-size:11px;">
+
+  <div id="generalFeedSettingTabs">
+    <div id="tabs-nobg">
+      <ul>
+        <li><a href="#tabs-1">Feed Setting</a></li>
+        <li><a href="#tabs-2">Market Specific Rules</a></li>
+      </ul>
+      <div id="tabs-1" style="height:850px">
+        <div class="container-feed-rule" id="ratiosOnLowData">
+          <div style="border: 1px solid; height: 400px">
+            <h4 class="text-info start" style="margin-left: 10px">General Rule</h4>
+            <div style="width: 940px; padding-left: 50px; float:left">
+              <div class="card-header" style="margin-right:10px"><b>Ratios on New Item or Low Sales History Data Item</b>(The total of these items should not be exceeded 100%)</div>
+              <table class="tg" style="table-layout: fixed; width: 850px">
+                <colgroup>
+                  <col style="width: 203px">
+                  <col style="width: 203px">
+                  <col style="width: 215px">
+                  <col style="width: 203px">
+                  @*<col style="width: 203px">*@
+                </colgroup>
+                <tbody>
+                  <tr style="border-left: 1px outset; border-right: 1px outset; border-top: 1px outset ">
+                    <td class="tg-oe15">
+                      <span style="float: left; margin-top:5px">Amazon:&nbsp;</span>
+                      <input asp-for="AmazonRatioOnLowData" class="form-control" id="amazonRatioOnLowData" style="font-size:11px; float: left; width: 80px" />
+                      <span style="padding-top: 5px; padding-left: 2px; position: absolute">%</span>
+                      <span asp-validation-for="AmazonRatioOnLowData" class="text-danger"></span>
+                    </td>
+                    <td class="tg-oe15">
+                      <span style="float: left; margin-top: 5px">Overstock:&nbsp;</span>
+                      <input asp-for="OverstockRatioOnLowData" class="form-control" id="overstockRatioOnLowData" style="font-size:11px; float: left; width: 80px" />
+                      <span style="padding-top: 5px; padding-left: 2px; position: absolute">%</span>
+                      <span asp-validation-for="OverstockRatioOnLowData" class="text-danger"></span>
+                    </td>
+                    <td class="tg-oe15">
+                      <span style="float: left; margin-top: 5px">Walmart:&nbsp;</span>
+                      <input asp-for="WalmartRatioOnLowData" class="form-control" id="walmartRatioOnLowData" style="font-size:11px; float: left; width: 80px" />
+                      <span style="padding-top: 5px; padding-left: 2px; position: absolute">%</span>
+                      <span asp-validation-for="WalmartRatioOnLowData" class="text-danger"></span>
+                    </td>
+                    <td class="tg-oe15">
+                      <span style="float: left; margin-top: 5px">Wayfair:&nbsp;</span>
+                      <input asp-for="WayfairRatioOnLowData" class="form-control" id="wayfairRatioOnLowData" style="font-size:11px; float: left; width: 80px" />
+                      <span style="padding-top: 5px; padding-left: 2px; position: absolute">%</span>
+                      <span asp-validation-for="WayfairRatioOnLowData" class="text-danger"></span>
+
+                    </td>
+                  </tr>
+                  <tr style="border-left: 1px outset; border-right: 1px outset">
+                    <td class="tg-oe15">
+                      <span style="float: left; margin-top: 5px">eBay:&nbsp;</span>
+                      <input asp-for="eBayRatioOnLowData" class="form-control" id="eBayRatioOnLowData" style="font-size:11px; float: left; width: 80px" />
+                      <span style="padding-top: 5px; padding-left: 2px; position: absolute">%</span>
+                      <span asp-validation-for="eBayRatioOnLowData" class="text-danger"></span>
+                    </td>
+                    <td class="tg-oe15">
+                      <span style="float: left; margin-top: 5px">BPM Web:&nbsp;</span>
+                      <input asp-for="BpmRatioOnLowData" class="form-control" id="bpmRatioOnLowData" style="font-size:11px; float: left; width: 80px" />
+                      <span style="padding-top: 5px; padding-left: 2px; position: absolute">%</span>
+                      <span asp-validation-for="BpmRatioOnLowData" class="text-danger"></span>
+                    </td>
+                    <td class="tg-oe15">
+                      <span style="float: left; margin-top: 5px">Mellow Web:&nbsp;</span>
+                      <input asp-for="MellowRatioOnLowData" class="form-control" id="mellowRatioOnLowData" style="font-size:11px; float: left; width: 80px" />
+                      <span style="padding-top: 5px; padding-left: 2px; position: absolute">%</span>
+                      <span asp-validation-for="MellowRatioOnLowData" class="text-danger"></span>
+                    </td>
+                    <td class="tg-oe15">
+                      <span style="float: left; margin-top: 5px">Houzz:&nbsp;</span>
+                      <input asp-for="HouzzRatioOnLowData" class="form-control" id="houzzRatioOnLowData" style="font-size:11px; float: left; width: 80px" />
+                      <span style="padding-top: 5px; padding-left: 2px; position: absolute">%</span>
+                      <span asp-validation-for="HouzzRatioOnLowData" class="text-danger"></span>
+                    </td>
+                  </tr>
+                  <tr style="border-top: 1px outset; border-left: 1px outset; border-right: 1px outset; border-bottom: 1px outset">
+                    <td class="tg-cv32" colspan="4">
+                      <div style="float: right;">
+                        <span style="padding-top: 5px; padding-left: 2px; position: absolute">%</span>
+                        <input asp-for="TotalOfRatioOnLowData" class="form-control" id="totalOfRatioOnLowData" style="font-size:11px; float: right; width: 80px" isabled />
+                        <label asp-for="TotalOfRatioOnLowData" style="float: right; margin-top: 5px"><b>Total:&nbsp;</b></label>
+                      </div>
+                      <div style="font-size: 12px; color: crimson; float: right; position:relative; left:125px; top: 30px; margin-bottom:5px">
+                        <b>
+                          <p id="invFeedsTotalMsg"></p>
+                        </b>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tg-lqy6" colspan="2">
+                      <label asp-for="SalesHistoryLowDataSwitchQty" style="float: left; margin-top: 5px">New Item or Low Sales History Data Cross Qty:&nbsp;</label>
+                      <input asp-for="SalesHistoryLowDataSwitchQty" class="form-control" id="salesHistoryLowDataSwitchQty" style="font-size: 11px; width: 60px" />
+                      <span asp-validation-for="SalesHistoryLowDataSwitchQty" class="text-danger"></span>
+                    </td>
+                    <td class="tg-lqy6" colspan="2">
+                      <label asp-for="SetBOMRatio" style="float: left; margin-top: 5px">Set SKU Ratio(%):&nbsp;</label>
+                      <input asp-for="SetBOMRatio" class="form-control" id="setBOMRatio" style="font-size: 11px; width: 60px" />
+                      <span asp-validation-for="SetBOMRatio" class="text-danger"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tg-lqy6" colspan="2">
+                      <input asp-for="IsActivatedWFSvsWHs" class="form-check-input" type="checkbox" id="isActivatedWFSvsWHs" style="float:left; margin-top:8px; margin-right:7px" />
+                      <label asp-for="IsActivatedWFSvsWHs" style="float: left; margin-top: 5px">Activate Walmart-Switching-WFS-and-Warehouses </label>
+                      <span asp-validation-for="IsActivatedWFSvsWHs" class="text-danger"></span>
+                    </td>
+                    <td class="tg-lqy6" colspan="2">
+                      <label asp-for="WFSvsWHsBufferQty" style="float: left; margin-top: 5px">Buffer Qty.:&nbsp;</label>
+                      <input asp-for="WFSvsWHsBufferQty" class="form-control" id="wfsVSwhsBufferQty" style="font-size: 11px; width: 60px" />
+                      <span asp-validation-for="WFSvsWHsBufferQty" class="text-danger"></span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div style="float: left; border-left: 1px solid;width: 650px ">
+              <div class="card-header" style="margin-left:10px"><b>Low Stock Amazon Rule</b></div>
+              <table class="tg">
+                <colgroup>
+                  <col style="width: 300px">
+                  <col style="width: 300px">
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <td class="tg-oe15">
+                      <input asp-for="IsAmazonLowStockOn" class="form-check-input" type="checkbox" id="isAmazonLowStockOn" style="float:left; margin-top:8px; margin-right:5px" />
+                      <label asp-for="IsAmazonLowStockOn" style="float: left; margin-top: 5px">Activate Low Stock Amazon Rule</label>
+                      <span asp-validation-for="IsAmazonLowStockOn" class="text-danger"></span>
+                    </td>
+                    <td class="tg-oe15">
+                      <label asp-for="AmazonLowStockQty" style="float: left; margin-top: 5px">Qty:&nbsp;</label>
+                      <input asp-for="AmazonLowStockQty" class="form-control" id="amazonLowStockQty" style="font-size: 11px; width: 60px" />
+                      <span asp-validation-for="AmazonLowStockQty" class="text-danger"></span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="card-header" style="margin-left:10px"><b>Zero Out Buffer Qty</b></div>
+              <table class="tg">
+                <colgroup>
+                  <col style="width: 300px">
+                  <col style="width: 300px">
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <td class="tg-oe15">
+                      <label asp-for="ZeroOutBufferBANC" style="float: left; margin-top: 5px">Zero Out Buffer BANC Qty:&nbsp;&nbsp;</label>
+                      <input asp-for="ZeroOutBufferBANC" class="form-control" id="zeroOutBufferBANC" style="float: left; width: 60px" />
+                      <span asp-validation-for="ZeroOutBufferBANC" class="text-danger"></span>
+                    </td>
+                    <td class="tg-oe15">
+                      <label asp-for="ZeroOutBufferMainSL" style="float: left; margin-top: 5px">Zero Out Buffer MainSL Qty: </label>
+                      <input asp-for="ZeroOutBufferMainSL" class="form-control" id="zeroOutBufferMainSL" style="font-size: 11px; width: 60px" />
+                      <span asp-validation-for="ZeroOutBufferMainSL" class="text-danger"></span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="card-header" style="margin-left:10px"><b>ABC Rule(Walmart)</b></div>
+              <table class="tg">
+                <colgroup>
+                  <col style="width: 150px">
+                  <col style="width: 350px">
+                  <col style="width: 250px">
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <td class="tg-oe15">
+                      <input asp-for="IsActivatedWmttopSellers" class="form-check-input" type="checkbox" id="IsActivatedWmttopSellers" style="float:left; margin-top:8px; margin-right:7px" />
+                      <label asp-for="IsActivatedWmttopSellers" style="float: left; margin-top: 5px">Activate</label>
+                      <span asp-validation-for="IsActivatedWmttopSellers" class="text-danger"></span>
+                    </td>
+                    <td class="tg-oe15">
+                      <label asp-for="WalmartTopSellersDistributionRatio" style="float: left; margin-top: 5px">Top Sellers Distribution Ratio:&nbsp;&nbsp;</label>
+                      <input asp-for="WalmartTopSellersDistributionRatio" class="form-control" id="WalmartTopSellersDistributionRatio" style="float: left; width: 60px;" />
+                      <span asp-validation-for="WalmartTopSellersDistributionRatio" class="text-danger"></span>
+                    </td>
+                    <td class="tg-oe15">
+                      <label asp-for="WalmartTopSellers" style="float: left; margin-top: 5px">Top Sellers : </label>
+                      <input asp-for="WalmartTopSellers" class="form-control" id="WalmartTopSellers" style=" width: 60px" />
+                      <span asp-validation-for="WalmartTopSellers" class="text-danger"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tg-oe15" colspan="2">
+                      <label asp-for="WmtminQtyAllowance" style="float: left; margin-top: 5px">Min Qty Allowance:&nbsp;&nbsp;</label>
+                      <input asp-for="WmtminQtyAllowance" class="form-control" id="WmtminQtyAllowance" style="float: left; width: 60px" />
+                      <span asp-validation-for="WmtminQtyAllowance" class="text-danger"></span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div id="ratiosOnLowData-abc" class="container-abc">
+          <table class="tg" style="table-layout: fixed; width: 350px;">
+            <colgroup>
+              <col style="width: 90px">
+              <col style="width: 260px">
+            </colgroup>
+            <thead>
+              <tr>
+                <th class="tg-pf1v" colspan="3">
+                  <h4 class="text-info start">ABC Rule</h4>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="tg-7njb">A:</td>
+                <td class="tg-c4we" colspan="2">
+                  <input asp-for="AbcRatioA" type="number" class="form-control" id="A-Ratio" style="font-size:11px; float: left; width: 80px" />
+                  <span style="padding-top: 5px; position: absolute; float: left">%</span>
+                  <span class="text-danger"></span>
+                </td>
+              </tr>
+              <tr>
+                <td class="tg-7njb"></td>
+                <td class="tg-nfhl">
+                  <span style="float: left;">No B: A =></span>
+                  <input asp-for="AbcRatioAnoB" type="number" class="form-control" id="AbcRatioAnoB" style="font-size: 11px; float: left; width: 80px" />
+                  <span style="padding-top: 5px; position: relative; right: 50px; top:7px">%</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="tg-mwj9"></td>
+                <td class="tg-nfhl">
+                  <span style="float: left;">No C: A =></span>
+                  <input asp-for="AbcRatioAnoC" type="number" class="form-control" id="AbcRatioAnoC" style="font-size: 11px; float: left; width: 80px" />
+                  <span style="padding-top: 5px; position: relative; right: 50px; top:7px">%</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="tg-7njb">B:</td>
+                <td class="tg-c4we" colspan="2">
+                  <input asp-for="AbcRatioB" type="number" class="form-control" id="B-Ratio" style="font-size:11px; float: left; width: 80px" />
+                  <span style="padding-top: 5px; padding-left: 2px; position: absolute">%</span>
+                  <span class="text-danger"></span>
+                </td>
+              </tr>
+              <tr>
+                <td class="tg-7njb"></td>
+                <td class="tg-7njb">
+                  <span style="float: left;">No C: B =></span>
+                  <input asp-for="AbcRatioBnoC" type="number" class="form-control" id="AbcRatioBnoC" style="font-size: 11px; float: left; width: 80px" />
+                  <span style="padding-top: 5px; position: relative; right: 50px; top:7px">%</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="tg-7njb">C:</td>
+                <td class="tg-c4we" colspan="2">
+                  <input asp-for="AbcRatioC" type="number" class="form-control" id="C-Ratio" style="font-size:11px; float: left; width: 80px" />
+                  <span style="padding-top: 5px; padding-left: 2px; position: absolute">%</span>
+                  <span class="text-danger"></span>
+                </td>
+              </tr>
+              <tr style="border-top: 2px solid">
+                <td class="tg-a1q5">
+                  <label><b>Total :</b></label>
+                </td>
+                <td class="tg-c4we" colspan="2">
+                  <input asp-for="TotalOfRatioOnLowData" type="number" class="form-control" id="abc-total" style="font-size:11px; float: left; width: 80px" value="100" 100 disabled />
+                  <span style="padding-top: 5px; padding-left: 2px; position: absolute">%</span>
+                  <div class="col-sm-3" style="font-size:12px; color:crimson">
+                    <b>
+                      <p id="abcTotalMsg"></p>
+                    </b>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="ratiosOnLowData-other" class="container-other-rule">
+          <table class="tg" style="table-layout: fixed; width: 280px;">
+            <colgroup>
+              <col style="width: 134px">
+              <col style="width: 130px">
+            </colgroup>
+            <thead>
+              <tr>
+                <th class="tg-pf1v" colspan="2">
+                  <h4 class="text-info start">ABC Others Rule</h4>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="tg-c1kk">Overstock:</td>
+                <td class="tg-oe15">
+                  <input asp-for="AbcOthersOverstock" class="form-control" id="overstockRatioOnLowData-other" style="font-size:11px; float: left; width: 80px" />
+                  <span style="padding-top: 5px; padding-left: 2px; position: absolute">%</span>
+                  <span asp-validation-for="AbcOthersOverstock" class="text-danger"></span>
+                </td>
+              </tr>
+              <tr>
+                <td class="tg-c1kk">eBay:</td>
+                <td class="tg-oe15">
+                  <input asp-for="AbcOtherseBay" class="form-control" id="eBayRatioOnLowData-other" style="font-size:11px; float: left; width: 80px" />
+                  <span style="padding-top: 5px; padding-left: 2px; position: absolute">%</span>
+                  <span asp-validation-for="AbcOtherseBay" class="text-danger"></span>
+                </td>
+              </tr>
+              <tr>
+                <td class="tg-c1kk">BPM Web:</td>
+                <td class="tg-oe15">
+                  <input asp-for="AbcOthersBPMWeb" class="form-control" id="bpmRatioOnLowData-other" style="font-size:11px; float: left; width: 80px" />
+                  <span style="padding-top: 5px; padding-left: 2px; position: absolute">%</span>
+                  <span asp-validation-for="AbcOthersBPMWeb" class="text-danger"></span>
+                </td>
+              </tr>
+              <tr>
+                <td class="tg-c1kk">Mellow Web:</td>
+                <td class="tg-oe15">
+                  <input asp-for="AbcOthersMellowWeb" class="form-control" id="mellowRatioOnLowData-other" style="font-size:11px; float: left; width: 80px" />
+                  <span style="padding-top: 5px; padding-left: 2px; position: absolute">%</span>
+                  <span asp-validation-for="AbcOthersMellowWeb" class="text-danger"></span>
+                </td>
+              </tr>
+              <tr>
+                <td class="tg-c1kk">Houzz:</td>
+                <td class="tg-oe15">
+                  <input asp-for="HouzzRatioOnLowData" class="form-control" id="houzzRatioOnLowData-other" style="font-size:11px; float: left; width: 80px" />
+                  <span style="padding-top: 5px; padding-left: 2px; position: absolute">%</span>
+                  <span asp-validation-for="AbcOthersHouzz" class="text-danger"></span>
+                </td>
+              </tr>
+              <tr>
+                <td class="tg-c1kk">Home Depot:</td>
+                <td class="tg-oe15">
+                  <input asp-for="AbcOthersHomeDepot" class="form-control" id="homeDepot-other" style="font-size:11px; float: left; width: 80px" />
+                  <span style="padding-top: 5px; padding-left: 2px; position: absolute">%</span>
+                  <span asp-validation-for="AbcOthersHomeDepot" class="text-danger"></span>
+                </td>
+              </tr>
+              <tr style="border-top: 2px solid">
+                <td class="tg-c1kk">
+                  <label asp-for="TotalOfRatioOnLowData"><b>Total :</b></label>
+                </td>
+                <td class="tg-oe15">
+                  <input asp-for="TotalOfRatioOnLowData" class="form-control" id="totalOfRatioOnLowData-other" style="font-size: 11px; float: left; width: 80px" disabled />
+                  <span style="padding-top: 5px; padding-left: 2px; position: absolute">%</span>
+                  <div class="col-sm-3" style="font-size:12px; color:crimson">
+                    <b>
+                      <p id="OtherTotalMsg"></p>
+                    </b>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="position: relative; top: 370px; right:220px">
+          <button id="updateInvFeedsGeneralSetting" class="btn btn-primary" style="float:right; width:200px; height:48px;font-size:20px">Update</button>
+        </div>
+      </div>
+
+      @*<div class="card col-10" id="ratiosOnLowData">
+      <div class="card-header"><b>Ratios on New Item or Low Sales History Data Item</b>(The total of these items should not be exceeded 100%)</div>
+      <div class=" form-group row col-sm-6">
+      <div class="col-sm-3">
+      <label asp-for="AmazonRatioOnLowData"> Amazon :</label>
+      </div>
+
+      <div class="col-sm-2">
+      <input asp-for="AmazonRatioOnLowData" class="form-control" id="amazonRatioOnLowData" style="font-size:11px" />
+      <span asp-validation-for="AmazonRatioOnLowData" class="text-danger"></span>
+      </div>
+
+      <div class="col-sm-1"><b>%</b></div>
+      </div>
+
+      <div class=" form-group row col-sm-6">
+      <div class="col-sm-3">
+      <label asp-for="OverstockRatioOnLowData"> Overstock :</label>
+      </div>
+
+      <div class="col-sm-2">
+      <input asp-for="OverstockRatioOnLowData" class="form-control" id="overstockRatioOnLowData" style="font-size:11px" />
+      <span asp-validation-for="OverstockRatioOnLowData" class="text-danger"></span>
+      </div>
+      <div class="col-sm-1"><b>%</b></div>
+      </div>
+
+      <div class=" form-group row col-sm-6">
+      <div class="col-sm-3">
+      <label asp-for="WalmartRatioOnLowData">Walmart :</label>
+      </div>
+
+      <div class="col-sm-2">
+      <input asp-for="WalmartRatioOnLowData" class="form-control" id="walmartRatioOnLowData" style="font-size:11px" />
+      <span asp-validation-for="WalmartRatioOnLowData" class="text-danger"></span>
+      </div>
+      <div class="col-sm-1"><b>%</b></div>
+      </div>
+
+      <div class=" form-group row col-sm-6">
+      <div class="col-sm-3">
+      <label asp-for="WayfairRatioOnLowData">Wayfair :</label>
+      </div>
+
+      <div class="col-sm-2">
+      <input asp-for="WayfairRatioOnLowData" class="form-control" id="wayfairRatioOnLowData" style="font-size:11px" />
+      <span asp-validation-for="WayfairRatioOnLowData" class="text-danger"></span>
+      </div>
+      <div class="col-sm-1"><b>%</b></div>
+      </div>
+
+      <div class=" form-group row col-sm-6">
+      <div class="col-sm-3">
+      <label asp-for="eBayRatioOnLowData">eBay :</label>
+      </div>
+
+      <div class="col-sm-2">
+      <input asp-for="eBayRatioOnLowData" class="form-control" id="eBayRatioOnLowData" style="font-size:11px" />
+      <span asp-validation-for="eBayRatioOnLowData" class="text-danger"></span>
+      </div>
+      <div class="col-sm-1"><b>%</b></div>
+      </div>
+
+      <div class=" form-group row col-sm-6">
+      <div class="col-sm-3">
+      <label asp-for="BpmRatioOnLowData">BPM Web :</label>
+      </div>
+
+      <div class="col-sm-2">
+      <input asp-for="BpmRatioOnLowData" class="form-control" id="bpmRatioOnLowData" style="font-size:11px" />
+      <span asp-validation-for="BpmRatioOnLowData" class="text-danger"></span>
+      </div>
+      <div class="col-sm-1"><b>%</b></div>
+      </div>
+
+      <div class=" form-group row col-sm-6">
+      <div class="col-sm-3">
+      <label asp-for="MellowRatioOnLowData">Mellow Web :</label>
+      </div>
+
+      <div class="col-sm-2">
+      <input asp-for="MellowRatioOnLowData" class="form-control" id="mellowRatioOnLowData" style="font-size:11px" />
+      <span asp-validation-for="MellowRatioOnLowData" class="text-danger"></span>
+      </div>
+      <div class="col-sm-1"><b>%</b></div>
+      </div>
+
+      <div class=" form-group row col-sm-6">
+      <div class="col-sm-3">
+      <label asp-for="HouzzRatioOnLowData">Houzz :</label>
+      </div>
+
+      <div class="col-sm-2">
+      <input asp-for="HouzzRatioOnLowData" class="form-control" id="houzzRatioOnLowData" style="font-size:11px" />
+      <span asp-validation-for="HouzzRatioOnLowData" class="text-danger"></span>
+      </div>
+      <div class="col-sm-1"><b>%</b></div>
+      </div>
+
+      <hr />
+
+      <div class=" form-group row col-sm-8">
+      <div class="col-sm-2">
+      <label asp-for="TotalOfRatioOnLowData"><b>Total :</b></label>
+      </div>
+
+      <div class="col-sm-2">
+      <input asp-for="TotalOfRatioOnLowData" class="form-control" id="totalOfRatioOnLowData" style="font-size:11px" disabled />
+      </div>
+      <div class="col-sm-1"><b>%</b></div>
+      <div class="col-sm-3" style="font-size:12px; color:crimson">
+      <b>
+      <p id="invFeedsTotalMsg"></p>
+      </b>
+      </div>
+      </div>
+
+      <hr />
+
+      <div class=" form-group row col-sm-6">
+      <div class="col-md-3">
+      <label asp-for="SalesHistoryLowDataSwitchQty"><b>New Item or Low Sales History Data Cross Qty. :</b></label>
+      </div>
+
+      <div class="col-sm-2">
+      <input asp-for="SalesHistoryLowDataSwitchQty" class="form-control" id="salesHistoryLowDataSwitchQty" style="font-size:11px" />
+      <span asp-validation-for="SalesHistoryLowDataSwitchQty" class="text-danger"></span>
+      </div>
+      </div>
+      <hr />
+
+      <div class=" form-group row col-sm-6">
+      <div class="col-md-3">
+      <label asp-for="SetBOMRatio"><b>Set SKU Ratio(%) :</b></label>
+      </div>
+
+      <div class="col-sm-2">
+      <input asp-for="SetBOMRatio" class="form-control" id="setBOMRatio" style="font-size:11px" />
+      <span asp-validation-for="SetBOMRatio" class="text-danger"></span>
+      </div>
+      </div>
+      </div>
+
+      <div class="card col-sm-10">
+      <div class="card-header"><b>Low Stock Amazon Rule</b></div>
+      <div class=" form-group row col-sm-10">
+      <div class="col-sm-3">
+      <label asp-for="IsAmazonLowStockOn">Activate Low Stock Amazon Rule: </label>
+      </div>
+
+      <div class="col-sm-1">
+      <input asp-for="IsAmazonLowStockOn" class="form-check-input" type="checkbox" id="isAmazonLowStockOn" />
+      <span asp-validation-for="IsAmazonLowStockOn" class="text-danger"></span>
+      </div>
+      <div class="col-sm-2">
+      <label asp-for="AmazonLowStockQty">Qty.: </label>
+      </div>
+
+      <div class="col-sm-1">
+      <input asp-for="AmazonLowStockQty" class="form-control" id="amazonLowStockQty" style="font-size:11px" />
+      <span asp-validation-for="AmazonLowStockQty" class="text-danger"></span>
+      </div>
+      <div class="col-sm-3" style="font-size:12px; color:crimson">
+      <b>
+      <p id="invFeedsLowStockAmazonMsg"></p>
+      </b>
+      </div>
+      </div>
+      </div>
+
+
+
+      <div class="card  col-sm-10">
+      <div class="card-header"><b>Zero Out Buffer Qty.</b></div>
+      <div class=" form-group row col-sm-8">
+      <div class="col-sm-2">
+      <label asp-for="ZeroOutBufferBANC">Zero Out Buffer BANC Qty.: </label>
+      </div>
+
+      <div class="col-sm-2">
+      <input asp-for="ZeroOutBufferBANC" class="form-control" id="zeroOutBufferBANC" style="font-size:11px" />
+      <span asp-validation-for="ZeroOutBufferBANC" class="text-danger"></span>
+      </div>
+      <div class="col-sm-2">
+      <label asp-for="ZeroOutBufferMainSL">Zero Out Buffer MainSL Qty.: </label>
+      </div>
+
+      <div class="col-sm-2">
+      <input asp-for="ZeroOutBufferMainSL" class="form-control" id="zeroOutBufferMainSL" style="font-size:11px" />
+      <span asp-validation-for="ZeroOutBufferMainSL" class="text-danger"></span>
+      </div>
+      </div>
+      </div>
+      <br />
+
+      <br />
+      <div class="form-group row">
+      <div class="col-3 offset-5">
+      <button id="updateInvFeedsGeneralSetting" class="btn btn-primary" style="float:right">Update</button>
+      </div>
+      </div>*@
+
+      @*
+      <div class="border container" style="padding:30px;">
+      <h6>BPM Import</h6>
+      <input type="file" class="file" id="bpmAttachment" style="display: none;" onchange="fileSelected(this)" />
+      <input type="button" class="file" id="btnBPMAttachment" onclick="openBPMAttachment()" value="File" />
+      </div>
+
+      <div class="border container" style="padding:30px;">
+      <h6>Mellow Import</h6>
+      <input type="file" class="file" id="MellowAttachment" style="display: none;" onchange="fileSelected(this)" />
+      <input type="button" class="file" id="btnMellowAttachment" onclick="openMellowAttachment()" value="File" />
+      </div>
+      *@
+
+    </div>@*end of tab1*@
+    <div id="tabs-2">
+
+      <div class="container-fluid">
+        <h4 class="text-info start">Feeding Rules</h4>
+        <table id="invFeedRuleItems" class="table tabel-striped table-bordered display compact" style="font-size: 11px">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Market</th>
+              <th>Zero Out At(Total Qty)</th>
+              <th>Custom Feed Ratio(%)</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+
+    </div>@*end of tab2*@
+
+  </div>
+</div>
+
+<div class="modal"><!-- For waiting indicator--></div>
+@section Scripts {
+  <script>
+    function lastmod() { }
+  </script>
+  <script src="~/js/InvFeedsGeneralSetting.js">
+  </script>
+}

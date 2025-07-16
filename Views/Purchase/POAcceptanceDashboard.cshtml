@@ -1,0 +1,609 @@
+﻿@*@page
+  @model Chameleon.DTOs.Inventory.GetInventoryItemDTO*@
+
+@{
+  ViewData["Title"] = "(Stage 0) PO Review Dashboard";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>&nbsp;&nbsp;&nbsp;@ViewData["Title"]</h1>
+<br />
+
+<br />
+
+<div class="d-grid gap-3 table-purchase">
+  <table class="table-purchase" style="width:100%">
+    <tbody>
+      <tr>
+        <td></td>
+        <td><input type="hidden" id="fromDateHidden" name="fromDateHidden" /></td>
+        <td><input type="hidden" id="toDateHidden" name="toDateHidden" /></td>
+        <td style="font-size:large;background-color:lightblue">From: <input type="text" id="fromDatePicker"></td>
+        <td style="font-size:large;background-color:lightblue">To: <input type="text" id="toDatePicker"></td>
+        <td style="font-size:large;background-color:lightblue">
+          <button type="button" id="updateTimePeriodBtn" class="btn btn-primary btn-sm" style="float:right">
+            Update Time Period
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td width="20%">
+          <div class="authLevelOne">
+            <a href="~/etc/PrePOs_Import_Sample.csv" download="PrePOs_Import_Sample.csv">
+              <button type="button" class="btn btn-outline-primary btn-sm" style="float:left">Download a Sample Import File</button>
+            </a>
+          </div>
+        </td>
+        <td width="15%">
+        </td>
+        <td width="15%">
+          <div class="form-check form-switch" style="background-color:lightcyan">
+            <input class="form-check-input" type="checkbox" id="initialStageFilterCB" name="initialStageFilterCB" value="forecastingFilter">
+            <label style="background-color:lightcyan" class="form-check-label" for="initialStageFilterCB"> PrePOs in Forecasting</label>
+          </div>
+        </td>
+        <td width="15%">
+          <div class="form-check form-switch" style="background-color:lightcyan">
+            <input class="form-check-input" type="checkbox" id="mgmtStageFilterCB" name="mgmtStageFilterCB" value="managementFilter">
+            <label style="background-color:lightcyan" class="form-check-label" for="mgmtStageFilterCB"> PrePOs in Management</label>
+          </div>
+        </td>
+        <td width="15%">
+          <div class="form-check form-switch" style="background-color:lightcyan">
+            <input class="form-check-input" type="checkbox" id="logisticsStageFilterCB" name="logisticsStageFilterCB" value="logisticsFilter">
+            <label style="background-color:lightcyan" class="form-check-label" for="logisticsStageFilterCB"> PrePOs in Logistics</label>
+          </div>
+        </td>
+        <td width="20%">
+          <div class="authLevelFive">
+            <a href="~/etc/PrePOs_Logistics_Import_Sample.csv" download="PrePOs_Logistics_Import_Sample.csv">
+              <button type="button" class="btn btn-primary btn-sm" style="float:right">Download a Sample Logistics Import File</button>
+            </a>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="authLevelOne">
+            <h6>Import :</h6>
+          </div>
+        </td>
+        <td></td>
+        <td>
+          <div class="form-check form-switch" style="background-color:lightcyan">
+            <input class="form-check-input" type="checkbox" id="completedStageFilterCB" name="completedStageFilterCB" value="completedStageFilter">
+            <label style="background-color:lightcyan" class="form-check-label" for="completedStageFilterCB"> Completed PrePOs </label>
+          </div>
+        </td>
+        <td>
+          <div class="form-check form-switch" style="background-color:lightcyan">
+            <input class="form-check-input" type="checkbox" id="closedStageFilterCB" name="closedStageFilterCB" value="closedFilter">
+            <label style="background-color:lightcyan" for="closedStageFilterCB"> Closed/Declined PrePOs </label>
+          </div>
+        </td>
+        <td><button type="button" id="selectAllBtn" class="btn btn-info btn-sm" style="font-palette:white; float:left">Select All</button></td>
+        <td>
+          <button type="button" id="approvePrePoBtn" class="btn btn-primary btn-sm active authLevelThree authLevelFive approveThree" style="float:left">
+            Approve/Accept
+          </button>
+          <div class="authLevelFive" style="float:right">
+            <h6>Import :</h6>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="authLevelOne">
+            <input id="ImportPrePOs" onclick="importPrePOsFromUser()" type="file" class="btn btn-outline-primary btn-sm file" style="float:left" />
+          </div>
+        </td>
+        <td>
+          @*<button type="button" id="testSendingEmailsBtn" class="btn btn-primary btn-sm" style="float:right">Test Emails
+          </button>*@
+        </td>
+        <td></td>
+        <td></td>
+        <td>
+          <button type="button" id="deletePrePoBtn" class="btn btn-danger btn-sm active authLevelOne" style="float:right">
+            Delete
+          </button>
+          <button type="button" id="closeDeclinePrePoBtn" class="btn btn-danger btn-sm active authLevelReq closeDeclineAuth" style="float:right">
+            Close/Decline
+          </button>
+        </td>
+        <td>
+          <div class="authLevelFive">
+            <input id="ImportPrePOsLogistics" onclick="importPrePOsLogisticsFromUser()" type="file" class="btn btn-primary btn-sm file" style="float:right" />
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="invFeed-container">
+  <div class="col-12 border p-3">
+    <table id="poAccptDashboardItems" class="table tabel-striped table-bordered display compact table-invFeed border hover" style="width:100%">
+      <thead style="font-size: 9px">
+        <tr style="font-size: 9px">
+          <th colspan="2" class="table-select"><input type="checkbox" id="checkAll" /></th>@* modified on 12/7/2023*@
+          <th colspan="10" class="table-purchase-forecasting">Forecasting PO Placement</th>
+          <th colspan="4" class="table-purchase-management">Management Acceptance</th>
+          <th colspan="11" class="table-purchase-logistics">Logistics (Purchasing) Team PO Acceptance/Proceed SOP</th>
+        </tr>
+        <tr style="font-size: 9px">
+          <th>ID</th>
+          <th class="table-select">Ready to Approve</th>
+          <th class="table-purchase-forecasting">Internal PO#</th>
+          <th style="min-width: 100px" class="table-purchase-forecasting">SKU</th>
+          <th style="min-width: 100px" class="table-purchase-forecasting">Status</th>
+          <th style="min-width: 100px" class="table-purchase-forecasting">Requestor</th>
+          <th class="table-purchase-forecasting">PO Channel</th>
+          <th class="table-purchase-forecasting">Qty</th>
+          <th style="min-width: 100px" class="table-purchase-forecasting">Requestor's Note</th>
+          <th style="min-width: 100px" class="table-purchase-forecasting">MUST ETA Date</th>
+          <th class="table-purchase-forecasting">Approved By Supervisor</th>
+          <th class="table-purchase-forecasting">Approved/Declined Date</th>
+          <th class="table-purchase-management">Adjust Qty.</th>
+          <th class="table-purchase-management">Management's Note</th>
+          <th class="table-purchase-management">Status</th>
+          <th class="table-purchase-management" style="min-width: 100px">Date Executed</th>
+          <th class="table-purchase-logistics">Acceptance Confirmation</th>
+          <th class="table-purchase-logistics" style="min-width: 100px">Accepted/Declined Date</th>
+          <th class="table-purchase-logistics">Qty. Confirmed</th>
+          <th class="table-purchase-logistics">Chosen Vendor</th>
+          <th class="table-purchase-logistics" style="min-width: 100px">Acceptance Note</th>
+          <th class="table-purchase-logistics" style="min-width: 80px">ETD-C</th>
+          <th class="table-purchase-logistics" style="min-width: 80px">Updated MUST ETA</th>
+          <th class="table-purchase-logistics">Registration Completion</th>
+          <th class="table-purchase-logistics" style="min-width: 100px">Complete Note</th>
+          <th class="table-purchase-logistics" style="min-width: 100px">Complete Date</th>
+          <th>PPStatus</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          @*          <th class="table-purchase-forecasting">Internal PO#</th>
+          <th style="min-width: 100px" class="table-purchase-forecasting">Requestor</th>
+          <th class="table-purchase-forecasting">PO Channel</th>
+          <th style="min-width: 100px" class="table-purchase-forecasting">SKU</th>
+          <th class="table-purchase-forecasting">Qty</th>
+          <th style="min-width: 100px" class="table-purchase-forecasting">Requestor's Note</th>
+          <th style="min-width: 100px" class="table-purchase-forecasting">MUST ETA Date</th>
+          <th class="table-purchase-forecasting">Approved By Supervisor</th>
+          <th class="table-purchase-forecasting">Approved/Declined Date</th>
+          <th class="table-purchase-management">Adjust Qty.</th>
+          <th class="table-purchase-management">Management's Note</th>
+          <th class="table-purchase-management">Status</th>
+          <th class="table-purchase-management"style="min-width: 100px">Date Executed</th>
+          <th class="table-purchase-logistics">Acceptance Confirmation</th>
+          <th class="table-purchase-logistics"style="min-width: 100px">Accepted/Declined Date</th>
+          <th class="table-purchase-logistics">Qty. Confirmed</th>
+          <th class="table-purchase-logistics">Chosen Vendor</th>
+          <th class="table-purchase-logistics" style="min-width: 100px">Acceptance Note</th>
+          <th class="table-purchase-logistics" style="min-width: 80px">ETD-C</th>
+          <th class="table-purchase-logistics">Registration Completion</th>
+          <th class="table-purchase-logistics" style="min-width: 100px">Complete Note</th>
+          <th class="table-purchase-logistics" style="min-width: 100px">Complete Date</th>*@
+          <th></th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+<br />
+<div class="d-grid gap-2 d-md-block offset-9">
+  &nbsp;&nbsp;&nbsp;
+  <button type="button" class="btn btn-primary btn-sm authLevelOne" id="newClearInputFields">Clear</button>
+  <button type="button" class="btn btn-danger btn-sm authLevelReq" id="AddUpdate">Add/Update</button>
+</div>
+<div class="d-grid gap-3 table-purchase">
+  <table class="table-purchase" style="width:100%">
+    <thead>
+      <tr>
+        <th colspan="6"><div class="selected-row">* A Selected Row for Detail below</div></th>
+      </tr>
+    </thead>
+    <thead>
+      <tr>
+        <th colspan="2">Forecasting PO Placement</th>
+        <th colspan="2">Management Acceptance</th>
+        <th colspan="2">Logistics (Purchasing) team PO Acceptance/Proceed SOP</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Internal PO#</td>
+        <td><p id="internalPoNo" name="internalPoNo"></p></td>
+        <td><input type="hidden" id="prePOStatus" name="prePOStatus" /></td>
+        <td><input type="hidden" id="prePOId" name="prePOId" /></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>PO Channel</td>
+        <td>
+          <select name="poChannel" id="poChannel" class="initialStage">
+            <option value="none">Please Select a PO Channel</option>
+            <option value="bpm">BPM</option>
+            <option value="cg_canada">CG CANADA</option>
+            <option value="cg_usa">CG USA</option>
+            <option value="cg_uk">CG UK</option>
+            <option value="wfs">WFS</option>
+          </select>
+        </td>
+        <td></td>
+        <td></td>
+        <td>Chosen Vendor</td>
+        <td><select id="vendorChosenDropdown" name="vendorChosenDropdown" class="logisticsStage"></select></td>
+      </tr>
+      <tr>
+        <td>SKU</td>
+        <td><div class="autocomplete"><input id="skuInput" type="text" name="sku" placeholder="SKU" /></div></td>
+        <td></td>
+        <td></td>
+        <td>ETD-C (mm/dd/yyyy)</td>
+        <td>
+          <input class="logisticsStage" type="text" id="etdcDatePicker" />
+          @*<input id="logisticsEtd_c" name="logisticsEtd_c" class="logisticsStage" />*@
+        </td>
+      </tr>
+      <tr>
+        <td>QTY.</td>
+        <td><input id="requestedQty" name="requestedQty" class="initialStage" /></td>
+        <td>Management Adjust Qty.</td>
+        <td><input id="mgmtAdjQty" name="mgmtAdjQty" class="mgmtStage" /></td>
+        <td>Qty. Confirmed</td>
+        <td><input id="logisticsConfirmedQty" name="logisticsConfirmedQty" class="logisticsStage" /></td>
+      </tr>
+      <tr>
+        <td>Initial Approved</td>
+        <td><p id="hasInitialApproved" name="hasInitialApproved"></p></td>
+        <td>Approved By Management</td>
+        <td><p id="mgmtPrePOAccept" name="mgmtPrePOAccept"></p></td>
+        <td>Acceptance Confirmation</td>
+        <td><p id="acceptedByLogistics" name="acceptedByLogistics"></p></td>
+      </tr>
+      <tr>
+        <td>Approved By</td>
+        <td><p id="initialApprovedBy" name="initialApprovedBy"></td>
+        <td>Approved By</td>
+        <td><p id="mgmtApprovedBy" name="mgmtApprovedBy"></p></td>
+        <td>Accepted By</td>
+        <td><p id="logisticsAcceptedBy" name="logisticsAcceptedBy"></p></td>
+      </tr>
+      <tr>
+        <td>MUST ETA Date(Optional)</td>
+        <td>
+          <select class="initialStage" name="etaMustDateDropdownMonth" id="etaMustDateDropdownMonth">
+            <option value="none">Please Select a Month</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+          </select>
+          <select class="initialStage" name="etaMustDateDropdownYear" id="etaMustDateDropdownYear">
+          </select>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+        </td>
+      </tr>
+      <tr>
+        <td>Requested Date(Created)</td>
+        <td><p id="createdDate" name="createdDate"></p></td>
+        <td>Date Executed</td>
+        <td><p id="mgmtDateExecuted" name="mgmtDateExecuted"></p></td>
+        <td>Accepted Date</td>
+        <td><p id="acceptedByLogisticsDate" name="acceptedByLogisticsDate"></p></td>
+      </tr>
+      <tr>
+        <td>Requestor's Note</td>
+        <td><textarea id="requestorsNote" name="requestorsNote" rows="2" class="initialStage"></textarea></td>
+        <td>Management Note</td>
+        <td><textarea id="mgmtsNote" name="mgmtsNote" rows="2" class="mgmtStage"></textarea></td>
+        <td>Acceptance Note</td>
+        <td><textarea id="logisticsAcceptanceNote" name="logisticsAcceptanceNote" rows="2" class="logisticsStage"></textarea></td>
+      </tr>
+      <tr>
+        <td colspan="2"></td>
+        <td colspan="2"></td>
+        <td colspan="2"></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Updated MUST ETA Date</td>
+        <td>
+          <select class="logisticsStage" name="logisticsEtaMustDateDropdownMonth" id="logisticsEtaMustDateDropdownMonth">
+            <option value="none">Please Select a Month</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+          </select>
+          <select class="logisticsStage" name="logisticsEtaMustDateDropdownYear" id="logisticsEtaMustDateDropdownYear">
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Registration Completion</td>
+        <td><p id="logisticsRegCompletion" name="logisticsRegCompletion"></p></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Completed Date</td>
+        <td><p id="logisticsCompletedDate" name="logisticsCompletedDate"></p></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Completed By</td>
+        <td><p id="logisticsCompletedBy" name="logisticsCompletedBy"></p></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Complete Note</td>
+        <td><textarea id="logisticsPONoNote" name="logisticsPONoNote" rows="2" class="logisticsStage"></textarea></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td colspan="2"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h5>&nbsp;&nbsp;&nbsp;History</h5>
+<div class="invFeed-container">
+  <div class="col-12 border p-3">
+    <table id="poAccptDashboardHistoryItems" class="table tabel-striped table-bordered display compact table-invFeed border hover" style="width:100%">
+      <thead style="font-size: 9px">
+        <tr style="font-size: 9px">
+          <th colspan="5" class="table-select"></th>
+          <th colspan="5" class="table-purchase-forecasting">Forecasting PO Placement</th>
+          <th colspan="2" class="table-purchase-management">Management Acceptance</th>
+          <th colspan="7" class="table-purchase-logistics">Logistics (Purchasing) Team PO Acceptance/Proceed SOP</th>
+        </tr>
+        <tr style="font-size: 9px">
+          <th>ID</th>
+          <th class="table-select">Select</th>
+          <th class="table-select">Revision No.</th>
+          <th class="table-select">Modified By</th>
+          <th class="table-select">Modified Date</th>
+          <th style="min-width: 100px" class="table-purchase-forecasting">SKU</th>
+          <th class="table-purchase-forecasting">PO Channel</th>
+          <th class="table-purchase-forecasting">Qty</th>
+          <th style="min-width: 100px" class="table-purchase-forecasting">Requestor's Note</th>
+          <th style="min-width: 100px" class="table-purchase-forecasting">MUST ETA Date</th>
+          <th class="table-purchase-management">Adjust Qty.</th>
+          <th class="table-purchase-management">Management's Note</th>
+          <th class="table-purchase-logistics">Qty. Confirmed</th>
+          <th class="table-purchase-logistics">Chosen Vendor</th>
+          <th class="table-purchase-logistics" style="min-width: 100px">Acceptance Note</th>
+          <th class="table-purchase-logistics" style="min-width: 80px">ETD-C</th>
+          <th class="table-purchase-logistics" style="min-width: 100px">Update MUST ETA Date</th>
+          <th class="table-purchase-logistics" style="min-width: 100px">Complete Note</th>
+          <th>PPStatus</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>
+
+<div class="d-grid gap-3 table-purchase">
+  <table class="table-purchase" style="width:100%">
+    <thead>
+      <tr>
+        <th colspan="6"><div style="font-weight:bold">Revision Number : </div><p id="revNoNoHistory" name="revNoNoHistory"></p></th>
+      </tr>
+    </thead>
+    <thead>
+      <tr>
+        <th colspan="2">Forecasting PO Placement</th>
+        <th colspan="2">Management Acceptance</th>
+        <th colspan="2">Logistics (Purchasing) team PO Acceptance/Proceed SOP</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Internal PO#</td>
+        <td><p id="internalPoNoHistory" name="internalPoNoHistory"></p></td>
+        <td><input type="hidden" id="prePOStatusHistory" name="prePOStatusHistory" /></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>PO Channel</td>
+        <td>
+          <p id="poChannelHistory" name="poChannelHistory"></p>
+        </td>
+        <td></td>
+        <td></td>
+        <td>Chosen Vendor</td>
+        <td><p id="logisticsChosenVendorHistory" name="logisticsChosenVendorHistory"></p></td>
+      </tr>
+      <tr>
+        <td>SKU</td>
+        <td><p id="skuHistory" name="skuHistory"></p></td>
+        <td></td>
+        <td></td>
+        <td>ETD-C (mm/dd/yyyy)</td>
+        <td></td>
+        <p id="logisticsEtd_cHistory" name="logisticsEtd_cHistory"></p></td>
+      </tr>
+      <tr>
+        <td>QTY.</td>
+        <td><p id="requestedQtyHistory" name="requestedQtyHistory"></p></td>
+        <td>Management Adjust Qty.</td>
+        <td><p id="mgmtAdjQtyHistory" name="mgmtAdjQtyHistory"></p></td>
+        <td>Qty. Confirmed</td>
+        <td><p id="logisticsConfirmedQtyHistory" name="logisticsConfirmedQtyHistory"></p></td>
+      </tr>
+      <tr>
+        <td>Initial Approved</td>
+        <td><p id="hasInitialApprovedHistory" name="hasInitialApprovedHistory"></p></td>
+        <td>Approved By Management</td>
+        <td><p id="mgmtPrePOAcceptHistory" name="mgmtPrePOAcceptHistory"></p></td>
+        <td>Acceptance Confirmation</td>
+        <td><p id="acceptedByLogisticsHistory" name="acceptedByLogisticsHistory"></p></td>
+      </tr>
+      <tr>
+        <td>Approved By</td>
+        <td><p id="initialApprovedByHistory" name="initialApprovedByHistory"></td>
+        <td>Approved By</td>
+        <td><p id="mgmtApprovedByHistory" name="mgmtApprovedByHistory"></p></td>
+        <td>Accepted By</td>
+        <td><p id="logisticsAcceptedByHistory" name="logisticsAcceptedByHistory"></p></td>
+      </tr>
+      <tr>
+        <td>MUST ETA Date(Optional)</td>
+        <td>
+          <p id="mustETADateHistory" name="mustETADateHistory"></p>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+        </td>
+      </tr>
+      <tr>
+        <td>Requested Date(Created)</td>
+        <td><p id="createdDateHistory" name="createdDateHistory"></p></td>
+        <td>Date Executed</td>
+        <td><p id="mgmtDateExecutedHistory" name="mgmtDateExecutedHistory"></p></td>
+        <td>Accepted Date</td>
+        <td><p id="acceptedByLogisticsDateHistory" name="acceptedByLogisticsDateHistory"></p></td>
+      </tr>
+      <tr>
+        <td>Requestor's Note</td>
+        <td><textarea id="requestorsNoteHistory" name="requestorsNoteHistory" rows="2" disabled></textarea></td>
+        <td>Management Note</td>
+        <td><textarea id="mgmtsNoteHistory" name="mgmtsNoteHistory" rows="2" disabled></textarea></td>
+        <td>Acceptance Note</td>
+        <td><textarea id="logisticsAcceptanceNoteHistory" name="logisticsAcceptanceNoteHistory" rows="2" disabled></textarea></td>
+      </tr>
+      <tr>
+        <td colspan="2"></td>
+        <td colspan="2"></td>
+        <td colspan="2"></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Updated MUST ETA Date</td>
+        <td><p id="logisticsMustEtaDateHistory" name="logisticsMustEtaDateHistory"></p></td>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Registration Completion</td>
+        <td><p id="logisticsRegCompletionHistory" name="logisticsRegCompletionHistory"></p></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Completed Date</td>
+        <td><p id="logisticsCompletedDateHistory" name="logisticsCompletedDateHistory"></p></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Completed By</td>
+        <td><p id="logisticsCompletedByHistory" name="logisticsCompletedByHistory"></p></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Complete Note</td>
+        <td><textarea id="logisticsPONoNoteHistory" name="logisticsPONoNoteHistory" rows="2" disabled></textarea></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td colspan="2"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="modal"><!-- Place at bottom of page --></div>
+@section Scripts{
+  <script>
+    function lastmod() { }
+  </script>
+  <script src="~/js/purchase/POAccptDashboard.js">
+  </script>
+}

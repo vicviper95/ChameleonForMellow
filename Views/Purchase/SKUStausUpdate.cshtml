@@ -1,0 +1,49 @@
+﻿
+@{
+  ViewData["Title"] = "SKU Status Update";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>&nbsp;&nbsp;&nbsp;@ViewData["Title"]</h1>
+<br />
+
+<br />
+
+
+<div class="d-grid gap-3 table-purchase">
+ <div class="container-fluid">
+          <a href="~/etc/purchase/sku_status_update.csv" download="sku_status_update.csv">
+            <button style="font-size: 11px">Download Import SKU Status Update Example File</button>
+          </a>
+          <hr /><h6>Import SKU Status List</h6>
+          <input type="file" class="file" id="SKUCSVAttachment" onclick="openSKUCSVAttachment()" />
+
+        </div>
+</div>
+<div class="invFeed-container">
+  <div class="col-12 border p-3">
+        <table id="skuStatusItems" class="table tabel-striped table-bordered display compact table-invFeed table-inventory-feeding" style="width:100%">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th class="table-purchase-forecasting">Category</th>
+          <th class="table-purchase-forecasting">SKU</th>
+          <th class="table-purchase-forecasting">Description</th>
+          <th class="table-purchase-forecasting">Status</th>
+          <th class="table-purchase-forecasting">Last Modified By</th>
+          <th class="table-purchase-forecasting">Last Modified Date</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>
+
+
+<div class="modal"><!-- Place at bottom of page --></div>
+@section Scripts{
+<script>
+  function lastmod() { }
+</script>
+<script src="~/js/purchase/SKUStatusList.js">
+</script>
+}

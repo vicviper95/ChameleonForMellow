@@ -1,0 +1,85 @@
+﻿@model Chameleon.DTOs.Inventory.InvFeedsSKUStatusDTO
+
+@{
+  ViewData["Title"] = "eBay SKU Feeding Status";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h3 class="text-info offset-sm-1">&nbsp;&nbsp;eBay SKU Feeding Status List</h3>
+<div class="invFeed-container">
+
+  <div id="eBayFeedingStatusTabs">
+    <div id="tabs-nobg" style="font-size: 11px;">
+      <ul>
+        <li><a href="#tabs-1">Manage SKUs Manually </a></li>
+        <li><a href="#tabs-2">Manage Automatically by Import</a></li>
+      </ul>
+      <div id="tabs-1">
+        <div class="container-fluid">
+          <div class="container-fluid">
+            <button id="updateInvFeedseBaySKUStatusBtn" class="btn btn-primary" style="float:right">Update</button>
+            <br />
+            <table id="invFeedseBaySKUFeedingStatusItems" class="table tabel-striped table-bordered display compact" style="font-size: 11px">
+              <thead>
+                <tr>
+                  <th>Item No. ID</th>
+                  <th>ICR ID</th>
+                  <th>Feeds?</th>
+                  <th>BPM SKU</th>
+                  <th>Item Status</th>
+                  <th>eBay SKU</th>
+                  <th>Description</th>
+                  <th>Last Modified By</th>
+                  <th>Last Modified Time</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div id="tabs-2">
+
+          @*<div class="border container" style="padding:10px; font-size:12px">*@
+        <div class="container-fluid">
+          <a href="~/etc/eBay_Feeding_List.csv" download="eBay_Feeding_List.csv">
+            <button style="font-size: 11px">Download Import SKU Example File</button>
+          </a>
+          <hr /><h6>Import SKU List</h6>
+          <input type="file" class="file" id="SKUCSVAttachment" onclick="openSKUCSVAttachment()" />
+
+        </div>
+          <hr />
+
+          <div class="container-fluid">
+              <br />
+              <table id="invFeedseBaySKUFeedingConflictedItems" class="table tabel-striped table-bordered display compact" style="font-size: 11px">
+                <thead>
+                  <tr>
+                    <th>Is Resolved</th>
+                    <th>Conflict Type</th>
+                    <th>BPM SKU</th>
+                    <th>Item Status</th>
+                    <th>eBay SKU</th>
+                    <th>Description</th>
+                    <th>Last Modified By</th>
+                    <th>Last Modified Time</th>
+                  </tr>
+                </thead>
+              </table>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal"><!-- Place at bottom of page --></div>
+@section Scripts {
+  @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+  <script>
+    function lastmod() { }
+  </script>
+  <script src="~/js/InvFeedseBaySKUFeedingStatusList.js">
+  </script>
+}

@@ -1,0 +1,17 @@
+﻿@model Chameleon.DTOs.Employee.HomeAnnouncementNotificationsDTO
+@{
+  ViewData["Title"] = "Home Page";
+}
+@**@
+@**@
+<div class="text-center">
+  <h1 class="display-4">Welcome</h1>
+  <p>This is Chameleon!</p>
+  <div style="text-align:center; margin-left: 35%; margin-right: 30%">
+    @*<input asp-for="ArticleContent" class="form-control" disabled style="text-align:center" />*@
+    <textarea class="form-control" asp-for="announcement.ArticleContent" disabled style="font-size: 12px; text-align: center"></textarea>
+    <hr />
+    <h3>These are what you need to know today:</h3>
+    <textarea rows="10" style="height:100%;font-size: 12px; " class="form-control" asp-for="notifications" disabled style="text-align:center"></textarea>
+  </div>
+</div>

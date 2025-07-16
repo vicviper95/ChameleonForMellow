@@ -1,0 +1,62 @@
+﻿@*@page
+  @model Chameleon.DTOs.Inventory.GetInventoryItemDTO*@
+
+@{
+  ViewData["Title"] = "Inventory Sales History";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<br />
+<div class="container row p-0 m-0">
+  <div>
+    <div style="padding-top: 10px">
+      from:<input type="text" id="fromDatePicker">
+      end:<input type="text" id="toDatePicker">
+    </div>
+    <h4 class="text-info"> Or </h4>
+    <div class="dropdown">
+      <label for="timePeriodSalesHistory">Choose a Time Period :</label>
+      <select name="timePeriodSalesHistory" id="timePeriodSalesHistory">
+        <option value="none">------------</option>
+        <option value="4weeks">4 Weeks</option>
+        <option value="8weeks">8 Weeks</option>
+        <option value="12weeks">12 Weeks</option>
+      </select>
+      <button id="reloadInvSalesHistory">reload</button>
+    </div>
+  </div>
+  <div class="col-12 border p-3">
+    <label for="inputId">file dialog</label>
+    <input id="inputId" type="file" style="position: fixed; top: -100em">
+    <table id="invSalesHistoryItems" class="table tabel-striped table-bordered display compact" style="width:100%">
+      <thead>
+        <tr>
+          <th>SKU</th>
+          <th>Amazon SKU</th>
+          <th>Amazon</th>
+          <th>Wayfair SKU</th>
+          <th>Wayfair</th>
+          <th>Walmart SKU</th>
+          <th>Walmart</th>
+          <th>Overstock SKU</th>
+          <th>Overstock</th>
+          <th>eBay SKU</th>
+          <th>eBay</th>
+          <th>etc</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>
+
+<div class="modal"><!-- For waiting indicator--></div>
+
+@section Scripts{
+  <script>
+    function lastmod() { }
+  </script>
+  <script src="~/js/InvSaleHistoryList.js">
+  </script>
+}

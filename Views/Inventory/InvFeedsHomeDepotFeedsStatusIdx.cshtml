@@ -1,0 +1,91 @@
+﻿@model Chameleon.DTOs.Inventory.InvFeedsSKUStatusDTO
+
+@{
+  ViewData["Title"] = "Home Depot SKU Feeding Status";
+}
+
+<h3 class="text-info offset-sm-1">&nbsp;&nbsp;Home Depot SKU Feeding Status List</h3>
+<div class="invFeed-container">
+
+  <div id="homeDepotFeedingStatusTabs">
+    <div id="tabs-nobg"  style="font-size: 11px;">
+      <ul>
+        <li><a href="#tabs-1">Manage SKUs Manually </a></li>
+        <li><a href="#tabs-2">Manage Automatically by Import</a></li>
+      </ul>
+      <div id="tabs-1"  style="font-size: 11px;">
+        <div class="container-fluid">
+          <div class="container-fluid">
+              <button id="updateInvFeedsHomeDepotSKUStatusBtn" class="btn btn-primary" style="float:right">Update</button>
+              <br />
+              <table id="invFeedsHomeDepotSKUFeedingStatusItems" class="table tabel-striped table-bordered display compact" style="font-size: 11px">
+                <thead>
+                  <tr>
+                    <th>Item No. ID</th>
+                    <th>ICR ID</th>
+                    <th>Feeds?</th>
+                    <th>BPM SKU</th>
+                    <th>Item Status</th>
+                    <th>Home Depot SKU</th>
+                    <th>Home Depot Assigned SKU</th>
+                    <th>Description</th>
+                    <th>Last Modified By</th>
+                    <th>Last Modified Time</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+        </div>
+      </div>
+
+
+      <div id="tabs-2" >
+        @*<div class="border container" style="padding:10px; font-size:12px">*@
+        <div class="container-fluid"  style="font-size: 11px;">
+          <a href="~/etc/HomeDepotFeedingList.csv" download="HomeDepotFeedingList.csv">
+          <button style="font-size: 11px">Download Import SKU Example File</button>
+          </a>
+        <hr />
+          <h6>Import SKU List</h6>
+          <input type="file" class="file" id="SKUCSVAttachment" onclick="openSKUCSVAttachment()" />
+          @*<h6>*You can just use Amazon Feeds file to update a feeding SKU list.</h6>*@
+        </div>
+        <hr />
+        <div class="container-fluid">
+            <h5>Conflicted SKU List</h5>
+            <br />
+            <table id="invFeedsHomeDepotSKUFeedingConflictedItems" class="table tabel-striped table-bordered display compact" style="font-size: 11px">
+              <thead>
+                <tr>
+                  <th>Is Resolved</th>
+                  <th>Conflict Type</th>
+                  <th>BPM SKU</th>
+                  <th>Item Status</th>
+                  <th>Home Depot SKU</th>
+                  <th>Home Depot Assigned SKU</th>
+                  <th>Description</th>
+                  <th>Last Modified By</th>
+                  <th>Last Modified Time</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal"><!-- For waiting indicator--></div>
+@*For Test Purpose only!
+  <textarea id="resultJSON" name="resultJSON" rows="5" cols="50">
+  </textarea>*@
+
+
+
+@section Scripts {
+  @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+  <script>
+    function lastmod() { }
+  </script>
+  <script src="~/js/InvFeedsHomeDepotSKUFeedingStatusList.js">
+  </script>
+}

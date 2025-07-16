@@ -1,0 +1,361 @@
+﻿@model Chameleon.DTOs.Inventory.InvFeedsSKUStatusDTO
+
+@{
+  ViewData["Title"] = "Inventory SKU Feeding Status";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+  <form asp-controller="Inventory" asp-action="UpdateInvFeedsSKUFeedingStatus" data-ajax-begin="onBegin" data-ajax-complete="onComplete"
+    data-ajax-failure="onFailed" data-ajax-success="onSuccess"data-ajax-method="POST" data-ajax="true">
+    <h2 class="text-info offset-sm-1">Inventory SKU Feeding Status List</h2>
+    <br />
+    <div class="col-2 offset-9">
+      <button type="submit" value="Update" class="btn btn-primary form-control">Update</button>
+    </div>
+    <br />
+    <div class="container-fluid">
+
+
+      <div class="container-fluid" id="grid">
+        <div class="col-4" style="float:left">
+          <table id="invFeedsSKUFeedingStatusItems" class="table tabel-striped table-bordered display compact" style="font-size: 10px">
+            <thead>
+              <tr>
+                <th>Item No. ID</th>
+                <th>BPM SKU</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <div class="row">
+          <div class="col-12" style="font-size: 10px">
+
+            <div class="card">
+              <div class="card-header"><b>Item Detail</b></div>
+              <div class="card-body">
+
+
+                <div class="form-group row">
+                  <input type="hidden" asp-for="ItemNoId" id="itemNoId" />
+                  <div class="col-1">
+                    <label asp-for="ItemName">Item Name</label>
+                  </div>
+                  <div class="col-sm-2">
+                    <input asp-for="ItemName" class="form-control" name="ItemName" id="itemName" disabled />
+                    <span asp-validation-for="ItemName" class="text-danger"></span>
+                  </div>
+                  <div class="col-1">
+                    <label asp-for="Description">Description</label>
+                  </div>
+                  <div class="col-4">
+                    <input asp-for="Description" class="form-control" id="description" disabled />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                  </div>
+                </div>
+                <hr />
+
+                <div class="form-group row">
+                  <input type="hidden" asp-for="AmazonIcrId" id="amazonIcrId" />
+                  <div class="col-sm-2">
+                    <input asp-for="AmazonFeedsEnable" class="form-check-input" type="checkbox" id="amazonFeedsEnable" />
+                    <label asp-for="AmazonFeedsEnable">Feed to Amazon</label>
+                    <span asp-validation-for="AmazonFeedsEnable" class="text-danger"></span>
+                  </div>
+                  <div class="col-1">
+                    <label asp-for="AmazonCustSKU">Amazon SKU</label>
+                  </div>
+                  <div class="col-sm-2">
+                    <input asp-for="AmazonCustSKU" class="form-control" name="amazonCustSKU" id="amazonCustSKU" />
+                    <span asp-validation-for="AmazonCustSKU" class="text-danger"></span>
+                  </div>
+                  <div class="col-1">
+                    <label asp-for="AmazonUPC">Amazon UPC</label>
+                  </div>
+                  <div class="col-sm-2">
+                    <input asp-for="AmazonUPC" class="form-control" id="amazonUPC" />
+                    <span asp-validation-for="AmazonUPC" class="text-danger"></span>
+                  </div>
+                  <div class="col-sm-1">
+                    <label asp-for="ASIN">ASIN</label>
+                  </div>
+                  <div class="col-sm-2">
+                    <input asp-for="ASIN" class="form-control" name="asin" id="asin" />
+                    <span asp-validation-for="ASIN" class="text-danger"></span>
+                  </div>
+                  <div class="col-sm-2">
+                    <label asp-for="AmazonLastModifiedBy">Last Modified By : </label>
+                  </div>
+                  <div class="col-sm-2">
+                    <input asp-for="AmazonLastModifiedBy" class="form-control" id="amazonLastModifiedBy" disabled />
+                    <span asp-validation-for="AmazonLastModifiedBy" class="text-danger"></span>
+                  </div>
+                  <div class="col-sm-2">
+                    <label asp-for="AmazonLastModifiedTime">Last Modified Date : </label>
+                  </div>
+                  <div class="col-sm-2">
+                    <input asp-for="AmazonLastModifiedTime" class="form-control" id="amazonLastModifiedTime" disabled />
+                    <span asp-validation-for="AmazonLastModifiedTime" class="text-danger"></span>
+                  </div>
+                </div>
+                <hr />
+
+                <div class="form-group row">
+                  <input type="hidden" asp-for="eBayIcrId" id="ebayIcrId" />
+                  <div class="col-sm-2">
+                    <input asp-for="eBayFeedsEnable" class="form-check-input" type="checkbox" id="ebayFeedsEnable" />
+                    <label asp-for="eBayFeedsEnable">Feed to eBay</label>
+                    <span asp-validation-for="eBayFeedsEnable" class="text-danger"></span>
+                  </div>
+                  <div class="col-1">
+                    <label asp-for="eBayCustSKU">eBay SKU</label>
+                  </div>
+                  <div class="col-sm-2">
+                    <input asp-for="eBayCustSKU" class="form-control" name="ebayCustSKU" id="ebayCustSKU" />
+                    <span asp-validation-for="eBayCustSKU" class="text-danger"></span>
+                  </div>
+                  <div class="col-sm-2">
+                    <label asp-for="eBayLastModifiedBy">Last Modified By : </label>
+                  </div>
+                  <div class="col-sm-2">
+                    <input asp-for="eBayLastModifiedBy" class="form-control" id="ebayLastModifiedBy" disabled />
+                    <span asp-validation-for="eBayLastModifiedBy" class="text-danger"></span>
+                  </div>
+                  <div class="col-sm-2">
+                    <label asp-for="eBayLastModifiedTime">Last Modified Date : </label>
+                  </div>
+                  <div class="col-sm-2">
+                    <input asp-for="eBayLastModifiedTime" class="form-control" id="ebayLastModifiedTime" disabled />
+                    <span asp-validation-for="eBayLastModifiedTime" class="text-danger"></span>
+                  </div>
+                </div>
+                <hr />
+
+                <div class="form-group row">
+                  <input type="hidden" asp-for="OverstockIcrId" id="overstockIcrId" />
+                  <div class="col-sm-2">
+                    <input asp-for="OverstockFeedsEnable" class="form-check-input" type="checkbox" id="overstockFeedsEnable" />
+                    <label asp-for="OverstockFeedsEnable">Feed to Overstock</label>
+                    <span asp-validation-for="OverstockFeedsEnable" class="text-danger"></span>
+                  </div>
+                  <div class="col-1">
+                    <label asp-for="OverstockCustSKU">Overstock SKU</label>
+                  </div>
+                  <div class="col-sm-2">
+                    <input asp-for="OverstockCustSKU" class="form-control" name="overstockCustSKU" id="overstockCustSKU" />
+                    <span asp-validation-for="OverstockCustSKU" class="text-danger"></span>
+                  </div>
+                  <div class="col-1">
+                    <label asp-for="OverstockUPC">Overstock UPC</label>
+                  </div>
+                  <div class="col-sm-2">
+                    <input asp-for="OverstockUPC" class="form-control" id="overstockUPC" />
+                    <span asp-validation-for="OverstockUPC" class="text-danger"></span>
+                  </div>
+                  <div class="col-sm-2">
+                    <label asp-for="OverstockLastModifiedBy">Last Modified By : </label>
+                  </div>
+                  <div class="col-sm-2">
+                    <input asp-for="OverstockLastModifiedBy" class="form-control" id="overstockLastModifiedBy" disabled />
+                    <span asp-validation-for="OverstockLastModifiedBy" class="text-danger"></span>
+                  </div>
+                  <div class="col-sm-2">
+                    <label asp-for="OverstockLastModifiedTime">Last Modified Date : </label>
+                  </div>
+                  <div class="col-sm-2">
+                    <input asp-for="OverstockLastModifiedTime" class="form-control" id="overstockLastModifiedTime" disabled />
+                    <span asp-validation-for="OverstockLastModifiedTime" class="text-danger"></span>
+                  </div>
+                </div>
+                <hr />
+
+                <div class="form-group row">
+                  <input type="hidden" asp-for="WalmartIcrId" id="walmartIcrId" />
+                  <div class="col-sm-2">
+                    <input asp-for="WalmartFeedsEnable" class="form-check-input" type="checkbox" id="walmartFeedsEnable" />
+                    <label asp-for="WalmartFeedsEnable">Feed to Walmart</label>
+                    <span asp-validation-for="WalmartFeedsEnable" class="text-danger"></span>
+                  </div>
+                  <div class="col-1">
+                    <label asp-for="WalmartCustSKU">Walmart SKU</label>
+                  </div>
+                  <div class="col-sm-2">
+                    <input asp-for="WalmartCustSKU" class="form-control" name="walmartCustSKU" id="walmartCustSKU" />
+                    <span asp-validation-for="WalmartCustSKU" class="text-danger"></span>
+                  </div>
+                  <div class="col-1">
+                    <label asp-for="WalmartUPC">Walmart UPC</label>
+                  </div>
+                  <div class="col-sm-2">
+                    <input asp-for="WalmartUPC" class="form-control" id="walmartUPC" />
+                    <span asp-validation-for="WalmartUPC" class="text-danger"></span>
+                  </div>
+                  <div class="col-sm-2">
+                    <label asp-for="WalmartLastModifiedBy">Last Modified By : </label>
+                  </div>
+                  <div class="col-sm-2">
+                    <input asp-for="WalmartLastModifiedBy" class="form-control" id="walmartLastModifiedBy" disabled />
+                    <span asp-validation-for="WalmartLastModifiedBy" class="text-danger"></span>
+                  </div>
+                  <div class="col-sm-2">
+                    <label asp-for="WalmartLastModifiedTime">Last Modified Date : </label>
+                  </div>
+                  <div class="col-sm-2">
+                    <input asp-for="WalmartLastModifiedTime" class="form-control" id="walmartLastModifiedTime" disabled />
+                    <span asp-validation-for="WalmartLastModifiedTime" class="text-danger"></span>
+                  </div>
+                </div>
+                <hr />
+
+                <div class="form-group row">
+                  <input type="hidden" asp-for="WayfairIcrId" id="wayfairIcrId" />
+                  <div class="col-sm-2">
+                    <input asp-for="WayfairFeedsEnable" class="form-check-input" type="checkbox" id="wayfairFeedsEnable" />
+                    <label asp-for="WayfairFeedsEnable">Feed to Wayfair</label>
+                    <span asp-validation-for="WayfairFeedsEnable" class="text-danger"></span>
+                  </div>
+                  <div class="col-1">
+                    <label asp-for="WayfairCustSKU">Wayfair SKU</label>
+                  </div>
+                  <div class="col-sm-2">
+                    <input asp-for="WayfairCustSKU" class="form-control" name="wayfairCustSKU" id="wayfairCustSKU" />
+                    <span asp-validation-for="WayfairCustSKU" class="text-danger"></span>
+                  </div>
+                  <div class="col-1">
+                    <label asp-for="WayfairUPC">Wayfair UPC</label>
+                  </div>
+                  <div class="col-sm-2">
+                    <input asp-for="WayfairUPC" class="form-control" id="wayfairUPC" />
+                    <span asp-validation-for="WayfairUPC" class="text-danger"></span>
+                  </div>
+                  <div class="col-sm-2">
+                    <label asp-for="WayfairLastModifiedBy">Last Modified By : </label>
+                  </div>
+                  <div class="col-sm-2">
+                    <input asp-for="WayfairLastModifiedBy" class="form-control" id="wayfairLastModifiedBy" disabled />
+                    <span asp-validation-for="WayfairLastModifiedBy" class="text-danger"></span>
+                  </div>
+                  <div class="col-sm-2">
+                    <label asp-for="WayfairLastModifiedTime">Last Modified Date : </label>
+                  </div>
+                  <div class="col-sm-2">
+                    <input asp-for="WayfairLastModifiedTime" class="form-control" id="wayfairLastModifiedTime" disabled />
+                    <span asp-validation-for="WayfairLastModifiedTime" class="text-danger"></span>
+                  </div>
+                </div>
+                <hr />
+
+                <div class="form-group row">
+                  <input type="hidden" asp-for="BPMIcrId" id="bpmIcrId" />
+                  <div class="col-sm-2">
+                    <input asp-for="BPMFeedsEnable" class="form-check-input" type="checkbox" id="bpmFeedsEnable" />
+                    <label asp-for="BPMFeedsEnable">Feed to BPM</label>
+                    <span asp-validation-for="BPMFeedsEnable" class="text-danger"></span>
+                  </div>
+                  <div class="col-1">
+                    <label asp-for="BPMCustSKU">BPM SKU</label>
+                  </div>
+                  <div class="col-sm-2">
+                    <input asp-for="BPMCustSKU" class="form-control" name="bpmCustSKU" id="bpmCustSKU" />
+                    <span asp-validation-for="BPMCustSKU" class="text-danger"></span>
+                  </div>
+                  <div class="col-sm-2">
+                    <label asp-for="BPMLastModifiedBy">Last Modified By : </label>
+                  </div>
+                  <div class="col-sm-2">
+                    <input asp-for="BPMLastModifiedBy" class="form-control" id="bpmLastModifiedBy" disabled />
+                    <span asp-validation-for="BPMLastModifiedBy" class="text-danger"></span>
+                  </div>
+                  <div class="col-sm-2">
+                    <label asp-for="BPMLastModifiedTime">Last Modified Date : </label>
+                  </div>
+                  <div class="col-sm-2">
+                    <input asp-for="BPMLastModifiedTime" class="form-control" id="bpmLastModifiedTime" disabled />
+                    <span asp-validation-for="BPMLastModifiedTime" class="text-danger"></span>
+                  </div>
+                </div>
+                <hr />
+
+                <div class="form-group row">
+                  <input type="hidden" asp-for="MellowIcrId" id="mellowIcrId" />
+                  <div class="col-sm-2">
+                    <input asp-for="MellowFeedsEnable" class="form-check-input" type="checkbox" id="mellowFeedsEnable" />
+                    <label asp-for="MellowFeedsEnable">Feed to Mellow</label>
+                    <span asp-validation-for="MellowFeedsEnable" class="text-danger"></span>
+                  </div>
+                  <div class="col-1">
+                    <label asp-for="MellowCustSKU">Mellow SKU</label>
+                  </div>
+                  <div class="col-sm-2">
+                    <input asp-for="MellowCustSKU" class="form-control" name="mellowCustSKU" id="mellowCustSKU" />
+                    <span asp-validation-for="MellowCustSKU" class="text-danger"></span>
+                  </div>
+                  <div class="col-sm-2">
+                    <label asp-for="MellowLastModifiedBy">Last Modified By : </label>
+                  </div>
+                  <div class="col-sm-2">
+                    <input asp-for="MellowLastModifiedBy" class="form-control" id="mellowLastModifiedBy" disabled />
+                    <span asp-validation-for="MellowLastModifiedBy" class="text-danger"></span>
+                  </div>
+                  <div class="col-sm-2">
+                    <label asp-for="MellowLastModifiedTime">Last Modified Date : </label>
+                  </div>
+                  <div class="col-sm-2">
+                    <input asp-for="MellowLastModifiedTime" class="form-control" id="mellowLastModifiedTime" disabled />
+                    <span asp-validation-for="MellowLastModifiedTime" class="text-danger"></span>
+                  </div>
+                </div>
+                <hr />
+
+                <div class="form-group row">
+                  <input type="hidden" asp-for="HouzzIcrId" id="houzzIcrId" />
+                  <div class="col-sm-2">
+                    <input asp-for="HouzzFeedsEnable" class="form-check-input" type="checkbox" id="houzzFeedsEnable" />
+                    <label asp-for="HouzzFeedsEnable">Feed to Houzz</label>
+                    <span asp-validation-for="HouzzFeedsEnable" class="text-danger"></span>
+                  </div>
+                  <div class="col-1">
+                    <label asp-for="HouzzCustSKU">Houzz SKU</label>
+                  </div>
+                  <div class="col-sm-2">
+                    <input asp-for="HouzzCustSKU" class="form-control" name="houzzCustSKU" id="houzzCustSKU" />
+                    <span asp-validation-for="HouzzCustSKU" class="text-danger"></span>
+                  </div>
+                  <div class="col-sm-2">
+                    <label asp-for="HouzzLastModifiedBy">Last Modified By : </label>
+                  </div>
+                  <div class="col-sm-2">
+                    <input asp-for="HouzzLastModifiedBy" class="form-control" id="houzzLastModifiedBy" disabled />
+                    <span asp-validation-for="HouzzLastModifiedBy" class="text-danger"></span>
+                  </div>
+                  <div class="col-sm-2">
+                    <label asp-for="HouzzLastModifiedTime">Last Modified Date : </label>
+                  </div>
+                  <div class="col-sm-2">
+                    <input asp-for="HouzzLastModifiedTime" class="form-control" id="houzzLastModifiedTime" disabled />
+                    <span asp-validation-for="HouzzLastModifiedTime" class="text-danger"></span>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </form>
+</div>
+  
+  @section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+      function lastmod() { }
+    </script>
+    <script src="~/js/InvFeedsSKUFeedingStatusList.js">
+    </script>
+  }

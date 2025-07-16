@@ -1,0 +1,755 @@
+﻿@*@page
+    @model Chameleon.DTOs.Inventory.GetInventoryItemDTO*@
+@model Chameleon.DTOs.Inventory.InvFeedsStockItemDetailDTO
+@{
+  ViewData["Title"] = "All Warehouses Inventory";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>&nbsp;&nbsp;&nbsp;@ViewData["Title"]</h1>
+<br />
+<h4 class="offset-1"><p style="font-size: 18px ;" id="lastUpdateDateInfo"></p><input type="hidden" id="hasUpdInventory" name="hasUpdInventory" /></h4>
+
+
+<div class="table-purchase">
+  <table width="100%">
+    <tbody>
+      <tr>
+        <td>
+          <table>
+            <tbody>
+              <tr>
+                <td style="font-size: 12px;">
+                  You can use csv export file to import.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input id="ImportWarehouseQtyFromUser" onclick="importWarehouseQtyFromUser()" type="file" class="btn btn-primary btn-sm file" style="float:left" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </td>
+        <td>
+          <a asp-action="InvFeedsSetsStatusIdx" asp-controller="Inventory" class="btn btn-warning text-white btn-sm">Sets Status(Active/Deactive)</a>
+        </td>
+        <td>
+          <a asp-action="InvRemarkCategoryIdx" asp-controller="Inventory" class="btn btn-info text-white btn-sm">Remark SKU Grouping Category</a>
+        </td>
+        <td>
+          <button id="resetToDefaultBtn" class="btn btn-danger btn-sm">Reset to<br />Default Settings</button>
+        </td>
+        <td style="text-align: center; font-weight: bold;" colspan="2">
+          <table width="100%">
+            <tbody>
+              <tr>
+                <td style="font-size: 12px;">
+                  Import Daily Zero Out SKU/<br />Override Backorder Qty. Rule
+                </td>
+              </tr>
+              <tr>
+                <td style="font-size: 12px;">
+                  <a href="~/etc/DailyZeroOutImportSample.csv" download="DailyZeroOutImportSample.csv">Sample File</a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input id="ImportDailyZeroOutSkus" onclick="importDailyZeroOutSkus()" type="file" class="btn btn-outline-primary btn-sm" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td style="text-align: center; font-weight: bold;" colspan="2">
+          <table width="100%">
+            <tbody>
+              <tr>
+                <td style="font-size: 14px;">
+                  Fast Moving SKUs
+                </td>
+              </tr>
+              <tr>
+                <td style="font-size: 12px;">
+                  <a href="~/etc/FastMovingSKUsImportSample.csv" download="FastMovingSKUsImportSample.csv">Sample File</a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div id="impFastMov">
+                    <input id="ImportFastMovingSkus" onclick="importFastMovingSkus()" type="file" class="btn btn-outline-danger btn-sm" />
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td colspan="4">
+          <div style="float:right">
+            <img src="~/img/pointing_arrow_01.gif" alt="Denied" width="80" height="40">
+            @*<input type="button" id="bttnUpdateInv" class="btn btn-primary" value="Get Current Inventory" tabindex="-1" />*@
+            <button type="button" id="bttnUpdateInvRevised" class="btn btn-primary" style="float: right" value="Approve">Get Current Inventory</button>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        @*
+        <td width="6%">
+        <div style="float:right">BANC Qty. Less Than:</div>
+        </td>
+        <td width="6%">
+        <div style="float:left">
+        <input type="text" id="bancLessThanQty" name="bancLessThanQty">
+        </div></td>
+        <td width="6%">
+        <div style="float:right">BASC Qty. Less Than:</div>
+        </td>
+        <td width="6%">
+        <div style="float:left">
+        <input type="text" id="bascLessThanQty" name="bascLessThanQty"></div>
+        </td> *@
+        <td width="6%">
+          <div style="float:right">MainSL Qty. Less Than: </div>
+        </td>
+        <td width="6%">
+          <div style="float:left">
+            <input type="text" id="mainSLThanQty" name="mainSLThanQty" tabindex="2">
+          </div>
+        </td>
+        @*        <td width="6%">
+        <div style="float:right">SWCAFT Qty. Less Than: </div>
+        </td>
+        <td width="6%">
+        <div style="float:left"><input type="text" id="swcaftThanQty" name="swcaftThanQty" tabindex="2">
+        </div>
+        </td> *@
+        @* <td width="6%">
+        <div style="float:right">Prism CAST Qty. Less Than: </div>
+        </td>
+        <td width="6%">
+        <div style="float:left">
+        <input type="text" id="prismCastThanQty" name="prismCastThanQty" tabindex="2">
+        </div>
+        </td>
+        <td width="6%">
+        <div style="float:right">Prism CALT Qty. Less Than: </div>
+        </td>
+        <td width="6%">
+        <div style="float:left">
+        <input type="text" id="prismCaltThanQty" name="prismCaltThanQty" tabindex="2">
+        </div>
+        </td> *@
+        <td width="6%">
+          <div style="float:right">ZINUS Tracy Qty. Less Than: </div>
+        </td>
+        <td width="6%">
+          <div style="float:left">
+            <input type="text" id="zinusTracyThanQty" name="zinusTracyThanQty" tabindex="2">
+          </div>
+        </td>
+        <td width="6%">
+          <div style="float:right">ZINUS CHS Qty. Less Than: </div>
+        </td>
+        <td width="6%">
+          <div style="float:left">
+            <input type="text" id="zinusChsThanQty" name="zinusChsThanQty" tabindex="2">
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br />
+  <table id="invMainslBancItems" class="table tabel-striped table-bordered display compact" style="font-size: 11px;">
+    <thead>
+      <tr>
+        <th>InventoryItem_ID</th>
+        <th>Remark</th>
+        <th>Item Name</th>
+        @* <th>BANC</th>
+        <th>BANC Stage PO(60)</th>
+        <th>BANC Stage PO(90)</th>
+        <th>BASC</th>
+        <th>BASC Stage PO(60)</th>
+        <th>BASC Stage PO(90)</th> *@
+        <th>MAINSL</th>
+        <th>MAINSL Stage PO(60)</th>
+        <th>MAINSL Stage PO(90)</th>
+        @*            <th>SW-CAFT</th>
+        <th>SW-CAFT Stage PO(60)</th>
+        <th>SW-CAFT Stage PO(90)</th> *@
+        @*             <th>PRISM-CAST</th>
+        <th>PRISM-CAST Stage PO(60)</th>
+        <th>PRISM-CAST Stage PO(90)</th>
+        <th>PRISM-CALT</th>
+        <th>PRISM-CALT Stage PO(60)</th>
+        <th>PRISM-CALT Stage PO(90)</th> *@
+        <th>ZINUS_Tracy</th>
+        <th>ZINUS_Tracy Stage PO(60)</th>
+        <th>ZINUS_Tracy Stage PO(90)</th>
+        <th>ZINUS_CHS</th>
+        <th>ZINUS_CHS Stage PO(60)</th>
+        <th>ZINUS_CHS Stage PO(90)</th>
+      </tr>
+    </thead>
+  </table>
+</div>
+
+@*
+    <table>
+      <tbody width="100%">
+        <tr>
+          <td width = "30%">
+            <a asp-action="InvRemarkCategoryIdx" asp-controller="Inventory" class="btn btn-info text-white">Remark SKU Grouping Category</a>
+          </td>
+          <td width="20%"></td>
+          <td width="20%"></td>
+          <td width="30%">
+            <button id="resetToDefaultBtn" class="btn btn-danger">Reset to Default Settings</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    *@
+<div class="invFeed-container">
+  <div class="col-12 border p-3">
+    <table width="100%">
+      <tbody>
+        <tr>
+          <td width="65%">
+
+            <div style="font-size:11px;">
+              <input type="hidden" asp-for="ItemNoId" id="itemNoId" />
+              <input type="hidden" asp-for="InventoryItemId" id="inventoryItemId" />
+              <table width="100%">
+                <thead></thead>
+                <tbody>
+                  <tr>
+                    <td width="25%">
+                      <label asp-for="ItemName"><h6>SKU</h6></label>
+                    </td>
+                    <td width="55%">
+                      <input asp-for="ItemName" class="form-control" id="itemName" disabled />
+                      <span asp-validation-for="ItemName" class="text-danger"></span>
+                    </td>
+                    <td width="5%"></td>
+                    <td width="5%"></td>
+                    <td width="10%">
+                      <button id="updateInvFeedsSKUDetail" class="btn btn-primary" style="float:right">Update</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><h6>Remark SKU Grouping : <p id="remarkText" style="font-size:30px; color:crimson"></p></h6></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <table width="100%" style="border: 1px solid CornflowerBlue;border-radius: 10px; border-collapse: separate;">
+                <thead>
+                  <tr>
+                    <th colspan="9" style="border-radius: 10px; background-color:skyblue;">
+                      <div class="form-check form-switch">
+                        <input asp-for="DoNotFeedFromAll" class="form-check-input" type="checkbox" id="doNotFeedFromAll" />
+                        <label asp-for="DoNotFeedFromAll" class="form-check-label"><b>Do Not Feed from ALL</b></label>
+                        <span asp-validation-for="DoNotFeedFromAll" class="text-danger"></span>
+                      </div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody style="border: 1px solid CornflowerBlue;border-radius: 10px;">
+                  @* <tr>
+                  <td colspan="9" style="background-color:azure;">BANC
+                  <select name="backOrderLeadTimeBanc" id="backOrderLeadTimeBanc">
+                  <option value="2">60 day</option>
+                  <option value="3">90 day</option>
+                  </select>
+                  </td>
+                  </tr>
+                  <tr>
+                  <td  width="12%">
+                  <div class="form-check form-switch">
+                  <input asp-for="DoNotFeedFromBanc" class="form-check-input" type="checkbox" id="doNotFeedFromBanc" />
+                  <label asp-for="DoNotFeedFromBanc" class="form-check-label">Do Not Feed from BANC</label>
+                  <span asp-validation-for="DoNotFeedFromBanc" class="text-danger"></span>
+                  </div>
+                  </td>
+                  <td  width="12%"><label asp-for="QtyAvailBanc">Quantity Available</label></td>
+                  <td width="10%">
+                  <input asp-for="QtyAvailBanc" class="form-control" id="doNotFeedFromBancQtyAvail" />
+                  <span asp-validation-for="QtyAvailBanc" class="text-danger"></span>
+                  </td>
+                  <td width="12%"><label asp-for="QtyOnHandBanc">Quantity On Hand</label></td>
+                  <td  width="10%">
+                  <input asp-for="QtyOnHandBanc" class="form-control" id="doNotFeedFromBancQtyOnHand" />
+                  <span asp-validation-for="QtyOnHandBanc" class="text-danger"></span>
+                  </td>
+                  <td width="12%"><label asp-for="StagePOModBanc60">Stage PO Qty. (60 day)</label></td>
+                  <td  width="10%">
+                  <input asp-for="StagePOModBanc60" class="form-control" id="doNotFeedFromStagePOModBanc60" />
+                  <span asp-validation-for="StagePOModBanc60" class="text-danger"></span>
+                  </td>
+                  <td width="12%"><label asp-for="StagePOModBanc90">Stage PO Qty. (90 day)</label></td>
+                  <td  width="10%">
+                  <input asp-for="StagePOModBanc90" class="form-control" id="doNotFeedFromStagePOModBanc90" />
+                  <span asp-validation-for="StagePOModBanc90" class="text-danger"></span>
+                  </td>
+                  </tr>
+                  <tr>
+                  <td colspan="9" style="background-color:azure;">BASC
+                  <select name="backOrderLeadTimeBasc" id="backOrderLeadTimeBasc">
+                  <option value="2">60 day</option>
+                  <option value="3">90 day</option>
+                  </select>
+                  </td>
+                  </tr>
+                  <tr>
+                  <td>
+                  <div class="form-check form-switch">
+                  <input asp-for="DoNotFeedFromBasc" class="form-check-input" type="checkbox" id="doNotFeedFromBasc" />
+                  <label asp-for="DoNotFeedFromBasc" class="form-check-label">Do Not Feed from BASC</label>
+                  <span asp-validation-for="DoNotFeedFromBasc" class="text-danger"></span>
+                  </div>
+                  </td>
+                  <td><label asp-for="QtyAvailBasc">Quantity Available</label></td>
+                  <td>
+                  <input asp-for="QtyAvailBasc" class="form-control" id="doNotFeedFromBascQtyAvail" />
+                  <span asp-validation-for="QtyAvailBasc" class="text-danger"></span>
+                  </td>
+                  <td><label asp-for="QtyOnHandBasc">Quantity On Hand</label></td>
+                  <td>
+                  <input asp-for="QtyOnHandBasc" class="form-control" id="doNotFeedFromBascQtyOnHand" />
+                  <span asp-validation-for="QtyOnHandBasc" class="text-danger"></span>
+                  </td>
+                  <td><label asp-for="StagePOModBasc60">Stage PO Qty. (60 day)</label></td>
+                  <td>
+                  <input asp-for="StagePOModBasc60" class="form-control" id="doNotFeedFromStagePOModBasc60" />
+                  <span asp-validation-for="StagePOModBasc60" class="text-danger"></span>
+                  </td>
+                  <td><label asp-for="StagePOModBasc90">Stage PO Qty. (90 day)</label></td>
+                  <td>
+                  <input asp-for="StagePOModBasc90" class="form-control" id="doNotFeedFromStagePOModBasc90" />
+                  <span asp-validation-for="StagePOModBasc90" class="text-danger"></span>
+                  </td>
+                  </tr>*@
+                  <tr>
+                    <td colspan="9" style="background-color:azure;">
+                      MainSL
+                      <select name="backOrderLeadTimeMainsl" id="backOrderLeadTimeMainsl">
+                        <option value="2">60 day</option>
+                        <option value="3">90 day</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check form-switch">
+                        <input asp-for="DoNotFeedFromMainsl" class="form-check-input" type="checkbox" id="doNotFeedFromMainsl" />
+                        <label asp-for="DoNotFeedFromMainsl" class="form-check-label">Do Not Feed from Mainsl</label>
+                        <span asp-validation-for="DoNotFeedFromMainsl" class="text-danger"></span>
+                      </div>
+                    </td>
+                    <td><label asp-for="QtyAvailMainsl">Quantity Available</label></td>
+                    <td>
+                      <input asp-for="QtyAvailMainsl" class="form-control" id="doNotFeedFromMainslQtyAvail" />
+                      <span asp-validation-for="QtyAvailMainsl" class="text-danger"></span>
+                    </td>
+                    <td><label asp-for="QtyOnHandMainsl">Quantity On Hand</label></td>
+                    <td>
+                      <input asp-for="QtyOnHandMainsl" class="form-control" id="doNotFeedFromMainslQtyOnHand" />
+                      <span asp-validation-for="QtyOnHandMainsl" class="text-danger"></span>
+                    </td>
+                    <td><label asp-for="StagePOModMainsl60">Stage PO Qty. (60 day)</label></td>
+                    <td>
+                      <input asp-for="StagePOModMainsl60" class="form-control" id="doNotFeedFromStagePOModMainsl60" />
+                      <span asp-validation-for="StagePOModMainsl60" class="text-danger"></span>
+                    </td>
+                    <td><label asp-for="StagePOModMainsl90">Stage PO Qty. (90 day)</label></td>
+                    <td>
+                      <input asp-for="StagePOModMainsl90" class="form-control" id="doNotFeedFromStagePOModMainsl90" />
+                      <span asp-validation-for="StagePOModMainsl90" class="text-danger"></span>
+                    </td>
+                  </tr>
+                  @*<tr>
+                  <td colspan="9" style="background-color:azure;">SW-CAFT
+                  <select name="backOrderLeadTimeSwcaft" id="backOrderLeadTimeSwcaft">
+                  <option value="2">60 day</option>
+                  <option value="3">90 day</option>
+                  </select>
+                  </td>
+                  </tr>
+                  <tr>
+                  <td>
+                  <div class="form-check form-switch">
+                  <input asp-for="DoNotFeedFromSwcaft" class="form-check-input" type="checkbox" id="doNotFeedFromSwcaft" />
+                  <label asp-for="DoNotFeedFromSwcaft" class="form-check-label">Do Not Feed from SWCAFT</label>
+                  <span asp-validation-for="DoNotFeedFromSwcaft" class="text-danger"></span>
+                  </div>
+                  </td>
+                  <td><label asp-for="QtyAvailSwcaft">Quantity Available</label></td>
+                  <td>
+                  <input asp-for="QtyAvailSwcaft" class="form-control" id="doNotFeedFromSwcaftQtyAvail" />
+                  <span asp-validation-for="QtyAvailSwcaft" class="text-danger"></span>
+                  </td>
+                  <td><label asp-for="QtyOnHandSwcaft">Quantity On Hand</label></td>
+                  <td>
+                  <input asp-for="QtyOnHandSwcaft" class="form-control" id="doNotFeedFromSwcaftQtyOnHand" />
+                  <span asp-validation-for="QtyOnHandSwcaft" class="text-danger"></span>
+                  </td>
+                  <td><label asp-for="StagePOModSwcaft60">Stage PO Qty. (60 day)</label></td>
+                  <td>
+                  <input asp-for="StagePOModSwcaft60" class="form-control" id="doNotFeedFromStagePOModSwcaft60" />
+                  <span asp-validation-for="StagePOModSwcaft60" class="text-danger"></span>
+                  </td>
+                  <td><label asp-for="StagePOModSwcaft90">Stage PO Qty. (90 day)</label></td>
+                  <td>
+                  <input asp-for="StagePOModSwcaft90" class="form-control" id="doNotFeedFromStagePOModSwcaft90" />
+                  <span asp-validation-for="StagePOModSwcaft90" class="text-danger"></span>
+                  </td>
+                  </tr> *@
+                  @*  <tr>
+                  <td colspan="9" style="background-color:azure;">PRISM-CAFT
+                  <select name="backOrderLeadTimePrismCast" id="backOrderLeadTimePrismCast">
+                  <option value="2">60 day</option>
+                  <option value="3">90 day</option>
+                  </select>
+                  </td>
+                  </tr>
+                  <tr>
+                  <td>
+                  <div class="form-check form-switch">
+                  <input asp-for="DoNotFeedFromPrismCast" class="form-check-input" type="checkbox" id="doNotFeedFromPrismCast" />
+                  <label asp-for="DoNotFeedFromPrismCast" class="form-check-label">Do Not Feed from PRISM-CAST</label>
+                  <span asp-validation-for="DoNotFeedFromPrismCast" class="text-danger"></span>
+                  </div>
+                  </td>
+                  <td><label asp-for="QtyAvailPrismCast">Quantity Available</label></td>
+                  <td>
+                  <input asp-for="QtyAvailPrismCast" class="form-control" id="doNotFeedFromPrismCastQtyAvail" />
+                  <span asp-validation-for="QtyAvailPrismCast" class="text-danger"></span>
+                  </td>
+                  <td><label asp-for="QtyAvailPrismCast">Quantity On Hand</label></td>
+                  <td>
+                  <input asp-for="QtyAvailPrismCast" class="form-control" id="doNotFeedFromPrismCastQtyOnHand" />
+                  <span asp-validation-for="QtyAvailPrismCast" class="text-danger"></span>
+                  </td>
+                  <td><label asp-for="StagePOModPrismCast60">Stage PO Qty. (60 day)</label></td>
+                  <td>
+                  <input asp-for="StagePOModPrismCast60" class="form-control" id="doNotFeedFromStagePOModPrismCast60" />
+                  <span asp-validation-for="StagePOModPrismCast60" class="text-danger"></span>
+                  </td>
+                  <td><label asp-for="StagePOModPrismCast90">Stage PO Qty. (90 day)</label></td>
+                  <td>
+                  <input asp-for="StagePOModPrismCast90" class="form-control" id="doNotFeedFromStagePOModPrismCast90" />
+                  <span asp-validation-for="StagePOModPrismCast90" class="text-danger"></span>
+                  </td>
+                  </tr>
+                  <tr>
+                  <td colspan="9" style="background-color:azure;">PRISM-CALT
+                  <select name="backOrderLeadTimePrismCalt" id="backOrderLeadTimePrismCalt">
+                  <option value="2">60 day</option>
+                  <option value="3">90 day</option>
+                  </select>
+                  </td>
+                  </tr>
+                  <tr>
+                  <td>
+                  <div class="form-check form-switch">
+                  <input asp-for="DoNotFeedFromPrismCalt" class="form-check-input" type="checkbox" id="doNotFeedFromPrismCalt" />
+                  <label asp-for="DoNotFeedFromPrismCalt" class="form-check-label">Do Not Feed from PRISM-CALT</label>
+                  <span asp-validation-for="DoNotFeedFromPrismCalt" class="text-danger"></span>
+                  </div>
+                  </td>
+                  <td><label asp-for="QtyAvailPrismCalt">Quantity Available</label></td>
+                  <td>
+                  <input asp-for="QtyAvailPrismCalt" class="form-control" id="doNotFeedFromPrismCaltQtyAvail" />
+                  <span asp-validation-for="QtyAvailPrismCalt" class="text-danger"></span>
+                  </td>
+                  <td><label asp-for="QtyAvailPrismCalt">Quantity On Hand</label></td>
+                  <td>
+                  <input asp-for="QtyAvailPrismCalt" class="form-control" id="doNotFeedFromPrismCaltQtyOnHand" />
+                  <span asp-validation-for="QtyAvailPrismCalt" class="text-danger"></span>
+                  </td>
+                  <td><label asp-for="StagePOModPrismCalt60">Stage PO Qty. (60 day)</label></td>
+                  <td>
+                  <input asp-for="StagePOModPrismCalt60" class="form-control" id="doNotFeedFromStagePOModPrismCalt60" />
+                  <span asp-validation-for="StagePOModPrismCalt60" class="text-danger"></span>
+                  </td>
+                  <td><label asp-for="StagePOModPrismCalt90">Stage PO Qty. (90 day)</label></td>
+                  <td>
+                  <input asp-for="StagePOModPrismCalt90" class="form-control" id="doNotFeedFromStagePOModPrismCalt90" />
+                  <span asp-validation-for="StagePOModPrismCalt90" class="text-danger"></span>
+                  </td>
+                  </tr> *@
+                  <tr>
+                    <td colspan="9" style="background-color:azure;">
+                      ZINUS-Tracy
+                      <select name="backOrderLeadTimeZinusTracy" id="backOrderLeadTimeZinusTracy">
+                        <option value="2">60 day</option>
+                        <option value="3">90 day</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check form-switch">
+                        <input asp-for="DoNotFeedFromZinusTracy" class="form-check-input" type="checkbox" id="doNotFeedFromZinusTracy" />
+                        <label asp-for="DoNotFeedFromZinusTracy" class="form-check-label">Do Not Feed from ZINUS-Tracy</label>
+                        <span asp-validation-for="DoNotFeedFromZinusTracy" class="text-danger"></span>
+                      </div>
+                    </td>
+                    <td><label asp-for="QtyAvailZinusTracy">Quantity Available</label></td>
+                    <td>
+                      <input asp-for="QtyAvailZinusTracy" class="form-control" id="doNotFeedFromZinusTracyQtyAvail" />
+                      <span asp-validation-for="QtyAvailZinusTracy" class="text-danger"></span>
+                    </td>
+                    <td><label asp-for="QtyAvailZinusTracy">Quantity On Hand</label></td>
+                    <td>
+                      <input asp-for="QtyAvailZinusTracy" class="form-control" id="doNotFeedFromZinusTracyQtyOnHand" />
+                      <span asp-validation-for="QtyAvailZinusTracy" class="text-danger"></span>
+                    </td>
+                    <td><label asp-for="StagePOModZinusTracy60">Stage PO Qty. (60 day)</label></td>
+                    <td>
+                      <input asp-for="StagePOModZinusTracy60" class="form-control" id="doNotFeedFromStagePOModZinusTracy60" />
+                      <span asp-validation-for="StagePOModZinusTracy60" class="text-danger"></span>
+                    </td>
+                    <td><label asp-for="StagePOModZinusTracy90">Stage PO Qty. (90 day)</label></td>
+                    <td>
+                      <input asp-for="StagePOModZinusTracy90" class="form-control" id="doNotFeedFromStagePOModZinusTracy90" />
+                      <span asp-validation-for="StagePOModZinusTracy90" class="text-danger"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="9" style="background-color:azure;">
+                      ZINUS-CHS
+                      <select name="backOrderLeadTimeZinusChs" id="backOrderLeadTimeZinusChs">
+                        <option value="2">60 day</option>
+                        <option value="3">90 day</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check form-switch">
+                        <input asp-for="DoNotFeedFromZinusChs" class="form-check-input" type="checkbox" id="doNotFeedFromZinusChs" />
+                        <label asp-for="DoNotFeedFromZinusChs" class="form-check-label">Do Not Feed from ZINUS-CHS</label>
+                        <span asp-validation-for="DoNotFeedFromZinusChs" class="text-danger"></span>
+                      </div>
+                    </td>
+                    <td><label asp-for="QtyAvailZinusChs">Quantity Available</label></td>
+                    <td>
+                      <input asp-for="QtyAvailZinusChs" class="form-control" id="doNotFeedFromZinusChsQtyAvail" />
+                      <span asp-validation-for="QtyAvailZinusChs" class="text-danger"></span>
+                    </td>
+                    <td><label asp-for="QtyAvailZinusChs">Quantity On Hand</label></td>
+                    <td>
+                      <input asp-for="QtyAvailZinusChs" class="form-control" id="doNotFeedFromZinusChsQtyOnHand" />
+                      <span asp-validation-for="QtyAvailZinusChs" class="text-danger"></span>
+                    </td>
+                    <td><label asp-for="StagePOModZinusChs60">Stage PO Qty. (60 day)</label></td>
+                    <td>
+                      <input asp-for="StagePOModZinusChs60" class="form-control" id="doNotFeedFromStagePOModZinusChs60" />
+                      <span asp-validation-for="StagePOModZinusChs60" class="text-danger"></span>
+                    </td>
+                    <td><label asp-for="StagePOModZinusChs90">Stage PO Qty. (90 day)</label></td>
+                    <td>
+                      <input asp-for="StagePOModZinusChs90" class="form-control" id="doNotFeedFromStagePOModZinusChs90" />
+                      <span asp-validation-for="StagePOModZinusChs90" class="text-danger"></span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <table width="100%" style="border: 1px solid CornflowerBlue;border-radius: 10px; border-collapse: separate;">
+                <thead>
+                  <tr>
+                    <th colspan="4" style="border-radius: 10px; background-color:skyblue;">
+                      Do Not Feed List
+                    </th>
+                  </tr>
+                </thead>
+                <tbody style="border: 1px solid CornflowerBlue;border-radius: 10px;">
+                  <tr>
+                    <td width="25%">
+                      <div class="form-check form-switch">
+                        <input asp-for="AmzDoNotFeed" class="form-check-input" type="checkbox" id="amazonDoNotFeed" />
+                        <label asp-for="AmzDoNotFeed" class="form-check-label">Do Not Feed to Amazon</label>
+                        <span asp-validation-for="AmzDoNotFeed" class="text-danger"></span>
+                      </div>
+                    </td>
+                    <td width="25%">
+                      <div class="form-check form-switch">
+                        <input asp-for="OstDoNotFeed" class="form-check-input" type="checkbox" id="overstockDoNotFeed" />
+                        <label asp-for="OstDoNotFeed" class="form-check-label">Do Not Feed to Overstock</label>
+                        <span asp-validation-for="OstDoNotFeed" class="text-danger"></span>
+                      </div>
+                    </td>
+                    <td width="25%">
+                      <div class="form-check form-switch">
+                        <input asp-for="TargetDoNotFeed" class="form-check-input" type="checkbox" id="targetDoNotFeed" />
+                        <label asp-for="TargetDoNotFeed" class="form-check-label">Do Not Feed to Target</label>
+                        <span asp-validation-for="TargetDoNotFeed" class="text-danger"></span>
+                      </div>
+                    </td>
+                    <td width="25%">
+                      <div class="form-check form-switch">
+                        <input asp-for="BPMDoNotFeed" class="form-check-input" type="checkbox" id="bpmDoNotFeed" />
+                        <label asp-for="BPMDoNotFeed" class="form-check-label">Do Not Feed to BPM Website</label>
+                        <span asp-validation-for="BPMDoNotFeed" class="text-danger"></span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check form-switch">
+                        <input asp-for="WlmrtDoNotFeed" class="form-check-input" type="checkbox" id="walmartDoNotFeed" />
+                        <label asp-for="WlmrtDoNotFeed" class="form-check-label">Do Not Feed to Walmart</label>
+                        <span asp-validation-for="WlmrtDoNotFeed" class="text-danger"></span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-check form-switch">
+                        <input asp-for="eBayDoNotFeed" class="form-check-input" type="checkbox" id="eBayDoNotFeed" />
+                        <label asp-for="eBayDoNotFeed" class="form-check-label">Do Not Feed to eBay</label>
+                        <span asp-validation-for="eBayDoNotFeed" class="text-danger"></span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-check form-switch">
+                        @*                    <input asp-for="HouzzDoNotFeed" class="form-check-input" type="checkbox" id="houzzDoNotFeed" />
+                        <label asp-for="HouzzDoNotFeed" class="form-check-label">Do Not Feed to Houzz</label>
+                        <span asp-validation-for="HouzzDoNotFeed" class="text-danger"></span>*@
+                        <input asp-for="HomeDepotDoNotFeed" class="form-check-input" type="checkbox" id="homeDepotDoNotFeed" />
+                        <label asp-for="HomeDepotDoNotFeed" class="form-check-label">Do Not Feed to Home Depot</label>
+                        <span asp-validation-for="HomeDepotDoNotFeed" class="text-danger"></span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-check form-switch">
+                        <input asp-for="MellowDoNotFeed" class="form-check-input" type="checkbox" id="mellowDoNotFeed" />
+                        <label asp-for="MellowDoNotFeed" class="form-check-label">Do Not Feed to Mellow Website</label>
+                        <span asp-validation-for="MellowDoNotFeed" class="text-danger"></span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check form-switch">
+                        <input asp-for="WyfrDoNotFeed" class="form-check-input" type="checkbox" id="wayfairDoNotFeed" />
+                        <label asp-for="WyfrDoNotFeed" class="form-check-label">Do Not Feed to Wayfair</label>
+                        <span asp-validation-for="WyfrDoNotFeed" class="text-danger"></span>
+                      </div>
+                    </td>
+                    <td>
+                      @*<div class="form-check form-switch">
+                      <input asp-for="HomeDepotDoNotFeed" class="form-check-input" type="checkbox" id="homeDepotDoNotFeed" />
+                      <label asp-for="HomeDepotDoNotFeed" class="form-check-label">Do Not Feed to Home Depot</label>
+                      <span asp-validation-for="HomeDepotDoNotFeed" class="text-danger"></span>
+                      </div>*@
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </td>
+          <td width="35%">
+            <table width="100%">
+              <tbody>
+                <tr>
+                  <td width="20%"><h4 class="text-info">&nbsp;&nbsp;Note</h4></td>
+                  <td width="70%"></td>
+                  <td width="10%"><a asp-action="InvNoteUpsert" asp-controller="Inventory" class="btn btn-info form-control text-white">Add</a></td>
+                </tr>
+              </tbody>
+            </table>
+            <table id="invAvailNoteItems" class="table tabel-striped table-bordered display compact" style="font-size: 11px;">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Note</th>
+                  <th>Created By</th>
+                  <th>Created Date</th>
+                </tr>
+              </thead>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="modal fade" id="updateModal" role="dialog" data-backdrop="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" id="modal-close-btn" data-bs-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Which time period you want to use?</h4>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="modal_note">Select Time Period: </label>
+          <select name="modal_timeperiod" id="modal_timeperiod">
+            <option value="1">Custom 60 &amp; 90 day (~ 6 mins.)</option>
+            <option value="2">Only using 60 day (~ 4 mins.)</option>
+            <option value="3">Only using 90 day (~ 4 mins.)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="modal-footer narr_footer">
+        <button type="button" id="updateWarehousesBtn" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+        <button type="button" class="btn btn-danger" id="modal-cancel-bttn" data-bs-dismiss="modal">Cancel</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<br />
+<br />
+<!-- For Fast Moving SKUs-->
+<div class="invFeed-container">
+  <div class="col-12 border p-3">
+    <p><h4>&nbsp;&nbsp;Fast Moving SKUs</h4></p>
+    <p style="font-size: 18px ;" id="fastMovingDateInfo"></p>
+    <table width="100%">
+      <thead>
+        <tr>
+          <td width="50%"></td>
+          <td width="20%"></td>
+          <td width="15%"><button type="button" id="getFastMovSkusBttn" class="btn btn-primary" style="float: right" value="getFastMovSkus">Get Fast Moving SKUs!</button></td>
+          <td width="15%"><button type="button" id="fstMvSendNotifBttn" class="btn btn-info form-control text-white" style="float: right" value="fastMovNotif">Send Notification</button></td>
+        </tr>
+      </thead>
+    </table>
+    <br />
+    <p>*All Qty. are differeces that are the result of subtracting available qty from stage PO Qty. </p>
+    <table id="invFastMovingSkus" class="table tabel-striped table-bordered display compact" style="font-size: 11px;">
+      <thead>
+        <tr>
+          <th>ItemNoId</th>
+          <th>Item Name</th>
+          <th>MainSL</th>
+          <th>ZINUS Tracy</th>
+          <th>ZINUS CHS</th>
+          <th>Total Qty.</th>
+          <th>Sold Qty.</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>
+
+<div class="modal"><!-- For waiting indicator--></div>
+@section Scripts {
+  <script>
+    function lastmod() { }
+  </script>
+  <script src="~/js/InvWarehousesList.js">
+  </script>
+}

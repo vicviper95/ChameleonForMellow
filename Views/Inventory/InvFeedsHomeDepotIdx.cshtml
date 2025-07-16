@@ -1,0 +1,96 @@
+﻿@{
+  ViewData["Title"] = "Inventory Feeds";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>&nbsp;&nbsp;@ViewData["Title"] - Home Depot</h1>
+<input type="hidden" id="historyDateHidden" name="historyDateHidden" />
+
+<br />
+<div class="invFeed-container">
+  <div class="col-6">
+    <div>
+      <h2 class="text-info">Home Depot Inventory Feeds</h2>
+      <h7><p id="invFeedsRepDate"></p></h7>
+    </div>
+
+    <div style=" padding-top: 10px">
+      Past Feeds: <input type="text" id="historyDatePicker">
+      <button id="reloadeBayFeedsHistory"> reload</button>
+    </div>
+  </div>
+  <div class="col-12 border p-3">
+    
+    <table id="invFeedsHomeDepotItems" class="table tabel-striped table-bordered display compact" style="width:100%; font-size: 10px;">
+      <thead>
+        <tr>
+          <th colspan="2">VENDOR SKU</th>
+          <th>AVAILABLE</th>
+          <th>QTY</th>
+          <th>MERCHANT SKU</th>
+          <th>MERCHANT</th>
+          <th>GS1 ID</th>
+          <th>Warehouse 1 ID</th>
+          <th>Warehouse 1 QTY</th>
+          <th>Warehouse 1 Next Available QTY</th>
+          <th>Warehouse 1 Next Available Date</th>
+          <th>Warehouse 2 ID</th>
+          <th>Warehouse 2 QTY</th>
+          <th>Warehouse 2 Next Available QTY</th>
+          <th>Warehouse 2 Next Available Date</th>
+          <th>Warehouse 3 ID</th>
+          <th>Warehouse 3 QTY</th>
+          <th>Warehouse 3 Next Available QTY</th>
+          <th>Warehouse 3 Next Available Date</th>
+@*           <th>Warehouse 4 ID</th>
+          <th>Warehouse 4 QTY</th>
+          <th>Warehouse 4 Next Available QTY</th>
+          <th>Warehouse 4 Next Available Date</th>
+          <th>Warehouse 5 ID</th>
+          <th>Warehouse 5 QTY</th>
+          <th>Warehouse 5 Next Available QTY</th>
+          <th>Warehouse 5 Next Available Date</th>
+ *@        </tr>
+        <tr style="font-size: 10px;">
+          <th>your sku #</th>
+          <th> </th>
+          <th>"Yes","No", or "Guaranteed"</th>
+          <th>Quantity On Hand</th>
+          <th>SKU Assigned by Merchant</th>
+          <th>Enter Merchant Name</th>
+          <th>Enter UPC or EAN #</th>
+          <th>Enter ID for Warehouse Location</th>
+          <th>Enter Quantity on Hand for Warehouse Location</th>
+          <th>Quantity Arriving Next</th>
+          <th>Format: MM/DD/YYYY</th>
+          <th>Enter ID for Warehouse Location</th>
+          <th>Enter Quantity on Hand for Warehouse Location</th>
+          <th>Quantity Arriving Next</th>
+          <th>Format: MM/DD/YYYY</th>
+          <th>Enter ID for Warehouse Location</th>
+          <th>Enter Quantity on Hand for Warehouse Location</th>
+          <th>Quantity Arriving Next</th>
+          <th>Format: MM/DD/YYYY</th>
+          @* <th>Enter ID for Warehouse Location</th>
+          <th>Enter Quantity on Hand for Warehouse Location</th>
+          <th>Quantity Arriving Next</th>
+          <th>Format: MM/DD/YYYY</th>
+          <th>Enter ID for Warehouse Location</th>
+          <th>Enter Quantity on Hand for Warehouse Location</th>
+          <th>Quantity Arriving Next</th>
+          <th>Format: MM/DD/YYYY</th> *@
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>
+
+<div class="modal"><!-- For waiting indicator--></div>
+
+@section Scripts{
+<script>
+    function lastmod() { }
+</script>
+<script src="~/js/InvFeedsHomeDepotList.js">
+</script>
+}

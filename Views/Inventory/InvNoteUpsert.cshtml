@@ -1,0 +1,63 @@
+﻿@*@page "/Inventory/edit/{id}"*@
+@model Chameleon.DTOs.Inventory.GetAvailableInventoryNotesDTO
+
+@{
+  ViewData["Title"] = (Model.NotesRulesId != 0 ? "Edit" : "Create");
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<br />
+<h2 class="text-info"> @(Model.NotesRulesId !=0? "Update":"Create") Note</h2>
+<br />
+
+<div class="border container" style="padding:30px;">
+  <form method="post" asp-controller="Inventory" asp-action="mainsl_banc_feeds_note">
+    @if (Model.NotesRulesId != 0)
+    {
+      <input type="hidden" asp-for="NotesRulesId" />
+    }
+      <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+      <div class="form-check row">
+        <div class="col-2">
+        </div>
+        <div class="col-7 offset-2">
+          <input asp-for="isActivated" class="form-check-input" type="checkbox" />
+          <label asp-for="isActivated">Activated</label>
+        </div>
+        <span asp-validation-for="isActivated" class="text-danger"></span>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-2">
+          <label asp-for="NoteRule">Note</label>
+        </div>
+        <div class="col-7">
+          <textarea asp-for="NoteRule" class="form-control" rows="3" id="note"></textarea>
+          <p id="count"></p>
+          <script>
+            document.getElementById('note').onkeyup = function () {
+              document.getElementById('count').innerHTML = "Characters left: " + (500 - this.value.length);
+            };
+          </script>
+        </div>
+        <span asp-validation-for="NoteRule" class="text-danger"></span>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-3 offset-3">
+          <button type="submit" class="btn btn-primary form-control">@(Model.NotesRulesId !=0? "Update":"Create")</button>
+        </div>
+        <div class="col-3">
+          <a asp-controller="Inventory" asp-action="InvMainslBancIdx" class="btn btn-success form-control">Back to List</a>
+        </div>
+      </div>
+
+    </form>
+</div>
+
+
+@section Scripts {
+  @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

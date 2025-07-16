@@ -1,0 +1,95 @@
+﻿@model Chameleon.DTOs.Inventory.InvFeedsSKUStatusDTO
+
+@{
+  ViewData["Title"] = "Wayfair SKU Feeding Status";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h3 class="text-info offset-sm-1">&nbsp;&nbsp;Wayfair SKU Feeding Status List</h3>
+
+<div id="wyfrFeedingStatusTabs">
+  <div id="tabs-nobg"  style="font-size: 11px;">
+    <ul>
+      <li><a href="#tabs-1">Manage SKUs Manually </a></li>
+      <li><a href="#tabs-2">Manage Automatically by Import</a></li>
+    </ul>
+    <div id="tabs-1">
+      <div class="container-fluid">
+        <div class="container-fluid">
+          *CG Stock Rule : If there is stock in CG, then no feeding.
+          <button id="updateInvFeedsWyfrSKUStatusBtn" class="btn btn-primary" style="float:right">Update</button>
+          <br />
+          <table id="invFeedsWyfrSKUFeedingStatusItems" class="table tabel-striped table-bordered display compact" style="font-size: 11px">
+            <thead>
+              <tr>
+                <th>Item No. ID</th>
+                <th>ICR ID</th>
+                <th>Feeds?</th>
+                <th>CG Stock Rule</th>
+                <th>BPM SKU</th>
+                <th>Item Status</th>
+                <th>Wayfair SKU</th>
+                <th>Wayfair UPC</th>
+                <th>Customer Ref. No.</th>
+                <th>Description</th>
+                <th>Last Modified By</th>
+                <th>Last Modified Time</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div id="tabs-2" style="font-size: 11px;">
+      <p>
+
+        @*<div class="border container" style="padding:10px; font-size:12px">*@
+        <div class="container-fluid">
+          <a href="~/etc/Wayfair_Feeding_List.csv" download="Wayfair_Feeding_List.csv">
+            <button style="font-size: 11px">Download Import SKU Example File</button>
+          </a>
+          <hr />
+          <h6>Import SKU List</h6>
+          <input type="file" class="file" id="SKUCSVAttachment" onclick="openSKUCSVAttachment()" />
+        </div>
+        <hr />
+        <div class="container-fluid">
+          <h5>Conflicted SKU List</h5>
+          <br />
+          <table id="invFeedsWyfrSKUFeedingConflictedItems" class="table tabel-striped table-bordered display compact" style="font-size: 11px">
+            <thead>
+              <tr>
+                <th>Is Resolved?</th>
+                <th>Conflict Type</th>
+                <th>BPM SKU</th>
+                <th>Item Status</th>
+                <th>Wayfair SKU</th>
+                <th>Wayfair UPC</th>
+                <th>Customer Ref. No.</th>
+                <th>Description</th>
+                <th>Last Modified By</th>
+                <th>Last Modified Time</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+    </div>
+  </div>
+</div>
+<br />
+
+<br />
+<br />
+<br />
+
+
+<div class="modal"><!-- Place at bottom of page --></div>
+@section Scripts {
+  @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+  <script>
+    function lastmod() { }
+  </script>
+  <script src="~/js/InvFeedsWyfrSKUFeedingStatusList.js">
+  </script>
+}

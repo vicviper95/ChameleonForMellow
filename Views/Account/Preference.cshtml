@@ -1,0 +1,92 @@
+﻿@*@page "/Inventory/edit/{id}"*@
+@model Chameleon.DTOs.Account.EmployeePreference
+
+@{
+  ViewData["Title"] = "Preference";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2 class="text-info offset-1">Personal Preference & Info. for Chameleon</h2>
+<br />
+
+<div class="container" style="font-size:11px;">
+  <input type="hidden" asp-for="EmpChameleonConfigId"/>
+  <form method="post" asp-controller="Account" asp-action="UpdatePersonalPreference">
+
+@*    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th><b>@Model.LoginId</b></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>*@
+
+
+    <div class="card">
+      <div class="card-header" asp-for="LoginId"><b>@Model.LoginId</b></div>
+      <div class="card-header">Inventory</div>
+      <div class="card-body">
+        <div class="form-group row">
+
+          <div class="col-sm-3">
+            <label asp-for="PrivilegeLevelInventory">Inventory Privilege Level :</label>
+          </div>
+          <div class="col-sm-1">
+            <input asp-for="PrivilegeLevelInventory" class="form-control" style="font-size:11px;" id="privilegeLevelInventory" disabled />
+            <span asp-validation-for="PrivilegeLevelInventory" class="text-danger"></span>
+          </div>
+        </div>
+        <div class="form-group row">
+
+          <div class="col-sm-3">
+            <label asp-for="HasInventoryNotification">Do you want to receive the inventory notifications? :</label>
+          </div>
+          <div class="col-sm-1">
+            <input type="checkbox" asp-for="HasInventoryNotification" class="form-check-input" />
+
+            @*<input name="hasInventoryNotification" id="hasInventoryNotification" type="checkbox" @((Model.HasInventoryNotification == false ? "" : "checked")) />*@
+            <span asp-validation-for="HasInventoryNotification" class="text-danger"></span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div class="form-group row">
+      <div class="col-2 offset-6">
+        <button type="submit" value="Update" class="btn btn-primary form-control">Update</button>
+        @*<button id="updateChameleonPreference" class="btn btn-primary" style="float:right">Update</button>*@
+      </div>
+    </div>
+
+
+  </form>
+</div>
+
+<div class="modal"><!-- For waiting indicator--></div>
+@section Scripts {
+  <script>
+    function lastmod() { }
+  </script>
+  <script src="~/js/ChameleonPreferenceUpdate.js">
+  </script>
+}

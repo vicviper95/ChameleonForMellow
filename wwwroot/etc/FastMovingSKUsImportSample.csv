@@ -1,0 +1,2 @@
+SKU,IsFlagged,
+5ZMF-GM4T,*,"If IsFlagged has ""*"", SKU will be in the red color(caution state)"

@@ -1,0 +1,446 @@
+﻿/*--------discription-------------*/
+.description {
+    position: absolute;
+    background-color: lightgray;
+    width: 35%;
+    height: auto;
+    z-index: 1;
+    border: solid;
+    right: 20px;
+    top: 200px;
+}
+.description.amz-api-error:after {
+    content: " ";
+    position: absolute;
+    right: 30px;
+    top: -15px;
+    border-top: none;
+    border-right: 15px solid transparent;
+    border-left: 15px solid transparent;
+    border-bottom: 15px solid black;
+}
+.description.amz-ns-monitor:after {
+    content: " ";
+    position: absolute;
+    right: 80px;
+    top: -15px;
+    border-top: none;
+    border-right: 15px solid transparent;
+    border-left: 15px solid transparent;
+    border-bottom: 15px solid black;
+}
+.description.amz-sync-po:after {
+    content: " ";
+    position: absolute;
+    right: 100px;
+    top: -15px;
+    border-top: none;
+    border-right: 15px solid transparent;
+    border-left: 15px solid transparent;
+    border-bottom: 15px solid black;
+}
+.amz-api-error {
+    display: none;
+    margin-top: 10px;
+}
+.amz-ns-monitor {
+    display: none;
+    margin-top: 10px;
+}
+.amz-sync-po {
+    display: none;
+    margin-top: 10px;
+}
+
+.description.wmt-api-error:after {
+    content: " ";
+    position: absolute;
+    right: 30px;
+    top: -15px;
+    border-top: none;
+    border-right: 15px solid transparent;
+    border-left: 15px solid transparent;
+    border-bottom: 15px solid black;
+}
+.description.wmt-desc-cancel:after {
+    content: " ";
+    position: absolute;
+    right: 100px;
+    top: -15px;
+    border-top: none;
+    border-right: 15px solid transparent;
+    border-left: 15px solid transparent;
+    border-bottom: 15px solid black;
+}
+.description.wmt-ns-monitor:after {
+    content: " ";
+    position: absolute;
+    right: 320px;
+    top: -15px;
+    border-top: none;
+    border-right: 15px solid transparent;
+    border-left: 15px solid transparent;
+    border-bottom: 15px solid black;
+}
+.description.wmt-asn:after {
+    content: " ";
+    position: absolute;
+    right: 160px;
+    top: -15px;
+    border-top: none;
+    border-right: 15px solid transparent;
+    border-left: 15px solid transparent;
+    border-bottom: 15px solid black;
+}
+.description.wmt-ack:after {
+    content: " ";
+    position: absolute;
+    right: 240px;
+    top: -15px;
+    border-top: none;
+    border-right: 15px solid transparent;
+    border-left: 15px solid transparent;
+    border-bottom: 15px solid black;
+}
+.description.wmt-sync-po:after {
+    content: " ";
+    position: absolute;
+    right: 360px;
+    top: -15px;
+    border-top: none;
+    border-right: 15px solid transparent;
+    border-left: 15px solid transparent;
+    border-bottom: 15px solid black;
+}
+.wmt-api-error {
+    display: none;
+    margin-top: 10px;
+}
+.wmt-desc-cancel {
+    display: none;
+    margin-top: 10px;
+}
+.wmt-sync-po {
+    display: none;
+    margin-top: 10px;
+}
+.wmt-ns-monitor {
+    display: none;
+    margin-top: 10px;
+}
+.wmt-asn {
+    display: none;
+    margin-top: 10px;
+}
+.wmt-ack {
+    display: none;
+    margin-top: 10px;
+}
+
+
+.description.wf-api-error:after {
+    content: " ";
+    position: absolute;
+    right: 30px;
+    top: -15px;
+    border-top: none;
+    border-right: 15px solid transparent;
+    border-left: 15px solid transparent;
+    border-bottom: 15px solid black;
+}
+.description.wf-sync-po:after {
+    content: " ";
+    position: absolute;
+    right: 200px;
+    top: -15px;
+    border-top: none;
+    border-right: 15px solid transparent;
+    border-left: 15px solid transparent;
+    border-bottom: 15px solid black;
+}
+.wf-api-error {
+    display: none;
+    margin-top: 10px;
+}
+.wf-sync-po {
+    display: none;
+    margin-top: 10px;
+}
+
+/*----------------------------------------*/
+
+
+body {
+}
+
+.buttom-no-stle {
+    /*position: relative;
+    float: right;
+    font-size: 30px;
+    top: -10px;*/
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: inherit;
+}
+
+.job-task {
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    z-index: 3;
+    
+}
+
+.circle {
+    height: 60px;
+    width: 60px;
+    background-color: cornflowerblue;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 2px 4px;
+}
+table.dataTable tr th.select-checkbox.selected::after {
+    content: "✔";
+    margin-top: -11px;
+    margin-left: -4px;
+    text-align: center;
+    text-shadow: rgb(176, 190, 217) 1px 1px, rgb(176, 190, 217) -1px -1px, rgb(176, 190, 217) 1px -1px, rgb(176, 190, 217) -1px 1px;
+}
+table.dataTable tr.selected td.select-checkbox:after, table.dataTable tr.selected th.select-checkbox:after {
+    content: "✓";
+    font-size: 20px;
+    top: 5px;
+    margin-top: -15px;
+    margin-left: -6px;
+    text-align: center;
+    text-shadow: 1px 1px #b0bed9,-1px -1px #b0bed9,1px -1px #b0bed9,-1px 1px #b0bed9
+}
+
+/*-----------------popup---------------------------------*/
+#popup-error {
+    position: absolute;
+    background-color: white;
+    width: 70%;
+    height: auto;
+    z-index: 2;
+    display: none;
+    border-top: ridge;
+    border-right:ridge;
+    border-bottom:ridge;
+    border-top-right-radius: 25px;
+}
+#nav-popup-error {
+    margin-top : 100px;
+    position: absolute;
+    background-color: white;
+    width: 70%;
+    height: auto;
+    z-index: 2;
+    display: none;
+    border-top: ridge;
+    border-right: ridge;
+    border-bottom: ridge;
+    border-top-right-radius: 25px;
+}
+#popup-task {
+    position: fixed;
+    background-color: #DEF5FC;
+    width: 25%;
+    height: 50%;
+    bottom: 0px;
+    z-index: 3;
+    display: none;
+    border: ridge;
+    right: 0px;
+    border-radius: 25px;
+}
+#popupNS {
+    position: absolute;
+    background-color: white;
+    width: 70%;
+    height: 50%;
+    z-index: 2;
+    display: none;
+    border-top: ridge;
+    border-right: ridge;
+    border-bottom: ridge;
+    border-top-right-radius: 25px;
+}
+#popupAck {
+    position: absolute;
+    background-color: white;
+    width: 70%;
+    height: 50%;
+    z-index: 2;
+    display: none;
+    border-top: ridge;
+    border-right: ridge;
+    border-bottom: ridge;
+    border-top-right-radius: 25px;
+}
+#popupAsn {
+    position: absolute;
+    background-color: white;
+    width: 70%;
+    height: 50%;
+    z-index: 2;
+    display: none;
+    border-top: ridge;
+    border-right: ridge;
+    border-bottom: ridge;
+    border-top-right-radius: 25px;
+}
+#popupCancel {
+    position: absolute;
+    background-color: white;
+    width: 70%;
+    height: 50%;
+    z-index: 2;
+    display: none;
+    border-top: ridge;
+    border-right: ridge;
+    border-bottom: ridge;
+    border-top-right-radius: 25px;
+}
+#popup-reponse {
+    position: fixed;
+    margin: auto;
+    top: -100px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 700px;
+    background-color: whitesmoke;
+    width: 40%;
+    z-index: 2;
+    display: none;
+    border: ridge;
+    border-radius: 25px;
+}
+/*--------------------------------------------------*/
+
+/*childtable------------------------------------------------*/
+.child-table td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+/*--------------------------------------------------*/
+
+
+/*--------------------------------------------------*/
+.tableIcon {
+    position: relative;
+    float: right;
+    font-size: 30px;
+    top: -10px;
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: inherit;
+}
+.errCountIcon {
+    position: relative;
+    float: right;
+    background: red;
+    border-radius: 0.8em;
+    -moz-border-radius: 0.8em;
+    -webkit-border-radius: 0.8em;
+    color: black;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1.6em;
+    margin-right: 5px;
+    text-align: center;
+    width: 1.6em;
+    right:15px;
+    top:25px;
+    z-index:1;
+}
+.nav-errCountIcon {
+    position: relative;
+    float: right;
+    background: red;
+    border-radius: 0.8em;
+    -moz-border-radius: 0.8em;
+    -webkit-border-radius: 0.8em;
+    color: black;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1.0em;
+    margin-right: 5px;
+    text-align: center;
+    width: 1.0em;
+    right: 12px;
+    top: 23px;
+    z-index: 1;
+}
+.MissingCount {
+    position: relative;
+    float: right;
+    background: red;
+    border-radius: 0.8em;
+    -moz-border-radius: 0.8em;
+    -webkit-border-radius: 0.8em;
+    color: black;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1.6em;
+    /*margin-right: 5px;*/
+    text-align: center;
+    width: 1.6em;
+    right: 10px;
+    top: 29px;
+    z-index: 1;
+}
+.ribbon-highlight {
+    position: relative;
+    margin: 0.1em;
+}
+
+.ribbon-highlight:before {
+    content: "";
+    z-index: -1;
+    left: -0.5em;
+    top: 4px;
+    border-width: 0.5em;
+    border-style: solid;
+    border-color: lightgreen;
+    position: absolute;
+    width: 110%;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    height:15px;
+}
+.succeed-header-table{
+    color: blue;
+}
+.fail-header-table {
+    color: Orange;
+}
+table.dataTable thead tr {
+    /*background-color: green;*/
+}
+
+thead input {
+    width: 100%;
+    /*table-layout: auto;*/
+}
+
+#Wmt_Order {
+/**/
+    /*word-break: break-all;*/
+    /*margin: 0 auto;
+    width: 100%;
+    clear: both;
+    border-collapse: collapse;*/
+}
+/*td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}*/

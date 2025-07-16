@@ -1,0 +1,64 @@
+﻿@*@page
+  @model Chameleon.DTOs.Inventory.GetInventoryItemDTO*@
+
+@{
+  ViewData["Title"] = "A(ll)T(hing about) SKU";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<br />
+<div class="container-fluid">
+
+
+  <div class="container-fluid" id="grid">
+    <div class="col-4" style="float:left">
+      <table id="invFeedsSKUFeedingStatusItems" class="table tabel-striped table-bordered display compact" style="font-size: 10px">
+        <thead>
+          <tr>
+            <th>Item No. ID</th>
+            <th>BPM SKU</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+
+
+    <div class="row">
+      <div class="col-12" style="font-size: 10px">
+
+
+
+      </div>
+    </div>
+
+
+  </div>
+</div>
+    @*
+      <div class="container row p-0 m-0">
+        <div class="col-6">
+          <h2 class="text-info">Inventory Item List</h2>
+        </div>
+        <div class="col-12 border p-3">
+
+          <table id="inventoryItems" class="table tabel-striped table-bordered display compact" style="width:100%">
+            <thead>
+              <tr>
+                <th>SKU</th>
+                <th>Qty on Hand</th>
+                <th>Qty Avail.</th>
+                <th>Location</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+    @section Scripts{
+      <script src="~/js/inventoryList.js">
+      </script>
+    }
+
+    *@

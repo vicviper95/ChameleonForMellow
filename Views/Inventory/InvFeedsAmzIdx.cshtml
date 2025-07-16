@@ -1,0 +1,204 @@
+﻿@*@page
+  @model Chameleon.DTOs.Inventory.GetInventoryItemDTO*@
+
+@{
+  ViewData["Title"] = "Inventory Feeds";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>&nbsp;&nbsp;@ViewData["Title"] - Amazon</h1>
+<input type="hidden" id="historyDateHidden" name="historyDateHidden" />
+
+<br />
+<div style=" padding-top: 10px">
+  <h7>&nbsp;&nbsp;<p id="invFeedsRepDate"></p></h7>
+  &nbsp;&nbsp;Past Feeds: <input type="text" id="historyDatePicker">
+  <button id="reloadAmazonFeedsHistory"> reload</button>
+</div>
+<br/>
+@* <div class="invFeed-container">
+  <div class="col-6">
+    
+    <div>
+      <h2 class="text-info">BANC</h2>
+    </div>
+  </div>
+  <div class="col-12 border p-3">
+
+    <table id="invFeedsAmazonBancItems" class="table tabel-striped table-bordered display compact" style="width:100%; font-size: 10px">
+      <thead>
+        <tr style="font-size: 10px">
+          <th>SKU</th>
+          <th>UPC</th>
+          <th>ASIN</th>
+          <th>Title</th>
+          <th>Warehouse</th>
+          <th>Warehouse Name</th>
+          <th>Available</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div> *@
+@* <div class="invFeed-container">
+  <div class="col-6">
+    <h7><p id="invFeedsRepDate"></p></h7>
+    <div>
+      <h2 class="text-info">BASC</h2>
+    </div>
+  </div>
+  <div class="col-12 border p-3">
+
+    <table id="invFeedsAmazonBascItems" class="table tabel-striped table-bordered display compact" style="width:100%; font-size: 10px">
+      <thead>
+        <tr style="font-size: 10px">
+          <th>SKU</th>
+          <th>UPC</th>
+          <th>ASIN</th>
+          <th>Title</th>
+          <th>Warehouse</th>
+          <th>Warehouse Name</th>
+          <th>Available</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div> *@
+<div class="invFeed-container">
+  <div class="col-6">
+    <div>
+      <h2 class="text-info">Main SL</h2>
+    </div>
+  </div>
+  <div class="col-12 border p-3">
+
+    <table id="invFeedsAmazonMainslItems" class="table tabel-striped table-bordered display compact" style="width:100%; font-size: 10px">
+      <thead>
+        <tr style="font-size: 10px">
+          <th>SKU</th>
+          <th>UPC</th>
+          <th>ASIN</th>
+          <th>Title</th>
+          <th>Warehouse</th>
+          <th>Warehouse Name</th>
+          <th>Available</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>
+
+@* <div class="invFeed-container">
+  <div class="col-6">
+    <div>
+      <h2 class="text-info">SW-CAFT</h2>
+    </div>
+  </div>
+  <div class="col-12 border p-3">
+
+    <table id="invFeedsAmazonSWCAFTItems" class="table tabel-striped table-bordered display compact" style="width:100%; font-size: 10px">
+      <thead>
+        <tr style="font-size: 10px">
+          <th>SKU</th>
+          <th>UPC</th>
+          <th>ASIN</th>
+          <th>Title</th>
+          <th>Warehouse</th>
+          <th>Warehouse Name</th>
+          <th>Available</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>
+
+<div class="invFeed-container">
+  <div class="col-6">
+    <div>
+      <h2 class="text-info">PRISM-CAST</h2>
+    </div>
+  </div>
+  <div class="col-12 border p-3">
+
+    <table id="invFeedsAmazonPrismCastItems" class="table tabel-striped table-bordered display compact" style="width:100%; font-size: 10px">
+      <thead>
+        <tr style="font-size: 10px">
+          <th>SKU</th>
+          <th>UPC</th>
+          <th>ASIN</th>
+          <th>Title</th>
+          <th>Warehouse</th>
+          <th>Warehouse Name</th>
+          <th>Available</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>*@
+
+<div class="invFeed-container">
+  <div class="col-6">
+    <div>
+      <h2 class="text-info">ZINUS-Tracy</h2>
+    </div>
+  </div>
+  <div class="col-12 border p-3">
+
+    <table id="invFeedsAmazonZinusTracyItems" class="table tabel-striped table-bordered display compact" style="width:100%; font-size: 10px">
+      <thead>
+        <tr style="font-size: 10px">
+          <th>SKU</th>
+          <th>UPC</th>
+          <th>ASIN</th>
+          <th>Title</th>
+          <th>Warehouse</th>
+          <th>Warehouse Name</th>
+          <th>Available</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>
+
+<div class="invFeed-container">
+  <div class="col-6">
+    <div>
+      <h2 class="text-info">ZINUS-CHS</h2>
+    </div>
+  </div>
+  <div class="col-12 border p-3">
+
+    <table id="invFeedsAmazonZinusChsItems" class="table tabel-striped table-bordered display compact" style="width:100%; font-size: 10px">
+      <thead>
+        <tr style="font-size: 10px">
+          <th>SKU</th>
+          <th>UPC</th>
+          <th>ASIN</th>
+          <th>Title</th>
+          <th>Warehouse</th>
+          <th>Warehouse Name</th>
+          <th>Available</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>
+
+
+
+
+<div class="modal"><!-- For waiting indicator--></div>
+@section Scripts {
+  <script>
+    function lastmod() { }
+  </script>
+  <script src="~/js/InvFeedsAmazonList.js">
+  </script>
+}

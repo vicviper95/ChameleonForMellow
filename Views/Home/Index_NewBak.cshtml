@@ -1,0 +1,34 @@
+﻿@{
+  ViewBag.Title = "Login";
+}
+
+<h2>  Login  </h2>
+<div class="wrapper_login fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="~/img/Logos/MLLW_LOGO_180x.png" id="logo" alt="Company Logo" />
+    </div>
+
+    <!-- Login Form -->
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+    <div class="login">
+      <input type="text" id="LoginId" class="fadeIn second" name="LoginId" placeholder="login_home">
+      <input type="password" id="Password" class="fadeIn third" name="Password" placeholder="password">
+      @*<div><input type="checkbox" class="fadeIn fifth" onclick="showPassword()"> Show Password</div>*@
+      <br /><h3 style="color:red">@ViewBag.Message</h3> <br />
+      <input type="submit" class="fadeIn fourth" value="Log In">
+    </div>
+    }
+    <div>
+      Use same ID and password as our sister site "Koala"
+    </div>
+    <!-- Remind Passowrd -->
+    @*<div id="formFooter">
+        <a class="underlineHover" href="#">Forgot Password?</a>
+      </div>*@
+
+  </div>
+</div>

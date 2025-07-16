@@ -1,0 +1,7 @@
+poChannel,sku,requestedQty,requestorsNote,mustETADate,,
+,,,,,,ex)
+,,,,,,"poChannel: BPM, CG_USA, CG_UK, CG_CANADA"
+,,,,,,sku: sku
+,,,,,,requestedQty: 0~9999
+,,,,,,requestorsNote : Requester's Note
+,,,,,,mustETADate : 07/01/2022

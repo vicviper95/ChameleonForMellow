@@ -1,0 +1,344 @@
+﻿<button id="buttom-task" class="buttom-no-stle job-task circle" style="font-size: 35px">
+    <i class="fas fa-tasks"></i>
+</button>
+@*popup windows*@
+<div>
+    <div id="popup-reponse">
+        @*style="background-color: #A9EFFC; border-top-left-radius: 25px; border-top-right-radius: 25px;"*@
+        <div style="position: relative; float: right;border-radius: 25px;">
+            <button id="close-response" style="position: relative; float: right; font-size: 30px; top: -10px; background: none; color: inherit; border: none; padding: 0; cursor: pointer; outline: inherit; right: 20px; top: 10px">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <h3 style="padding: 20px;">Task Result</h3>
+        <div style="padding-top: 10px; width: 100%;">
+            <div style="position: relative; float: left; width: 45%; padding-left: 10px;">
+                <table id="succeed-table" class="display" style="font-size: 12px; width: 100%; overflow-y: auto; "></table>
+            </div>
+            <div style="position: relative; float: left; width: 45%; padding-left: 20px;">
+                <table id="fail-table" class="display" style="font-size: 12px; width: 100%;"></table>
+            </div>
+        </div>
+    </div>
+
+    <div id="popup-task">
+        <div style="position: relative; float:right">
+            <button id="close-task" style="position: relative; float: right; font-size: 30px; top: -10px; background: none; color: inherit; border: none; padding: 0; cursor: pointer; outline: inherit; right: 20px; top: 10px">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <table id="task-table" class="display" style="font-size: 12px; width: 100%;"></table>
+    </div>
+
+    <div id="popup-error">
+        <div style="position: relative; float:right">
+            <button id="closePopup-error" style="position: relative; float: right; font-size: 30px; top: -10px; background: none; color: inherit; border: none; padding: 0; cursor: pointer; outline: inherit; right: 20px; top: 10px">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div style="margin-top: 100px; padding-top: 20px; padding-right: 20px; padding-left: 20px; background-color: white">
+            <h2>Walmart Error Detector</h2>
+            <button id="retrySync" class="tableIcon" style="right: 40px; font-size: 35px">
+                <i class="fas fa-sync-alt" title="Retry Sync SO"></i>
+            </button>
+            <table id="ErrTable" class="table tabel-striped table-bordered display compact" style="font-size: 12px; width: 100%;">
+                <thead>
+                    <tr style="background-color: #DEF5FC">
+                        <th>Action</th>
+                        <th>Error Type</th>
+                        <th>PO#</th>
+                        <th>Customer</th>
+                        <th>Market SKU</th>
+                        <th>Detail</th>
+                        @*
+                            <th>Solved</th>*@
+                        <th>Created Time</th>
+                        @*
+                            <th>Resolved Time</th>*@
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+    <div id="popupNS">
+        <div style="position: relative; float:right">
+            <button id="closeNS" style="position: relative; float: right; font-size: 30px; top: -10px; background: none; color: inherit; border: none; padding: 0; cursor: pointer; outline: inherit; right: 20px; top: 10px">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div style="margin-top: 100px; padding-top: 20px; padding-right: 20px; padding-left: 20px; background-color: white">
+            <h2>Netsuite's PO Monitor</h2>
+            @*<button id="sync-to-ns" class="tableIcon" style="right: 40px; font-size: 35px">
+                <i class="fas fa-sync-alt" title="Retry Sync SO"></i>
+            </button>*@
+            <table id="MissPoTable" class="table tabel-striped table-bordered display compact" style="font-size: 12px; width: 100%;">
+                <thead>
+                    <tr>
+                        <th>Customer</th>
+                        <th>Order No</th>
+                        <th>Order Time</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+    <div id="popupAck">
+        <div style="position: relative; float:right">
+            <button id="closeAck" style="position: relative; float: right; font-size: 30px; top: -10px; background: none; color: inherit; border: none; padding: 0; cursor: pointer; outline: inherit; right: 20px; top: 10px">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div style="margin-top: 100px; padding-top: 20px; padding-right: 20px; padding-left: 20px; background-color: white">
+            <h2>Acknowlege Monitor</h2>
+            @*<button id="send-ack" class="tableIcon" style="right: 40px; font-size: 35px">
+                <i class="fas fa-sync-alt" title="Retry Sync SO"></i>
+            </button>*@
+            <table id="ackTable" class="table tabel-striped table-bordered display compact" style="font-size: 12px; width: 100%;">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>PO#</th>
+                        <th>Location</th>
+                        @*<th>SKU</th>*@
+                        <th>Total Price</th>
+                        <th>Total Qty</th>
+                        <th>QTY(Committed Lines)</th>
+                        <th>Order Date</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+    <div id="popupAsn">
+        <div style="position: relative; float:right">
+            <button id="closeAsn" style="position: relative; float: right; font-size: 30px; top: -10px; background: none; color: inherit; border: none; padding: 0; cursor: pointer; outline: inherit; right: 20px; top: 10px">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div style="margin-top: 100px; padding-top: 20px; padding-right: 20px; padding-left: 20px; background-color: white">
+            <h2>ASN Monitor</h2>
+            @*<button id="try-send-ASN" class="tableIcon" style="right: 40px; font-size: 35px">
+                    <i class="fas fa-sync-alt" title="Retry Sync SO"></i>
+            </button>*@
+            <table id="asnTable" class="table tabel-striped table-bordered display compact" style="font-size: 12px; width: 100%;">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>PO#</th>
+                        <th>Location</th>
+                        <th>Total Price</th>
+                        <th>Total Qty</th>
+                        <th>Order Date</th>
+                        <th>Ship Date</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="popupCancel">
+    <div style="position: relative; float:right">
+        <button id="closeCancel" style="position: relative; float: right; font-size: 30px; top: -10px; background: none; color: inherit; border: none; padding: 0; cursor: pointer; outline: inherit; right: 20px; top: 10px">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    <div style="margin-top: 100px; padding-top: 20px; padding-right: 20px; padding-left: 20px; background-color: white">
+        <h2>Pending Cancellation Monitor</h2>
+        <table id="cancelTable" class="table tabel-striped table-bordered display compact" style="font-size: 12px; width: 100%;">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>PO#</th>
+                    @*<th>SKU</th>*@
+                    <th>Total Price</th>
+                    <th>Total Count</th>
+                    <th>Order Date</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+@*------------------------Descriptions---------------------------------------------*@
+<div>
+    <div class="description wmt-api-error">
+        <div style="margin-left:10px">
+            <h4>Error Detector</h4>
+            <p style="font-size:20px; padding-left:5px">
+                This function shows what kind of error occured when there is a Problem in
+                Syncronizing the Walmart Purchase List from Walmart to the database and suggest ways to resolve.
+            </p>
+        </div>
+    </div>
+    <div class="description wmt-desc-cancel">
+        <div style="margin-left:10px">
+            <h4>Pending Cancellation</h4>
+            <p style="font-size:20px; padding-left:5px">
+                It is show the list of shipment ASN due on today to walmart
+            </p>
+        </div>
+    </div>
+    <div class="description wmt-asn">
+        <div style="margin-left:10px">
+            <h4>ASN Monitor</h4>
+            <p style="font-size:20px; padding-left:5px">
+                It is show the list of shipment ASN due on today to walmart
+            </p>
+        </div>
+    </div>
+    <div class="description wmt-ack">
+        <div style="margin-left:10px">
+            <h4>Acknowlege Monitor</h4>
+            <p style="font-size:20px; padding-left:5px">
+                It shows the list of pending acknowledge to Walmart
+            </p>
+        </div>
+    </div>
+    @*<div class="description wmt-ns-monitor">
+        <div style="margin-left:10px">
+            <h4>Netsuite's List of PO Monitor</h4>
+            <p style="font-size:20px; padding-left:5px">
+                This is function show what list of purchase orders is not syncronized from DB to Netsuite
+            </p>
+        </div>
+    </div>
+    <div class="description wmt-sync-po">
+        <div style="margin-left:10px">
+            <h4>Get Purchase Orders</h4>
+            <p style="font-size:20px; padding-left:5px">
+                This is function to get customer's Purchase Order from Walmart and save it to DB
+            </p>
+        </div>
+    </div>*@
+</div>
+
+@{
+    ViewData["Title"] = "Walmart SO";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="position:relative; float:right; right:10px">
+
+    <div id="lastSyncTime" class="ribbon-highlight">
+    </div>
+</div>
+<h2>@ViewData["Title"]</h2>
+
+<div class="col-12 border p-3">
+    <div style="margin-bottom:10px">
+        from:<input type="text" id="fromDate" autocomplete="off">
+        end:<input type="text" id="toDate" autocomplete="off">
+        @*<button id="reloadByDate"> reload</button>*@
+    <button id="button-errorDetect" class="tableIcon" style="right:5px; font-size:35px">
+        <i class="fas fa-exclamation-triangle"></i>
+        <span style="font-size:12px; font-weight: bold; position: absolute; top: -6px; left: 8px">Error</span>
+        <span id="errCount" class="errCountIcon" style="font-size:15px"></span>
+    </button>
+    <button id="button-popupCancel" class="tableIcon" style="right: 15px; font-size: 35px">
+        <i class="fas fa-ban"></i>
+        <span style="font-size: 12px; line-height: 10px; font-weight: bold; position: absolute; top: -12px; right: 20px">Pending Cancel</span>
+        <span id="cancelCount" class="MissingCount" style="font-size:15px"></span>
+    </button>
+        @*<button id="button-errorNS" class="tableIcon" style="right:20px; font-size:35px">
+                <i class="fas fa-tasks"></i>
+            </button>*@
+    <button id="button-asnCount" class="tableIcon" style="right: 25px; font-size: 35px">
+        <i class="fas fa-truck-loading" title="Send Shipment Notification"></i>
+        <span style="font-size:12px; font-weight: bold; position: absolute; top: -6px; left: 12px">ASN</span>
+        <span id="asnCount" class="MissingCount" style="font-size:15px"></span>
+    </button>
+        <button id="button-ackCount" class="tableIcon" style="right: 35px; font-size: 35px">
+            <i class="fas fa-file-import" title="Send Ack"></i>
+            <span style="font-size:12px; font-weight: bold; position: absolute; top: -6px; left: 12px">ACK</span>
+            <span id="ackCount" class="MissingCount" style="font-size:15px"></span>
+        </button>
+        @*<button id="button-errorNS" class="tableIcon" style="right: 40px; font-size: 35px; margin-top:-4px">
+            <img src="~/img/NetSuiteLogo.png" width="35" height="35">
+            <span id="MissingNSCount" class="MissingCount" style="font-size:15px"></span>
+        </button>
+        <button id="syncAPI" class="tableIcon" style="right: 55px; font-size: 35px">
+            <i class="fas fa-exchange-alt"></i>
+        </button>*@
+    </div>
+    <table id="Wmt_Order" class="table tabel-striped table-bordered display compact" style="font-size: 12px;">
+        <thead>
+            <tr style="background-color: #DEF5FC">
+                @*<th></th>*@
+                <th>Id</th>
+                @*<th>Customer</th>*@
+                <th>SO#</th>
+                <th>PO#</th>
+                <th>SKU</th>
+                <th>Status</th>
+                <th>SO Date</th>
+                <th title="Expected Ship Date">ExSD</th>
+                <th>Time ACK Sent</th>
+                <th>Time ASN Sent</th>
+                <th>Tracking#</th>
+                <th>Carrier</th>
+                <th>From</th>
+                <th>Qty</th>
+                <th>Unit Price</th>
+                <th>Total Price</th>
+                <th>Added Time</th>
+                @*<th>Source</th>*@
+            </tr>
+        </thead>
+        <tfoot>
+            <tr style="background-color: #DEF5FC">
+                @*<th></th>*@
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                @*<th>Source</th>*@
+            </tr>
+        </tfoot>
+    </table>
+    @*<button id="frm-example">check</button>*@
+    <div class="modal"><!-- For waiting indicator--></div>
+</div>
+
+@*<div id="amz-graphTabs">
+        <div id="tabs-nobg" style="font-size: 15px;">
+            <ul>
+                <li><a href="#tabs-1">Count</a></li>
+                <li><a href="#tabs-2">Total Price</a></li>
+            </ul>
+            <div id="tabs-1" style="height:600px">
+                <canvas id="chartData" width="400" height="500"></canvas>
+            </div>
+            <div id="tabs-2" style="height:600px">
+                <table style="border: 1px solid black; position: relative; float: right;">
+                    <tr style="border: 1px solid black;">
+                        <th>
+                            Total Price
+                        </th>
+                    </tr>
+                    <tr style="border: 1px solid black;">
+                        <td id="totalPrice"></td>
+                    </tr>
+                </table>
+                <canvas id="chartPrice" width="400" height="500"></canvas>
+            </div>
+
+        </div>
+    </div>*@
+@section Scripts{
+    <script src="~/js/sales/WalmartPoList.js">
+    </script>
+}

@@ -1,0 +1,4569 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Mellow Web Api",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/label/AmazonATS": {
+      "post": {
+        "tags": [
+          "AmazonATS"
+        ],
+        "parameters": [
+          {
+            "name": "poNo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "soNo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sku",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "qtyInfo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrintResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrintResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrintResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/label/AmazonDirGS1": {
+      "post": {
+        "tags": [
+          "AmazonDirGS1"
+        ],
+        "parameters": [
+          {
+            "name": "isMerged",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrintResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrintResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrintResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/BulkIF": {
+      "post": {
+        "tags": [
+          "BulkIF"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BulkIF"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BulkIF"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BulkIF"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/BulkIF/UpdateTracking": {
+      "put": {
+        "tags": [
+          "BulkIF"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/CreateIFF": {
+      "post": {
+        "tags": [
+          "CreateIFF"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateIFF"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateIFF"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateIFF"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/CreateIN": {
+      "post": {
+        "tags": [
+          "CreateIN"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateIN"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateIN"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateIN"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/CreateSO": {
+      "post": {
+        "tags": [
+          "CreateSO"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/Daily3P": {
+      "post": {
+        "tags": [
+          "Daily3P"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SODaily3P"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SODaily3P"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SODaily3P"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Daily3P"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SODaily3P"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SODaily3P"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SODaily3P"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/label/HomeDepotLTL": {
+      "post": {
+        "tags": [
+          "HomeDepotLTL"
+        ],
+        "parameters": [
+          {
+            "name": "soT_ID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LabelInfo"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LabelInfo"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LabelInfo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrintResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrintResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrintResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/report/ICRChangedReport": {
+      "post": {
+        "tags": [
+          "ICRChangedReport"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "isAdded",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrintResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrintResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrintResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/Inventory/SingleItem": {
+      "put": {
+        "tags": [
+          "Inventory"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SingleItem"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SingleItem"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SingleItem"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/Inventory/KitItem": {
+      "put": {
+        "tags": [
+          "Inventory"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/KitItem"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/KitItem"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/KitItem"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/Inventory/ICR": {
+      "put": {
+        "tags": [
+          "Inventory"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ItemICR"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ItemICR"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ItemICR"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/Inventory/BinInventory/{location}/{bin}": {
+      "get": {
+        "tags": [
+          "Inventory"
+        ],
+        "parameters": [
+          {
+            "name": "location",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "bin",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Inventory"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Inventory"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Inventory"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/label/POPrint": {
+      "post": {
+        "tags": [
+          "POPrint"
+        ],
+        "parameters": [
+          {
+            "name": "isMerged",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrintResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrintResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrintResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/PurchaseOrder/CreatePoBOL": {
+      "post": {
+        "tags": [
+          "PurchaseOrder"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/PurchaseOrder/UpdatePoBOL": {
+      "post": {
+        "tags": [
+          "PurchaseOrder"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/PurchaseOrder/CreatePoIBC": {
+      "post": {
+        "tags": [
+          "PurchaseOrder"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/PurchaseOrder/UpdatePoIBC": {
+      "post": {
+        "tags": [
+          "PurchaseOrder"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/PurchaseOrder/OwnershipTakePoIBC": {
+      "post": {
+        "tags": [
+          "PurchaseOrder"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/PurchaseOrder/bol": {
+      "post": {
+        "tags": [
+          "PurchaseOrder"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PO_BOL_IBC"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PO_BOL_IBC"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PO_BOL_IBC"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "PurchaseOrder"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PO_BOL_IBC"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PO_BOL_IBC"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PO_BOL_IBC"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/PurchaseOrder/CreateIR": {
+      "post": {
+        "tags": [
+          "PurchaseOrder"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateIR"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateIR"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateIR"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/PurchaseOrder/CreatePOImported": {
+      "post": {
+        "tags": [
+          "PurchaseOrder"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/PurchaseOrder/WFACNShipment": {
+      "post": {
+        "tags": [
+          "PurchaseOrder"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/PurchaseOrder/AmazonDIReceivePO": {
+      "post": {
+        "tags": [
+          "PurchaseOrder"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/PurchaseOrder/POFieldChange": {
+      "post": {
+        "tags": [
+          "PurchaseOrder"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/POFieldChange"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/POFieldChange"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/POFieldChange"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/PurchaseOrder/POBilling": {
+      "post": {
+        "tags": [
+          "PurchaseOrder"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/POBilling"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/POBilling"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/POBilling"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/PurchaseOrder/UpdatePurchaseOrder": {
+      "put": {
+        "tags": [
+          "PurchaseOrder"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/SalesOrder/SalesOrderPickWH": {
+      "post": {
+        "tags": [
+          "SalesOrderPickWH"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaseResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/report/SKUChangedReport": {
+      "post": {
+        "tags": [
+          "SKUChangedReport"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrintResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrintResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrintResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/SOLine/Commit": {
+      "put": {
+        "tags": [
+          "SOLine"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SOLineCommit"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SOLineCommit"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SOLineCommit"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/SOLine/TargetDate": {
+      "put": {
+        "tags": [
+          "SOLine"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SOLineTargetDate"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SOLineTargetDate"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SOLineTargetDate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/SOLine/BOL": {
+      "put": {
+        "tags": [
+          "SOLine"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SOLineBOL"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SOLineBOL"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SOLineBOL"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/SOLine/Location": {
+      "put": {
+        "tags": [
+          "SOLine"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SOLineLocation"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SOLineLocation"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SOLineLocation"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/SOLine/Close": {
+      "put": {
+        "tags": [
+          "SOLine"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SOLineClose"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SOLineClose"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SOLineClose"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/SOLine/Accept": {
+      "put": {
+        "tags": [
+          "SOLine"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SOLineAccept"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SOLineAccept"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SOLineAccept"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/SOLine/UpdateSalesOrder": {
+      "put": {
+        "tags": [
+          "SOLine"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/Sync/Inventory": {
+      "post": {
+        "tags": [
+          "Sync"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/Sync/InventoryTO": {
+      "post": {
+        "tags": [
+          "Sync"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/Sync/InventoryAdj": {
+      "post": {
+        "tags": [
+          "Sync"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/Sync/InventoryItemRelated": {
+      "post": {
+        "tags": [
+          "Sync"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/Sync/Item": {
+      "post": {
+        "tags": [
+          "Sync"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/Sync/ItemBOM": {
+      "post": {
+        "tags": [
+          "Sync"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/Sync/SalesOrder": {
+      "post": {
+        "tags": [
+          "Sync"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SyncSalesOrder"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SyncSalesOrder"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SyncSalesOrder"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/Sync/SalesRelated": {
+      "post": {
+        "tags": [
+          "Sync"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/Sync/AmazonDirAccept": {
+      "post": {
+        "tags": [
+          "Sync"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/Sync/AmazonDir": {
+      "post": {
+        "tags": [
+          "Sync"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/Sync/AmazonProNo": {
+      "post": {
+        "tags": [
+          "Sync"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/Sync/PurchaseOrder": {
+      "post": {
+        "tags": [
+          "Sync"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/Sync/PurchaseOrderIBC": {
+      "post": {
+        "tags": [
+          "Sync"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/Sync/PurchaseOrderReceive": {
+      "post": {
+        "tags": [
+          "Sync"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/Sync/PurchaseOrderBill": {
+      "post": {
+        "tags": [
+          "Sync"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/Sync/PurchaseOrderShipLine": {
+      "post": {
+        "tags": [
+          "Sync"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/Sync/SyncPurchaseOrderPort": {
+      "post": {
+        "tags": [
+          "Sync"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/Sync/SyncPurchaseOrderForwarder": {
+      "post": {
+        "tags": [
+          "Sync"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/Sync/SyncPurchaseOrderDray": {
+      "post": {
+        "tags": [
+          "Sync"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/Sync/PickTaskLine": {
+      "post": {
+        "tags": [
+          "Sync"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SyncPickTaskLine"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SyncPickTaskLine"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SyncPickTaskLine"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/Sync/Employee": {
+      "post": {
+        "tags": [
+          "Sync"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/Sync/Vendor": {
+      "post": {
+        "tags": [
+          "Sync"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/Sync/Customer": {
+      "post": {
+        "tags": [
+          "Sync"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/Sync/Location": {
+      "post": {
+        "tags": [
+          "Sync"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/Sync/AFCID": {
+      "post": {
+        "tags": [
+          "Sync"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestBase"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/TransferOrder/CreateTO": {
+      "post": {
+        "tags": [
+          "TransferOrder"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ns/TransferOrder/ReceivingTO": {
+      "post": {
+        "tags": [
+          "TransferOrder"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReceivingTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReceivingTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReceivingTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultBase"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/label/WalmartBB": {
+      "post": {
+        "tags": [
+          "WalmartBB"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrintResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrintResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrintResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/label/WalmartUPC": {
+      "post": {
+        "tags": [
+          "WalmartUPC"
+        ],
+        "parameters": [
+          {
+            "name": "item_id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "totalCarton",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrintResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrintResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrintResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/label/WalmartWFS": {
+      "post": {
+        "tags": [
+          "WalmartWFS"
+        ],
+        "parameters": [
+          {
+            "name": "to_id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "singlesku",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "mixedsku",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrintResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrintResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrintResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/label/WayfairLTL": {
+      "post": {
+        "tags": [
+          "WayfairLTL"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrintResult"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrintResult"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrintResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BaseResult": {
+        "type": "object",
+        "properties": {
+          "isResult": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BulkIF": {
+        "type": "object",
+        "properties": {
+          "requester": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSandBoxMode": {
+            "type": "boolean"
+          },
+          "isResultNotify": {
+            "type": "boolean"
+          },
+          "isRealtime": {
+            "type": "boolean"
+          },
+          "isWaitingDone": {
+            "type": "boolean"
+          },
+          "maxWaitingTime": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "bulkFilename": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateIFF": {
+        "type": "object",
+        "properties": {
+          "requester": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSandBoxMode": {
+            "type": "boolean"
+          },
+          "isResultNotify": {
+            "type": "boolean"
+          },
+          "isRealtime": {
+            "type": "boolean"
+          },
+          "isWaitingDone": {
+            "type": "boolean"
+          },
+          "maxWaitingTime": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ifT_IDs": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateIN": {
+        "type": "object",
+        "properties": {
+          "requester": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSandBoxMode": {
+            "type": "boolean"
+          },
+          "isResultNotify": {
+            "type": "boolean"
+          },
+          "isRealtime": {
+            "type": "boolean"
+          },
+          "isWaitingDone": {
+            "type": "boolean"
+          },
+          "maxWaitingTime": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "invT_IDs": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateIR": {
+        "type": "object",
+        "properties": {
+          "requester": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSandBoxMode": {
+            "type": "boolean"
+          },
+          "isResultNotify": {
+            "type": "boolean"
+          },
+          "isRealtime": {
+            "type": "boolean"
+          },
+          "isWaitingDone": {
+            "type": "boolean"
+          },
+          "maxWaitingTime": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "poRcvT_IDs": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreatePO": {
+        "type": "object",
+        "properties": {
+          "requester": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSandBoxMode": {
+            "type": "boolean"
+          },
+          "isResultNotify": {
+            "type": "boolean"
+          },
+          "isRealtime": {
+            "type": "boolean"
+          },
+          "isWaitingDone": {
+            "type": "boolean"
+          },
+          "maxWaitingTime": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "poDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateSO": {
+        "type": "object",
+        "properties": {
+          "requester": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSandBoxMode": {
+            "type": "boolean"
+          },
+          "isResultNotify": {
+            "type": "boolean"
+          },
+          "isRealtime": {
+            "type": "boolean"
+          },
+          "isWaitingDone": {
+            "type": "boolean"
+          },
+          "maxWaitingTime": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "soT_IDs": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateTO": {
+        "type": "object",
+        "properties": {
+          "requester": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSandBoxMode": {
+            "type": "boolean"
+          },
+          "isResultNotify": {
+            "type": "boolean"
+          },
+          "isRealtime": {
+            "type": "boolean"
+          },
+          "isWaitingDone": {
+            "type": "boolean"
+          },
+          "maxWaitingTime": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "toT_IDs": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Inventory": {
+        "type": "object",
+        "properties": {
+          "item": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "qtyOnHand": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "qtyAvailable": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ItemICR": {
+        "type": "object",
+        "properties": {
+          "requester": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSandBoxMode": {
+            "type": "boolean"
+          },
+          "isResultNotify": {
+            "type": "boolean"
+          },
+          "isRealtime": {
+            "type": "boolean"
+          },
+          "isWaitingDone": {
+            "type": "boolean"
+          },
+          "maxWaitingTime": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "KitItem": {
+        "type": "object",
+        "properties": {
+          "requester": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSandBoxMode": {
+            "type": "boolean"
+          },
+          "isResultNotify": {
+            "type": "boolean"
+          },
+          "isRealtime": {
+            "type": "boolean"
+          },
+          "isWaitingDone": {
+            "type": "boolean"
+          },
+          "maxWaitingTime": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LabelInfo": {
+        "type": "object",
+        "properties": {
+          "carrier": {
+            "type": "string",
+            "nullable": true
+          },
+          "bolNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "storeNo": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "POBilling": {
+        "type": "object",
+        "properties": {
+          "requester": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSandBoxMode": {
+            "type": "boolean"
+          },
+          "isResultNotify": {
+            "type": "boolean"
+          },
+          "isRealtime": {
+            "type": "boolean"
+          },
+          "isWaitingDone": {
+            "type": "boolean"
+          },
+          "maxWaitingTime": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "poBilling": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "POFieldChange": {
+        "type": "object",
+        "properties": {
+          "requester": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSandBoxMode": {
+            "type": "boolean"
+          },
+          "isResultNotify": {
+            "type": "boolean"
+          },
+          "isRealtime": {
+            "type": "boolean"
+          },
+          "isWaitingDone": {
+            "type": "boolean"
+          },
+          "maxWaitingTime": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "poDs": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PO_BOL_IBC": {
+        "type": "object",
+        "properties": {
+          "requester": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSandBoxMode": {
+            "type": "boolean"
+          },
+          "isResultNotify": {
+            "type": "boolean"
+          },
+          "isRealtime": {
+            "type": "boolean"
+          },
+          "isWaitingDone": {
+            "type": "boolean"
+          },
+          "maxWaitingTime": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PrintResult": {
+        "type": "object",
+        "properties": {
+          "isResult": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "fileName": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ReceivingTO": {
+        "type": "object",
+        "properties": {
+          "requester": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSandBoxMode": {
+            "type": "boolean"
+          },
+          "isResultNotify": {
+            "type": "boolean"
+          },
+          "isRealtime": {
+            "type": "boolean"
+          },
+          "isWaitingDone": {
+            "type": "boolean"
+          },
+          "maxWaitingTime": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "toT_IDs": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RequestBase": {
+        "type": "object",
+        "properties": {
+          "requester": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSandBoxMode": {
+            "type": "boolean"
+          },
+          "isResultNotify": {
+            "type": "boolean"
+          },
+          "isRealtime": {
+            "type": "boolean"
+          },
+          "isWaitingDone": {
+            "type": "boolean"
+          },
+          "maxWaitingTime": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ResultBase": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "boolean"
+          },
+          "isCanceled": {
+            "type": "boolean"
+          },
+          "isTimeout": {
+            "type": "boolean"
+          },
+          "taskID": {
+            "type": "string",
+            "nullable": true
+          },
+          "resultLog": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "nullable": true
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SODaily3P": {
+        "type": "object",
+        "properties": {
+          "requester": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSandBoxMode": {
+            "type": "boolean"
+          },
+          "isResultNotify": {
+            "type": "boolean"
+          },
+          "isRealtime": {
+            "type": "boolean"
+          },
+          "isWaitingDone": {
+            "type": "boolean"
+          },
+          "maxWaitingTime": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "from": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "to": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "markets": {
+            "type": "string",
+            "nullable": true
+          },
+          "poNos": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SOLineAccept": {
+        "type": "object",
+        "properties": {
+          "requester": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSandBoxMode": {
+            "type": "boolean"
+          },
+          "isResultNotify": {
+            "type": "boolean"
+          },
+          "isRealtime": {
+            "type": "boolean"
+          },
+          "isWaitingDone": {
+            "type": "boolean"
+          },
+          "maxWaitingTime": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "soInfos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SoInfoAccept"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SOLineBOL": {
+        "type": "object",
+        "properties": {
+          "requester": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSandBoxMode": {
+            "type": "boolean"
+          },
+          "isResultNotify": {
+            "type": "boolean"
+          },
+          "isRealtime": {
+            "type": "boolean"
+          },
+          "isWaitingDone": {
+            "type": "boolean"
+          },
+          "maxWaitingTime": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "assignBOLs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SoInfoBOL"
+            },
+            "nullable": true
+          },
+          "isModify": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SOLineClose": {
+        "type": "object",
+        "properties": {
+          "requester": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSandBoxMode": {
+            "type": "boolean"
+          },
+          "isResultNotify": {
+            "type": "boolean"
+          },
+          "isRealtime": {
+            "type": "boolean"
+          },
+          "isWaitingDone": {
+            "type": "boolean"
+          },
+          "maxWaitingTime": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "soInfos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SoInfoClose"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SOLineCommit": {
+        "type": "object",
+        "properties": {
+          "requester": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSandBoxMode": {
+            "type": "boolean"
+          },
+          "isResultNotify": {
+            "type": "boolean"
+          },
+          "isRealtime": {
+            "type": "boolean"
+          },
+          "isWaitingDone": {
+            "type": "boolean"
+          },
+          "maxWaitingTime": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isCommit": {
+            "type": "boolean"
+          },
+          "soInfos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SoInfoCommit"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SOLineLocation": {
+        "type": "object",
+        "properties": {
+          "requester": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSandBoxMode": {
+            "type": "boolean"
+          },
+          "isResultNotify": {
+            "type": "boolean"
+          },
+          "isRealtime": {
+            "type": "boolean"
+          },
+          "isWaitingDone": {
+            "type": "boolean"
+          },
+          "maxWaitingTime": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "soInfos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SoInfoLocation"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SOLineTargetDate": {
+        "type": "object",
+        "properties": {
+          "requester": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSandBoxMode": {
+            "type": "boolean"
+          },
+          "isResultNotify": {
+            "type": "boolean"
+          },
+          "isRealtime": {
+            "type": "boolean"
+          },
+          "isWaitingDone": {
+            "type": "boolean"
+          },
+          "maxWaitingTime": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "soInfos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SoInfoTargetDate"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SingleItem": {
+        "type": "object",
+        "properties": {
+          "requester": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSandBoxMode": {
+            "type": "boolean"
+          },
+          "isResultNotify": {
+            "type": "boolean"
+          },
+          "isRealtime": {
+            "type": "boolean"
+          },
+          "isWaitingDone": {
+            "type": "boolean"
+          },
+          "maxWaitingTime": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SoInfoAccept": {
+        "type": "object",
+        "properties": {
+          "soT": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "soD": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isAccept": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SoInfoBOL": {
+        "type": "object",
+        "properties": {
+          "soT": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "soD": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "bolNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "afcid": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SoInfoClose": {
+        "type": "object",
+        "properties": {
+          "soT": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "soD": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isClose": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SoInfoCommit": {
+        "type": "object",
+        "properties": {
+          "soT": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "soD": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SoInfoLocation": {
+        "type": "object",
+        "properties": {
+          "soT": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "soD": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "location": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isCommit": {
+            "type": "boolean",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SoInfoTargetDate": {
+        "type": "object",
+        "properties": {
+          "soT": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "soD": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "targetDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SyncPickTaskLine": {
+        "type": "object",
+        "properties": {
+          "requester": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSandBoxMode": {
+            "type": "boolean"
+          },
+          "isResultNotify": {
+            "type": "boolean"
+          },
+          "isRealtime": {
+            "type": "boolean"
+          },
+          "isWaitingDone": {
+            "type": "boolean"
+          },
+          "maxWaitingTime": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "soT_IDs": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SyncSalesOrder": {
+        "type": "object",
+        "properties": {
+          "requester": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSandBoxMode": {
+            "type": "boolean"
+          },
+          "isResultNotify": {
+            "type": "boolean"
+          },
+          "isRealtime": {
+            "type": "boolean"
+          },
+          "isWaitingDone": {
+            "type": "boolean"
+          },
+          "maxWaitingTime": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "customers": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          },
+          "fromDateTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "isLastModified": {
+            "type": "boolean",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

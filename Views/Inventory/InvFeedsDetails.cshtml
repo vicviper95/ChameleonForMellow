@@ -1,0 +1,1903 @@
+﻿@*@page "/Inventory/edit/{id}"*@
+@model Chameleon.DTOs.Inventory.GetInventoryFeedsItemDTO
+
+@{
+    ViewData["Title"] = "Inventory Feeds Item Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<br />
+<h3 class="text-info offset-2">Update Inventory Feeding Item Qty.</h3>
+<br />
+
+
+<div class="border container" style="padding:30px; font-size:11px">
+    <form method="post" asp-controller="Inventory" asp-action="inv_feeds_qty_edit">
+        <input type="hidden" asp-for="InvFeedsReportItemId" />
+        <input type="hidden" asp-for="ItemNoId" />
+        <input type="hidden" asp-for="ItemName" />
+        <input type="hidden" asp-for="ItemStatus" />
+        <input type="hidden" asp-for="AppliedFeedingRuleNoBanc" />
+        <input type="hidden" asp-for="AppliedFeedingRuleTypeBanc" />
+        <input type="hidden" asp-for="AppliedFeedingRuleNoMainsl" />
+        <input type="hidden" asp-for="AppliedFeedingRuleTypeMainsl" />
+        <input type="hidden" asp-for="AppliedFeedingRuleNoZinusTracy" />
+        <input type="hidden" asp-for="AppliedFeedingRuleTypeZinusTracy" />
+        <input type="hidden" asp-for="AppliedFeedingRuleNoZinusChs" />
+        <input type="hidden" asp-for="AppliedFeedingRuleTypeZinusChs" />
+        @*<input type="hidden" asp-for="QtyAvailBanc" />
+        <input type="hidden" asp-for="QtyOnHandBanc" />
+        <input type="hidden" asp-for="QtyAvailMainsl" />
+        <input type="hidden" asp-for="QtyOnHandMainsl" />*@
+        <input type="hidden" asp-for="BancFeedable" />
+        <input type="hidden" asp-for="MainslFeedable" />
+        <input type="hidden" asp-for="AmazonCustSKU" />
+        <input type="hidden" asp-for="AmazonFeedable" />
+        <input type="hidden" asp-for="AmazonDupCount" />
+        <input type="hidden" asp-for="WayfairCustSKU" />
+        <input type="hidden" asp-for="WayfairFeedable" />
+        <input type="hidden" asp-for="WayfairDupCount" />
+        <input type="hidden" asp-for="WalmartCustSKU" />
+        <input type="hidden" asp-for="WalmartFeedable" />
+        <input type="hidden" asp-for="WalmartDupCount" />
+        <input type="hidden" asp-for="OverstockCustSKU" />
+        <input type="hidden" asp-for="OverstockFeedable" />
+        <input type="hidden" asp-for="OverstockDupCount" />
+        <input type="hidden" asp-for="eBayCustSKU" />
+        <input type="hidden" asp-for="eBayFeedable" />
+        <input type="hidden" asp-for="eBayDupCount" />
+        <input type="hidden" asp-for="BPMWebCustSKU" />
+        <input type="hidden" asp-for="BPMFeedable" />
+        <input type="hidden" asp-for="BPMDupCount" />
+        <input type="hidden" asp-for="MellowWebCustSKU" />
+        <input type="hidden" asp-for="MellowFeedable" />
+        <input type="hidden" asp-for="MellowDupCount" />
+        <input type="hidden" asp-for="HouzzCustSKU" />
+        <input type="hidden" asp-for="HouzzFeedable" />
+        <input type="hidden" asp-for="HouzzDupCount" />
+        <input type="hidden" asp-for="HomeDepotCustSKU" />
+        <input type="hidden" asp-for="HomeDepotFeedable" />
+        <input type="hidden" asp-for="HomeDepotDupCount" />
+        <input type="hidden" asp-for="TargetCustSKU" />
+        <input type="hidden" asp-for="TargetFeedable" />
+        <input type="hidden" asp-for="TargetDupCount" />
+
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+        </div>
+        
+        <table style="width:100%">
+            <tbody>
+                <tr>
+                    <td style="width:35%">
+                        <table style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th colspan="2" style="border-radius: 10px; background-color:skyblue;">SKU Info.</th>
+                                </tr>
+                            </thead>
+                            <tbody style="border: 1px solid CornflowerBlue;border-radius: 10px;">
+                                <tr>
+                                    <td><label asp-for="ItemName">&nbsp;SKU</label></td>
+                                    <td>
+                                        <input asp-for="ItemName" class="form-control" disabled />
+                                        <span asp-validation-for="ItemName" class="text-danger"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="ItemStatus">&nbsp;Item Status</label></td>
+                                    <td>
+                                        <input asp-for="ItemStatus" class="form-control" disabled />
+                                        <span asp-validation-for="ItemStatus" class="text-danger"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="AppliedFeedingRuleTypeBanc">&nbsp;Applied Feeding Rule(BANC):</label></td>
+                                    <td>
+                                        <input asp-for="AppliedFeedingRuleTypeBanc" class="form-control" disabled />
+                                        <span asp-validation-for="AppliedFeedingRuleTypeBanc" class="text-danger"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="AppliedFeedingRuleTypeBasc">&nbsp;Applied Feeding Rule(BASC):</label></td>
+                                    <td>
+                                        <input asp-for="AppliedFeedingRuleTypeBasc" class="form-control" disabled />
+                                        <span asp-validation-for="AppliedFeedingRuleTypeBasc" class="text-danger"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="AppliedFeedingRuleTypeMainsl">&nbsp;Applied Feeding Rule(MainSL):</label></td>
+                                    <td>
+                                        <input asp-for="AppliedFeedingRuleTypeMainsl" class="form-control" disabled />
+                                        <span asp-validation-for="AppliedFeedingRuleTypeMainsl" class="text-danger"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="AppliedFeedingRuleTypeZinusTracy">&nbsp;Applied Feeding Rule(ZINUS-Tracy):</label></td>
+                                    <td>
+                                        <input asp-for="AppliedFeedingRuleTypeZinusTracy" class="form-control" disabled />
+                                        <span asp-validation-for="AppliedFeedingRuleTypeZinusTracy" class="text-danger"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="AppliedFeedingRuleTypeZinusChs">&nbsp;Applied Feeding Rule(ZINUS-Chs):</label></td>
+                                    <td>
+                                        <input asp-for="AppliedFeedingRuleTypeZinusChs" class="form-control" disabled />
+                                        <span asp-validation-for="AppliedFeedingRuleTypeZinusChs" class="text-danger"></span>
+                                    </td>
+                                </tr>@* 
+                                <tr>
+                                    <td><label asp-for="AppliedFeedingRuleTypeMainsl">&nbsp;Applied Feeding Rule(SW-CAFT):</label></td>
+                                    <td>
+                                        <input asp-for="AppliedFeedingRuleTypeSWCAFT" class="form-control" disabled />
+                                        <span asp-validation-for="AppliedFeedingRuleTypeSWCAFT" class="text-danger"></span>
+                                    </td>
+                                </tr> *@
+                            </tbody>
+                        </table>
+
+                        @*    <div class="card">
+                        <div class="card-header">SKU Info.</div>
+                        <div class="card-body">
+
+                        <div class=" form-group row">
+                        <div class="col-sm-2">
+                        <label asp-for="ItemName">SKU</label>
+                        </div>
+                        <div class="col-sm-3">
+                        <input asp-for="ItemName" class="form-control" disabled />
+                        <span asp-validation-for="ItemName" class="text-danger"></span>
+                        </div>
+                        </div>
+
+                        <div class=" form-group row">
+                        <div class="col-sm-2">
+                        <label asp-for="ItemStatus">Item Status</label>
+                        </div>
+                        <div class="col-sm-2">
+                        <input asp-for="ItemStatus" class="form-control" disabled />
+                        <span asp-validation-for="ItemStatus" class="text-danger"></span>
+                        </div>
+                        </div>
+
+                        <div class=" form-group row">
+                        <div class="col-sm-2">
+                        <label asp-for="AppliedFeedingRuleTypeBanc">Applied Feeding Rule(BANC):</label>
+                        </div>
+                        <div class="col-sm-2">
+                        <input asp-for="AppliedFeedingRuleTypeBanc" class="form-control" disabled />
+                        <span asp-validation-for="AppliedFeedingRuleTypeBanc" class="text-danger"></span>
+                        </div>
+                        </div>
+
+                        <div class=" form-group row">
+                        <div class="col-sm-2">
+                        <label asp-for="AppliedFeedingRuleTypeBasc">Applied Feeding Rule(BASC):</label>
+                        </div>
+                        <div class="col-sm-2">
+                        <input asp-for="AppliedFeedingRuleTypeBasc" class="form-control" disabled />
+                        <span asp-validation-for="AppliedFeedingRuleTypeBasc" class="text-danger"></span>
+                        </div>
+                        </div>
+
+                        <div class=" form-group row">
+                        <div class="col-sm-2">
+                        <label asp-for="AppliedFeedingRuleTypeMainsl">Applied Feeding Rule(MainSL):</label>
+                        </div>
+                        <div class="col-sm-2">
+                        <input asp-for="AppliedFeedingRuleTypeMainsl" class="form-control" disabled />
+                        <span asp-validation-for="AppliedFeedingRuleTypeMainsl" class="text-danger"></span>
+                        </div>
+                        </div>
+
+                        <div class=" form-group row">
+                        <div class="col-sm-2">
+                        <label asp-for="AppliedFeedingRuleTypeMainsl">Applied Feeding Rule(SW-CAFT):</label>
+                        </div>
+                        <div class="col-sm-2">
+                        <input asp-for="AppliedFeedingRuleTypeSWCAFT" class="form-control" disabled />
+                        <span asp-validation-for="AppliedFeedingRuleTypeSWCAFT" class="text-danger"></span>
+                        </div>
+                        </div>
+
+
+                        </div>
+                        </div>*@
+                        <br />
+                    </td>
+                    <td style="width:65%">
+                        <table style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th colspan="4" style="border-radius: 10px; background-color:skyblue;">Quantity Info.</th>
+                                </tr>
+                            </thead>
+                            <tbody style="border: 1px solid CornflowerBlue;border-radius: 10px;">
+                                <tr>
+                                    <td colspan="4" style="border-radius: 10px; background-color:skyblue;">&nbsp;BANC</td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="QtyOnHandBanc">&nbsp;Quantity On Hand</label></td>
+                                    <td>
+                                        <input asp-for="QtyOnHandBanc" class="form-control" type="text" id="QtyOnHandBanc" disabled />
+                                        <span asp-validation-for="QtyOnHandBanc" class="text-danger"></span>
+                                    </td>
+                                    <td><label asp-for="QtyAvailBanc">&nbsp;Quantity Available</label></td>
+                                    <td>
+                                        <input asp-for="QtyAvailBanc" class="form-control" type="text" id="qtyAvailBanc" name="qtyAvailBanc" disabled />
+                                        <span asp-validation-for="QtyAvailBanc" class="text-danger"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" style="border-radius: 10px; background-color:skyblue;">&nbsp;BASC</td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="QtyOnHandBasc">&nbsp;Quantity On Hand</label></td>
+                                    <td>
+                                        <input asp-for="QtyOnHandBasc" class="form-control" type="text" id="QtyOnHandBasc" disabled />
+                                        <span asp-validation-for="QtyOnHandBasc" class="text-danger"></span>
+                                    </td>
+                                    <td><label asp-for="QtyAvailBasc">&nbsp;Quantity Available</label></td>
+                                    <td>
+                                        <input asp-for="QtyAvailBasc" class="form-control" type="text" id="qtyAvailBasc" name="qtyAvailBasc" disabled />
+                                        <span asp-validation-for="QtyAvailBasc" class="text-danger"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" style="border-radius: 10px; background-color:skyblue;">&nbsp;MainSL</td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="QtyOnHandMainsl">&nbsp;Quantity On Hand</label></td>
+                                    <td>
+                                        <input asp-for="QtyOnHandMainsl" class="form-control" type="text" id="QtyOnHandMainsl" disabled />
+                                        <span asp-validation-for="QtyOnHandMainsl" class="text-danger"></span>
+                                    </td>
+                                    <td><label asp-for="QtyAvailMainsl">&nbsp;Quantity Available</label></td>
+                                    <td>
+                                        <input asp-for="QtyAvailMainsl" class="form-control" type="text" id="qtyAvailMainsl" name="qtyAvailMainsl" disabled />
+                                        <span asp-validation-for="QtyAvailMainsl" class="text-danger"></span>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td colspan="4" style="border-radius: 10px; background-color:skyblue;">&nbsp;ZINUS-Tracy</td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="QtyOnHandZinusTracy">&nbsp;Quantity On Hand</label></td>
+                                    <td>
+                                        <input asp-for="QtyOnHandZinusTracy" class="form-control" type="text" id="QtyOnHandZinusTracy" disabled />
+                                        <span asp-validation-for="QtyOnHandZinusTracy" class="text-danger"></span>
+                                    </td>
+                                    <td><label asp-for="QtyAvailZinusTracy">&nbsp;Quantity Available</label></td>
+                                    <td>
+                                        <input asp-for="QtyAvailZinusTracy" class="form-control" type="text" id="qtyAvailZinusTracy" name="qtyAvailZinusTracy" disabled />
+                                        <span asp-validation-for="QtyAvailZinusTracy" class="text-danger"></span>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td colspan="4" style="border-radius: 10px; background-color:skyblue;">&nbsp;ZINUS-Chs</td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="QtyOnHandZinusChs">&nbsp;Quantity On Hand</label></td>
+                                    <td>
+                                        <input asp-for="QtyOnHandZinusChs" class="form-control" type="text" id="QtyOnHandZinusChs" disabled />
+                                        <span asp-validation-for="QtyOnHandZinusChs" class="text-danger"></span>
+                                    </td>
+                                    <td><label asp-for="QtyOnHandZinusChs">&nbsp;Quantity Available</label></td>
+                                    <td>
+                                        <input asp-for="QtyOnHandZinusChs" class="form-control" type="text" id="qtyAvailZinusChs" name="qtyAvailZinusChs" disabled />
+                                        <span asp-validation-for="QtyOnHandZinusChs" class="text-danger"></span>
+                                    </td>
+                                </tr>@* 
+                                <tr>
+                                    <td colspan="4" style="border-radius: 10px; background-color:skyblue;">&nbsp;SW-CAFT</td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="QtyOnHandSWCAFT">&nbsp;Quantity On Hand</label></td>
+                                    <td>
+                                        <input asp-for="QtyOnHandSWCAFT" class="form-control" type="text" id="QtyOnHandSWCAFT" disabled />
+                                        <span asp-validation-for="QtyOnHandSWCAFT" class="text-danger"></span>
+                                    </td>
+                                    <td><label asp-for="QtyAvailSWCAFT">&nbsp;Quantity Available</label></td>
+                                    <td>
+                                        <input asp-for="QtyAvailSWCAFT" class="form-control" type="text" id="qtyAvailSwcaft" name="qtyAvailSwcaft" disabled />
+                                        <span asp-validation-for="QtyAvailSWCAFT" class="text-danger"></span>
+                                    </td>
+                                </tr> *@
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br/><table style="width:100%">
+            <tbody style="border: 1px solid CornflowerBlue;border-radius: 10px;">
+                <tr>
+                    <td style="border-radius: 10px; font-weight: bold;background-color:skyblue;width:50%"><label asp-for="QtyAvailAmzInv">&nbsp;Amazon FC Qty. : </label></td>
+                    <td style="width:50%">
+                        <input asp-for="QtyAvailAmzInv" class="form-control" type="text" disabled />
+                        <span asp-validation-for="QtyAvailAmzInv" class="text-danger"></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table style="width:100%">
+            <thead>
+                <tr>
+                    <th colspan="8" style="border-radius: 10px; background-color:skyblue;">Total Stage PO/Back Order Qty.</th>
+                </tr>
+            </thead>
+            <tbody style="border: 1px solid CornflowerBlue;border-radius: 10px;">
+                <tr>
+                    <td style="width:10%"><label asp-for="totalStagePOQtyBanc">&nbsp;BANC : </label></td>
+                    <td style="width:10%">
+                        <input asp-for="totalStagePOQtyBanc" class="form-control" type="text" id="totalStagePOQtyBanc" name="totalStagePOQtyBanc" disabled />
+                        <span asp-validation-for="totalStagePOQtyBanc" class="text-danger"></span>
+                    </td>
+                    <td style="width:10%"><label asp-for="totalStagePOQtyBasc">&nbsp;BASC : </label></td>
+                    <td style="width:10%">
+                        <input asp-for="totalStagePOQtyBasc" class="form-control" id="totalStagePOQtyBasc" name="totalStagePOQtyBasc"  type="text" disabled />
+                        <span asp-validation-for="totalStagePOQtyBasc" class="text-danger"></span>
+                    </td>
+                    <td style="width:10%"><label asp-for="totalStagePOQtyMainsl">&nbsp;MainSL : </label></td>
+                    <td style="width:10%">
+                        <input asp-for="totalStagePOQtyMainsl" class="form-control" id="totalStagePOQtyMainsl" name="totalStagePOQtyMainsl" type="text" disabled />
+                        <span asp-validation-for="totalStagePOQtyMainsl" class="text-danger"></span>
+                    </td>
+                    <td style="width:10%"><label asp-for="totalStagePOQtyZinusTracy">&nbsp;ZINUS-Tracy : </label></td>
+                    <td style="width:10%">
+                        <input asp-for="totalStagePOQtyZinusTracy" class="form-control" id="totalStagePOQtyZinusTracy" name="totalStagePOQtyZinusTracy" type="text" disabled />
+                        <span asp-validation-for="totalStagePOQtyZinusTracy" class="text-danger"></span>
+                    </td>
+                    <td style="width:10%"><label asp-for="totalStagePOQtyZinusChs">&nbsp;ZINUS-Chs : </label></td>
+                    <td style="width:10%">
+                        <input asp-for="totalStagePOQtyZinusChs" class="form-control" id="totalStagePOQtyZinusChs" name="totalStagePOQtyZinusChs" type="text" disabled />
+                        <span asp-validation-for="totalStagePOQtyZinusChs" class="text-danger"></span>
+                    </td>
+                    @* 
+                    <td style="width:12.5%"><label asp-for="totalStagePOQtySWCAFT">&nbsp;SW-CAFT : </label></td>
+                    <td style="width:12.5%">
+                        <input asp-for="totalStagePOQtySWCAFT" class="form-control" id="totalStagePOQtySWCAFT" name="totalStagePOQtySWCAFT" type="text" disabled />
+                        <span asp-validation-for="totalStagePOQtySWCAFT" class="text-danger"></span>
+                    </td> *@
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        <table style="width:100%">
+            <thead>
+                <tr>
+                    <th colspan="8" style="border-radius: 10px; background-color:skyblue;">Leftover/Saftey Warehouse stock Qty. (w/o StagePO/Back Ordered Qty.)</th>
+                </tr>
+            </thead>
+            <tbody style="border: 1px solid CornflowerBlue;border-radius: 10px;">
+                <tr>
+                    <td style="width:10%">&nbsp;BANC : </td>
+                    <td style="width:10%"><input id="leftoverQtyBanc" name="leftoverQtyBanc" type="text" disabled /></td>
+                    <td style="width:10%">&nbsp;BASC : </td>
+                    <td style="width:10%"><input id="leftoverQtyBasc" name="leftoverQtyBasc" type="text" disabled /></td>
+                    <td style="width:10%">&nbsp;MainSL : </td>
+                    <td style="width:10%"><input id="leftoverQtyMainsl" name="leftoverQtyMainsl" type="text" disabled /></td>
+                    <td style="width:10%">&nbsp;ZINUS-Tracy : </td>
+                    <td style="width:10%"><input id="leftoverQtyZinusTracy" name="leftoverQtyZinusTracy" type="text" disabled /></td>
+                    <td style="width:10%">&nbsp;ZINUS-Chs : </td>
+                    <td style="width:10%"><input id="leftoverQtyZinusChs" name="leftoverQtyZinusChs" type="text" disabled /></td>
+                @*     <td style="width:12.5%">&nbsp;SW-CAFT : </td>
+                    <td style="width:12.5%"><input id="leftoverQtySwcaft" name="leftoverQtySwcaft" type="text" disabled /></td> *@
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        @*
+        <div class="card">
+
+        <div class="card-header">BANC</div>
+        <div class="card-body">
+        <div class=" form-group row">
+        <div class="col-sm-2">
+        <label asp-for="QtyOnHandBanc">Quantity On Hand</label>
+        </div>
+        <div class="col-sm-2">
+        <input asp-for="QtyOnHandBanc" class="form-control" id="doNotFeedFromBancQtyOnHand" disabled />
+        <span asp-validation-for="QtyOnHandBanc" class="text-danger"></span>
+        </div>
+        <div class="col-sm-2">
+        <label asp-for="QtyAvailBanc">Quantity Available</label>
+        </div>
+        <div class="col-sm-2">
+        <input asp-for="QtyAvailBanc" class="form-control" id="doNotFeedFromBancQtyAvail" disabled />
+        <span asp-validation-for="QtyAvailBanc" class="text-danger"></span>
+        </div>
+        </div>
+        </div>
+
+
+        <div class="card-header">BASC</div>
+        <div class="card-body">
+        <div class=" form-group row">
+        <div class="col-sm-2">
+        <label asp-for="QtyOnHandBasc">Quantity On Hand</label>
+        </div>
+        <div class="col-sm-2">
+        <input asp-for="QtyOnHandBasc" class="form-control" id="doNotFeedFromBascQtyOnHand" disabled />
+        <span asp-validation-for="QtyOnHandBasc" class="text-danger"></span>
+        </div>
+        <div class="col-sm-2">
+        <label asp-for="QtyAvailBasc">Quantity Available</label>
+        </div>
+        <div class="col-sm-2">
+        <input asp-for="QtyAvailBasc" class="form-control" id="doNotFeedFromBascQtyAvail" disabled />
+        <span asp-validation-for="QtyAvailBasc" class="text-danger"></span>
+        </div>
+        </div>
+        </div>
+
+        <div class="card-header">Mainsl</div>
+        <div class="card-body">
+        <div class="form-group row">
+        <div class="col-sm-2">
+        <label asp-for="QtyOnHandMainsl">Quantity On Hand</label>
+        </div>
+        <div class="col-sm-2">
+        <input asp-for="QtyOnHandMainsl" class="form-control" id="doNotFeedFromMainslQtyOnHand" disabled />
+        <span asp-validation-for="QtyOnHandMainsl" class="text-danger"></span>
+        </div>
+        <div class="col-sm-2">
+        <label asp-for="QtyAvailMainsl">Quantity Available</label>
+        </div>
+        <div class="col-sm-2">
+        <input asp-for="QtyAvailMainsl" class="form-control" id="doNotFeedFromMainslQtyAvail" disabled />
+        <span asp-validation-for="QtyAvailMainsl" class="text-danger"></span>
+        </div>
+        </div>
+        </div>
+
+
+        <div class="card-header">SW-CAFT</div>
+        <div class="card-body">
+        <div class="form-group row">
+        <div class="col-sm-2">
+        <label asp-for="QtyOnHandSWCAFT">Quantity On Hand</label>
+        </div>
+        <div class="col-sm-2">
+        <input asp-for="QtyOnHandSWCAFT" class="form-control" id="doNotFeedFromMainslQtyOnHand" disabled />
+        <span asp-validation-for="QtyOnHandSWCAFT" class="text-danger"></span>
+        </div>
+        <div class="col-sm-2">
+        <label asp-for="QtyAvailSWCAFT">Quantity Available</label>
+        </div>
+        <div class="col-sm-2">
+        <input asp-for="QtyAvailSWCAFT" class="form-control" id="doNotFeedFromMainslQtyAvail" disabled />
+        <span asp-validation-for="QtyAvailSWCAFT" class="text-danger"></span>
+        </div>
+        </div>
+        </div>
+        </div>*@
+
+        <br />
+
+        <table style="width:100%">
+            <thead>
+                <tr>
+                    <th colspan="2" style="border-radius: 10px; background-color:skyblue;">Feeding Detail</th>
+                </tr>
+            </thead>
+            <tbody style="border: 1px solid CornflowerBlue;border-radius: 10px;">
+                <tr>
+                    <td style="border-radius: 10px; background-color:skyblue; width:50%">&nbsp;Amazon</td>
+                    <td style="border-radius: 10px; background-color:skyblue; width:50%">&nbsp;Overstock</td>
+                </tr>
+                <tr>
+                    <td>
+
+                        <table style="width:100%">
+                            <tbody style="border: 1px solid CornflowerBlue;border-radius: 10px;">
+                                <tr>
+                                    <td style="width:20%"><label asp-for="AmazonQtyBanc">&nbsp;From BANC(Qty.) :</label></td>
+                                    <td style="width:25%">
+                                        <input asp-for="AmazonQtyBanc" class="form-control" type="text" id="amazonQtyBanc" name="amazonQtyBanc" disabled="@(!Model.AmazonFeedable || Model.AmazonQtyBanc == 0)" />
+                                        <span asp-validation-for="AmazonQtyBanc" class="text-danger"></span>
+                                    </td>
+                                    <td style="width:5%"></td>
+                                    <td style="width:15%"><label asp-for="AmazonBancPercentage">&nbsp;Ratio(%) :</label></td>
+                                    <td style="width:25%">
+                                        <input asp-for="AmazonBancPercentage" class="form-control" type="text" name="amazonBancPercentage" id="amazonBancPercentage" disabled />
+                                        <span asp-validation-for="AmazonBancPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td style="width:10%"></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="AmazonQtyBasc">&nbsp;From BASC(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="AmazonQtyBasc" class="form-control" type="text" id="amazonQtyBasc" name="amazonQtyBasc" disabled="@(!Model.AmazonFeedable || Model.AmazonQtyBasc == 0)" />
+                                        <span asp-validation-for="AmazonQtyBasc" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="AmazonBascPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="AmazonBascPercentage" class="form-control" type="text" name="amazonBascPercentage" id="amazonBascPercentage" disabled />
+                                        <span asp-validation-for="AmazonBascPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="AmazonQtyMainsl">&nbsp;From MainSL(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="AmazonQtyMainsl" class="form-control" type="text" id="amazonQtyMainsl" name="amazonQtyMainsl" disabled="@(!Model.AmazonFeedable || Model.AmazonQtyMainsl == 0)" />
+                                        <span asp-validation-for="AmazonQtyMainsl" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="AmazonMainslPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="AmazonMainslPercentage" class="form-control" type="text" name="amazonMainslPercentage" id="amazonMainslPercentage" disabled />
+                                        <span asp-validation-for="AmazonMainslPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td style="width:10%"></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="AmazonQtyZinusTracy">&nbsp;From ZINUS Tracy(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="AmazonQtyZinusTracy" class="form-control" type="text" id="amazonQtyZinusTracy" name="amazonQtyZinusTracy" disabled="@(!Model.AmazonFeedable || Model.AmazonQtyZinusTracy == 0)" />
+                                        <span asp-validation-for="AmazonQtyZinusTracy" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="AmazonZinusTracyPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="AmazonZinusTracyPercentage" class="form-control" type="text" name="amazonZinusTracyPercentage" id="amazonZinusTracyPercentage" disabled />
+                                        <span asp-validation-for="AmazonZinusTracyPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td style="width:10%"></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="AmazonQtyZinusChs">&nbsp;From ZINUS Chs(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="AmazonQtyZinusChs" class="form-control" type="text" id="amazonQtyZinusChs" name="amazonQtyZinusChs" disabled="@(!Model.AmazonFeedable || Model.AmazonQtyZinusChs == 0)" />
+                                        <span asp-validation-for="AmazonQtyZinusChs" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="AmazonZinusChsPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="AmazonZinusChsPercentage" class="form-control" type="text" name="amazonZinusChsPercentage" id="amazonZinusChsPercentage" disabled />
+                                        <span asp-validation-for="AmazonZinusChsPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td style="width:10%"></td>
+                                </tr>
+                               @*  <tr>
+                                    <td><label asp-for="AmazonQtySWCAFT">&nbsp;From SWCAFT(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="AmazonQtySWCAFT" class="form-control" type="text" id="amazonQtySwcaft" name="amazonQtySwcaft" disabled="@(!Model.AmazonFeedable || Model.AmazonQtySWCAFT == 0)" />
+                                        <span asp-validation-for="AmazonQtySWCAFT" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="AmazonSWCAFTPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="AmazonSWCAFTPercentage" class="form-control" type="text" name="amazonSwcaftPercentage" id="amazonSwcaftPercentage" disabled />
+                                        <span asp-validation-for="AmazonSWCAFTPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td style="width:10%"></td>
+                                </tr> *@
+                            </tbody>
+                        </table>
+
+                    </td>
+                    <td>
+
+                        <table style="width:100%">
+                            <tbody style="border: 1px solid CornflowerBlue;border-radius: 10px;">
+                                <tr>
+                                    <td style="width:20%"><label asp-for="OverstockQtyBanc">&nbsp;From BANC(Qty.) :</label></td>
+                                    <td style="width:25%">
+                                        <input asp-for="OverstockQtyBanc" class="form-control" type="text" id="overstockQtyBanc" name="overstockQtyBanc" disabled="@(!Model.OverstockFeedable || Model.OverstockQtyBanc == 0)" />
+                                        <span asp-validation-for="OverstockQtyBanc" class="text-danger"></span>
+                                    </td>
+                                    <td style="width:5%"></td>
+                                    <td style="width:15%"><label asp-for="OverstockBancPercentage">Ratio(%) :</label></td>
+                                    <td style="width:25%">
+                                        <input asp-for="OverstockBancPercentage" class="form-control" type="text" name="overstockBancPercentage" id="overstockBancPercentage" disabled />
+                                        <span asp-validation-for="OverstockBancPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td style="width:10%"></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="OverstockQtyBasc">&nbsp;From BASC(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="OverstockQtyBasc" class="form-control" type="text" id="overstockQtyBasc" name="overstockQtyBasc" disabled="@(!Model.OverstockFeedable || Model.OverstockQtyBasc == 0)" />
+                                        <span asp-validation-for="OverstockQtyBasc" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="OverstockBascPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="OverstockBascPercentage" class="form-control" type="text" name="overstockBascPercentage" id="overstockBascPercentage" disabled />
+                                        <span asp-validation-for="OverstockBascPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="OverstockQtyMainsl">&nbsp;From MainSL(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="OverstockQtyMainsl" class="form-control" type="text" id="overstockQtyMainsl" name="overstockQtyMainsl" disabled="@(!Model.OverstockFeedable || Model.OverstockQtyMainsl == 0)" />
+                                        <span asp-validation-for="OverstockQtyMainsl" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="OverstockMainslPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="OverstockMainslPercentage" class="form-control" type="text" name="overstockMainslPercentage" id="overstockMainslPercentage" disabled />
+                                        <span asp-validation-for="OverstockMainslPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="OverstockQtyZinusTracy">&nbsp;From ZINUS Tracy(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="OverstockQtyZinusTracy" class="form-control" type="text" id="overstockQtyZinusTracy" name="overstockQtyZinusTracy" disabled="@(!Model.OverstockFeedable || Model.OverstockQtyZinusTracy == 0)" />
+                                        <span asp-validation-for="OverstockQtyZinusTracy" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="OverstockZinusTracyPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="OverstockZinusTracyPercentage" class="form-control" type="text" name="overstockZinusTracyPercentage" id="overstockZinusTracyPercentage" disabled />
+                                        <span asp-validation-for="OverstockZinusTracyPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="OverstockQtyZinusChs">&nbsp;From ZINUS Chs(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="OverstockQtyZinusChs" class="form-control" type="text" id="overstockQtyZinusChs" name="overstockQtyZinusChs" disabled="@(!Model.OverstockFeedable || Model.OverstockQtyZinusChs == 0)" />
+                                        <span asp-validation-for="OverstockQtyZinusChs" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="OverstockZinusChsPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="OverstockZinusChsPercentage" class="form-control" type="text" name="overstockZinusChsPercentage" id="overstockZinusChsPercentage" disabled />
+                                        <span asp-validation-for="OverstockZinusChsPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>@* 
+                                <tr>
+                                    <td><label asp-for="OverstockQtySWCAFT">&nbsp;From SWCAFT(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="OverstockQtySWCAFT" class="form-control" type="text" id="overstockQtySwcaft" name="overstockQtySwcaft" disabled="@(!Model.OverstockFeedable || Model.OverstockQtySWCAFT == 0)" />
+                                        <span asp-validation-for="OverstockQtySWCAFT" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="OverstockSWCAFTPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="OverstockSWCAFTPercentage" class="form-control" type="text" name="overstockSwcaftPercentage" id="overstockSwcaftPercentage" disabled />
+                                        <span asp-validation-for="OverstockSWCAFTPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr> *@
+                            </tbody>
+                        </table>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-radius: 10px; background-color:skyblue; width:50%">&nbsp;Walmart</td>
+                    <td style="border-radius: 10px; background-color:skyblue; width:50%">&nbsp;Wayfair</td>
+                </tr>
+                <tr>
+                    <td>
+
+                        <table style="width:100%">
+                            <tbody style="border: 1px solid CornflowerBlue;border-radius: 10px;">
+                                <tr>
+                                    <td style="width:20%"><label asp-for="WalmartQtyBanc">&nbsp;From BANC(Qty.) :</label></td>
+                                    <td style="width:25%">
+                                        <input asp-for="WalmartQtyBanc" class="form-control" id="walmartQtyBanc" name="walmartQtyBanc" type="text" disabled="@(!Model.WalmartFeedable || Model.WalmartQtyBanc == 0)" />
+                                        <span asp-validation-for="WalmartQtyBanc" class="text-danger"></span>
+                                    </td>
+                                    <td style="width:5%"></td>
+                                    <td style="width:15%"><label asp-for="WalmartBancPercentage">Ratio(%) :</label></td>
+                                    <td style="width:25%">
+                                        <input asp-for="WalmartBancPercentage" class="form-control" type="text" name="walmartBancPercentage" id="walmartBancPercentage" disabled />
+                                        <span asp-validation-for="WalmartBancPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td style="width:10%"></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="WalmartQtyBasc">&nbsp;From BASC(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="WalmartQtyBasc" class="form-control" type="text" id="walmartQtyBasc" name="walmartQtyBasc" disabled="@(!Model.WalmartFeedable || Model.WalmartQtyBasc == 0)" />
+                                        <span asp-validation-for="WalmartQtyBasc" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="WalmartBascPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="WalmartBascPercentage" class="form-control" type="text" name="walmartBascPercentage" id="walmartBascPercentage" disabled />
+                                        <span asp-validation-for="WalmartBascPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="WalmartQtyMainsl">&nbsp;From MainSL(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="WalmartQtyMainsl" class="form-control" type="text" id="walmartQtyMainsl" name="walmartQtyMainsl" disabled="@(!Model.WalmartFeedable || Model.WalmartQtyMainsl == 0)" />
+                                        <span asp-validation-for="WalmartQtyMainsl" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="WalmartMainslPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="WalmartMainslPercentage" class="form-control" type="text" name="walmartMainslPercentage" id="walmartMainslPercentage" disabled />
+                                        <span asp-validation-for="WalmartMainslPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="WalmartQtyZinusTracy">&nbsp;From ZINUS Tracy(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="WalmartQtyZinusTracy" class="form-control" type="text" id="walmartQtyZinusTracy" name="walmartQtyZinusTracy" disabled="@(!Model.WalmartFeedable || Model.WalmartQtyZinusTracy == 0)" />
+                                        <span asp-validation-for="WalmartQtyZinusTracy" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="WalmartZinusTracyPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="WalmartZinusTracyPercentage" class="form-control" type="text" name="walmartZinusTracyPercentage" id="walmartZinusTracyPercentage" disabled />
+                                        <span asp-validation-for="WalmartZinusTracyPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="WalmartQtyZinusChs">&nbsp;From ZINUS Chs(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="WalmartQtyZinusChs" class="form-control" type="text" id="walmartQtyZinusChs" name="walmartQtyZinusChs" disabled="@(!Model.WalmartFeedable || Model.WalmartQtyZinusChs == 0)" />
+                                        <span asp-validation-for="WalmartQtyZinusChs" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="WalmartZinusChsPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="WalmartZinusChsPercentage" class="form-control" type="text" name="walmartZinusChsPercentage" id="walmartZinusChsPercentage" disabled />
+                                        <span asp-validation-for="WalmartZinusChsPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                               @*  <tr>
+                                    <td><label asp-for="WalmartQtySWCAFT">&nbsp;From SWCAFT(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="WalmartQtySWCAFT" class="form-control" type="text" id="walmartQtySwcaft" name="walmartQtySwcaft" disabled="@(!Model.WalmartFeedable || Model.WalmartQtySWCAFT == 0)" />
+                                        <span asp-validation-for="WalmartQtySWCAFT" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="WalmartSWCAFTPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="WalmartSWCAFTPercentage" class="form-control" type="text" name="walmartSwcaftPercentage" id="walmartSwcaftPercentage" disabled />
+                                        <span asp-validation-for="WalmartSWCAFTPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr> *@
+                            </tbody>
+                        </table>
+
+                    </td>
+                    <td>
+
+                        <table style="width:100%">
+                            <tbody style="border: 1px solid CornflowerBlue;border-radius: 10px;">
+                                <tr>
+                                    <td style="width:20%"><label asp-for="WayfairQtyBanc">&nbsp;From BANC(Qty.) :</label></td>
+                                    <td style="width:25%">
+                                        <input asp-for="WayfairQtyBanc" class="form-control" type="text" id="wayfairQtyBanc" name="wayfairQtyBanc" disabled="@(!Model.WayfairFeedable || Model.WayfairQtyBanc == 0)" />
+                                        <span asp-validation-for="WayfairQtyBanc" class="text-danger"></span>
+                                    </td>
+                                    <td style="width:5%"></td>
+                                    <td style="width:15%"><label asp-for="WayfairBancPercentage">Ratio(%) :</label></td>
+                                    <td style="width:25%">
+                                        <input asp-for="WayfairBancPercentage" class="form-control" type="text" name="wayfairBancPercentage" id="wayfairBancPercentage" disabled />
+                                        <span asp-validation-for="WayfairBancPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td style="width:10%"></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="WayfairQtyBasc">&nbsp;From BASC(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="WayfairQtyBasc" class="form-control" type="text" id="wayfairQtyBasc" name="wayfairQtyBasc" disabled="@(!Model.WayfairFeedable || Model.WayfairQtyBasc == 0)" />
+                                        <span asp-validation-for="WayfairQtyBasc" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="WayfairBascPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="WayfairBascPercentage" class="form-control" type="text" name="wayfairBascPercentage" id="wayfairBascPercentage" disabled />
+                                        <span asp-validation-for="WayfairBascPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="WayfairQtyMainsl">&nbsp;From MainSL(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="WayfairQtyMainsl" class="form-control" type="text" id="wayfairQtyMainsl" name="wayfairQtyMainsl" disabled="@(!Model.WayfairFeedable || Model.WayfairQtyMainsl == 0)" />
+                                        <span asp-validation-for="WayfairQtyMainsl" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="WayfairMainslPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="WayfairMainslPercentage" class="form-control" type="text" name="wayfairMainslPercentage" id="wayfairMainslPercentage" disabled />
+                                        <span asp-validation-for="WayfairMainslPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="WayfairQtyZinusTracy">&nbsp;From ZINUS Tracy(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="WayfairQtyZinusTracy" class="form-control" type="text" id="wayfairQtyZinusTracy" name="wayfairQtyZinusTracy" disabled="@(!Model.WayfairFeedable || Model.WayfairQtyZinusTracy == 0)" />
+                                        <span asp-validation-for="WayfairQtyZinusTracy" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="WayfairZinusTracyPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="WayfairZinusTracyPercentage" class="form-control" type="text" name="wayfairZinusTracyPercentage" id="wayfairZinusTracyPercentage" disabled />
+                                        <span asp-validation-for="WayfairZinusTracyPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="WayfairQtyZinusChs">&nbsp;From ZINUS Chs(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="WayfairQtyZinusChs" class="form-control" type="text" id="wayfairQtyZinusChs" name="wayfairQtyZinusChs" disabled="@(!Model.WayfairFeedable || Model.WayfairQtyZinusChs == 0)" />
+                                        <span asp-validation-for="WayfairQtyZinusChs" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="WayfairZinusChsPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="WayfairZinusChsPercentage" class="form-control" type="text" name="wayfairZinusChsPercentage" id="wayfairZinusChsPercentage" disabled />
+                                        <span asp-validation-for="WayfairZinusChsPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                @* <tr>
+                                    <td><label asp-for="WayfairQtySWCAFT">&nbsp;From SWCAFT(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="WayfairQtySWCAFT" class="form-control" type="text" id="wayfairQtySwcaft" name="wayfairQtySwcaft" disabled="@(!Model.WayfairFeedable || Model.WayfairQtySWCAFT == 0)" />
+                                        <span asp-validation-for="WayfairQtySWCAFT" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="WayfairSWCAFTPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="WayfairSWCAFTPercentage" class="form-control" type="text" name="wayfairSwcaftPercentage" id="wayfairSwcaftPercentage" disabled />
+                                        <span asp-validation-for="WayfairSWCAFTPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr> *@
+                            </tbody>
+                        </table>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-radius: 10px; background-color:skyblue; width:50%">&nbsp;Home Depot</td>
+                    <td style="border-radius: 10px; background-color:skyblue; width:50%">&nbsp;Target</td>
+                </tr>
+                <tr>
+                    <td>
+
+
+                        <table style="width:100%">
+                            <tbody style="border: 1px solid CornflowerBlue;border-radius: 10px;">
+                                <tr>
+                                    <td style="width:20%"><label asp-for="HomeDepotQtyBanc">&nbsp;From BANC(Qty.) :</label></td>
+                                    <td style="width:25%">
+                                        <input asp-for="HomeDepotQtyBanc" class="form-control" type="text" id="homeDepotQtyBanc" name="homeDepotQtyBanc" disabled="@(!Model.HomeDepotFeedable || Model.HomeDepotQtyBanc == 0)" />
+                                        <span asp-validation-for="HomeDepotQtyBanc" class="text-danger"></span>
+                                    </td>
+                                    <td style="width:5%"></td>
+                                    <td style="width:15%"><label asp-for="HomeDepotBancPercentage">Ratio(%) :</label></td>
+                                    <td style="width:25%">
+                                        <input asp-for="HomeDepotBancPercentage" class="form-control" type="text" name="homeDepotBancPercentage" id="homeDepotBancPercentage" disabled />
+                                        <span asp-validation-for="HomeDepotBancPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td style="width:10%"></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="HomeDepotQtyBasc">&nbsp;From BASC(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="HomeDepotQtyBasc" class="form-control" type="text" id="homeDepotQtyBasc" name="homeDepotQtyBasc" disabled="@(!Model.HomeDepotFeedable || Model.HomeDepotQtyBasc == 0)" />
+                                        <span asp-validation-for="HomeDepotQtyBasc" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="HomeDepotBascPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="HomeDepotBascPercentage" class="form-control" type="text" name="homeDepotBascPercentage" id="homeDepotBascPercentage" disabled />
+                                        <span asp-validation-for="HomeDepotBascPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="HomeDepotQtyMainsl">&nbsp;From MainSL(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="HomeDepotQtyMainsl" class="form-control" type="text" id="homeDepotQtyMainsl" name="homeDepotQtyMainsl" disabled="@(!Model.HomeDepotFeedable || Model.HomeDepotQtyMainsl == 0)" />
+                                        <span asp-validation-for="HomeDepotQtyMainsl" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="HomeDepotMainslPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="HomeDepotMainslPercentage" class="form-control" type="text" name="homeDepotMainslPercentage" id="homeDepotMainslPercentage" disabled />
+                                        <span asp-validation-for="HomeDepotMainslPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td><label asp-for="HomeDepotQtyZinusTracy">&nbsp;From ZINUS Tracy(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="HomeDepotQtyZinusTracy" class="form-control" type="text" id="homeDepotQtyZinusTracy" name="homeDepotQtyZinusTracy" disabled="@(!Model.HomeDepotFeedable || Model.HomeDepotQtyZinusTracy == 0)" />
+                                        <span asp-validation-for="HomeDepotQtyZinusTracy" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="HomeDepotZinusTracyPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="HomeDepotZinusTracyPercentage" class="form-control" type="text" name="homeDepotZinusTracyPercentage" id="homeDepotZinusTracyPercentage" disabled />
+                                        <span asp-validation-for="HomeDepotZinusTracyPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="HomeDepotQtyZinusChs">&nbsp;From ZINUS Chs(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="HomeDepotQtyZinusChs" class="form-control" type="text" id="homeDepotQtyZinusChs" name="homeDepotQtyZinusChs" disabled="@(!Model.HomeDepotFeedable || Model.HomeDepotQtyZinusChs == 0)" />
+                                        <span asp-validation-for="HomeDepotQtyZinusChs" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="HomeDepotZinusChsPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="HomeDepotZinusChsPercentage" class="form-control" type="text" name="homeDepotZinusChsPercentage" id="homeDepotZinusChsPercentage" disabled />
+                                        <span asp-validation-for="HomeDepotZinusChsPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                @* 
+                                <tr>
+                                    <td><label asp-for="HomeDepotQtySWCAFT">&nbsp;From SWCAFT(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="HomeDepotQtySWCAFT" class="form-control" type="text" id="homeDepotQtySwcaft" name="homeDepotQtySwcaft" disabled="@(!Model.HomeDepotFeedable || Model.HomeDepotQtySWCAFT == 0)" />
+                                        <span asp-validation-for="HomeDepotQtySWCAFT" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="HomeDepotSWCAFTPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="HomeDepotSWCAFTPercentage" class="form-control" type="text" name="homeDepotSwcaftPercentage" id="homeDepotSwcaftPercentage" disabled />
+                                        <span asp-validation-for="HomeDepotSWCAFTPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr> *@
+                            </tbody>
+                        </table>
+
+                    </td>
+                    <td>
+
+
+                        <table style="width:100%">
+                            <tbody style="border: 1px solid CornflowerBlue;border-radius: 10px;">
+                                <tr>
+                                    <td style="width:20%"><label asp-for="TargetQtyBanc">&nbsp;From BANC(Qty.) :</label></td>
+                                    <td style="width:25%">
+                                        <input asp-for="TargetQtyBanc" class="form-control" type="text" id="targetQtyBanc"  name="targetQtyBanc" disabled="@(!Model.TargetFeedable || Model.TargetQtyBanc == 0)" />
+                                        <span asp-validation-for="TargetQtyBanc" class="text-danger"></span>
+                                    </td>
+                                    <td style="width:5%"></td>
+                                    <td style="width:15%"><label asp-for="TargetBancPercentage">Ratio(%) :</label></td>
+                                    <td style="width:25%">
+                                        <input asp-for="TargetBancPercentage" class="form-control" type="text" name="targetBancPercentage" id="targetBancPercentage" disabled />
+                                        <span asp-validation-for="TargetBancPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td style="width:10%"></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="TargetQtyBasc">&nbsp;From BASC(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="TargetQtyBasc" class="form-control" type="text" id="targetQtyBasc" name="targetQtyBasc" disabled="@(!Model.TargetFeedable || Model.TargetQtyBasc == 0)" />
+                                        <span asp-validation-for="TargetQtyBasc" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="TargetBascPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="TargetBascPercentage" class="form-control" type="text" name="targetBascPercentage" id="targetBascPercentage" disabled />
+                                        <span asp-validation-for="TargetBascPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="TargetQtyMainsl">&nbsp;From MainSL(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="TargetQtyMainsl" class="form-control" type="text" id="targetQtyMainsl" name="targetQtyMainsl" disabled="@(!Model.TargetFeedable || Model.TargetQtyMainsl == 0)" />
+                                        <span asp-validation-for="TargetQtyMainsl" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="TargetMainslPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="TargetMainslPercentage" class="form-control" type="text" name="targetMainslPercentage" id="targetMainslPercentage" disabled />
+                                        <span asp-validation-for="TargetMainslPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="TargetQtyZinusTracy">&nbsp;From ZINUS Tracy(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="TargetQtyZinusTracy" class="form-control" type="text" id="targetQtyZinusTracy" name="targetQtyZinusTracy" disabled="@(!Model.TargetFeedable || Model.TargetQtyZinusTracy == 0)" />
+                                        <span asp-validation-for="TargetQtyZinusTracy" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="TargetZinusTracyPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="TargetZinusTracyPercentage" class="form-control" type="text" name="targetZinusTracyPercentage" id="targetZinusTracyPercentage" disabled />
+                                        <span asp-validation-for="TargetZinusTracyPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="TargetQtyZinusChs">&nbsp;From ZINUS Chs(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="TargetQtyZinusChs" class="form-control" type="text" id="targetQtyZinusChs" name="targetQtyZinusChs" disabled="@(!Model.TargetFeedable || Model.TargetQtyZinusChs == 0)" />
+                                        <span asp-validation-for="TargetQtyZinusChs" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="TargetZinusChsPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="TargetZinusChsPercentage" class="form-control" type="text" name="targetZinusChsPercentage" id="targetZinusChsPercentage" disabled />
+                                        <span asp-validation-for="TargetZinusChsPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                @* <tr>
+                                    <td><label asp-for="TargetQtySWCAFT">&nbsp;From SWCAFT(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="TargetQtySWCAFT" class="form-control" type="text" id="targetQtySwcaft" name="targetQtySwcaft" disabled="@(!Model.TargetFeedable || Model.TargetQtySWCAFT == 0)" />
+                                        <span asp-validation-for="TargetQtySWCAFT" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="TargetSWCAFTPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="TargetSWCAFTPercentage" class="form-control" type="text" name="targetSwcaftPercentage" id="targetSwcaftPercentage" disabled />
+                                        <span asp-validation-for="TargetSWCAFTPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr> *@
+                            </tbody>
+                        </table>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-radius: 10px; background-color:skyblue; width:50%">&nbsp;BPM Website</td>
+                    <td style="border-radius: 10px; background-color:skyblue; width:50%">&nbsp;Mellow Website</td>
+                </tr>
+                <tr>
+                    <td>
+
+                        <table style="width:100%">
+                            <tbody style="border: 1px solid CornflowerBlue;border-radius: 10px;">
+                                <tr>
+                                    <td style="width:20%"><label asp-for="BPMWebQtyBanc">&nbsp;From BANC(Qty.) :</label></td>
+                                    <td style="width:25%">
+                                        <input asp-for="BPMWebQtyBanc" class="form-control" type="text" id="bpmWebQtyBanc" name="bpmWebQtyBanc" disabled="@(!Model.BPMFeedable || Model.BPMWebQtyBanc == 0)" />
+                                        <span asp-validation-for="BPMWebQtyBanc" class="text-danger"></span>
+                                    </td>
+                                    <td style="width:5%"></td>
+                                    <td style="width:15%"><label asp-for="BPMWebBancPercentage">Ratio(%) :</label></td>
+                                    <td style="width:25%">
+                                        <input asp-for="BPMWebBancPercentage" class="form-control" type="text" name="bpmWebBancPercentage" id="bpmWebBancPercentage" disabled />
+                                        <span asp-validation-for="BPMWebBancPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td style="width:10%"></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="BPMWebQtyBasc">&nbsp;From BASC(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="BPMWebQtyBasc" class="form-control" type="text" id="bpmWebQtyBasc" name="bpmWebQtyBasc" disabled="@(!Model.BPMFeedable || Model.BPMWebQtyBasc == 0)" />
+                                        <span asp-validation-for="BPMWebQtyBasc" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="BPMWebBascPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="BPMWebBascPercentage" class="form-control" type="text" name="bpmWebBascPercentage" id="bpmWebBascPercentage" disabled />
+                                        <span asp-validation-for="BPMWebBascPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="BPMWebQtyMainsl">&nbsp;From MainSL(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="BPMWebQtyMainsl" class="form-control" type="text" id="bpmWebQtyMainsl" name="bpmWebQtyMainsl" disabled="@(!Model.BPMFeedable || Model.BPMWebQtyMainsl == 0)" />
+                                        <span asp-validation-for="BPMWebQtyMainsl" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="BPMWebMainslPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="BPMWebMainslPercentage" class="form-control" type="text" name="bpmWebMainslPercentage" id="bpmWebMainslPercentage" disabled />
+                                        <span asp-validation-for="BPMWebMainslPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="BPMWebQtyZinusTracy">&nbsp;From ZINUS Tracy(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="BPMWebQtyZinusTracy" class="form-control" type="text" id="bpmWebQtyZinusTracy" name="bpmWebQtyZinusTracy" disabled="@(!Model.BPMFeedable || Model.BPMWebQtyZinusTracy == 0)" />
+                                        <span asp-validation-for="BPMWebQtyZinusTracy" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="BPMWebZinusTracyPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="BPMWebZinusTracyPercentage" class="form-control" type="text" name="bpmWebZinusTracyPercentage" id="bpmWebZinusTracyPercentage" disabled />
+                                        <span asp-validation-for="BPMWebZinusTracyPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="BPMWebQtyZinusChs">&nbsp;From ZINUS Chs(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="BPMWebQtyZinusChs" class="form-control" type="text" id="bpmWebQtyZinusChs" name="bpmWebQtyZinusChs" disabled="@(!Model.BPMFeedable || Model.BPMWebQtyZinusChs == 0)" />
+                                        <span asp-validation-for="BPMWebQtyZinusChs" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="BPMWebZinusChsPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="BPMWebZinusChsPercentage" class="form-control" type="text" name="bpmWebZinusChsPercentage" id="bpmWebZinusChsPercentage" disabled />
+                                        <span asp-validation-for="BPMWebZinusChsPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                @* 
+                                <tr>
+                                    <td><label asp-for="BPMWebQtySWCAFT">&nbsp;From SWCAFT(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="BPMWebQtySWCAFT" class="form-control" type="text" id="bpmWebQtySwcaft" name="bpmWebQtySwcaft" disabled="@(!Model.BPMFeedable || Model.BPMWebQtySWCAFT == 0)" />
+                                        <span asp-validation-for="BPMWebQtySWCAFT" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="BPMWebSWCAFTPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="BPMWebSWCAFTPercentage" class="form-control" type="text" name="bpmWebSwcaftPercentage" id="bpmWebSwcaftPercentage" disabled />
+                                        <span asp-validation-for="BPMWebSWCAFTPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr> *@
+                            </tbody>
+                        </table>
+
+                    </td>
+                    <td>
+
+                        <table style="width:100%">
+                            <tbody style="border: 1px solid CornflowerBlue;border-radius: 10px;">
+                                <tr>
+                                    <td style="width:20%"><label asp-for="MellowWebQtyBanc">&nbsp;From BANC(Qty.) :</label></td>
+                                    <td style="width:25%">
+                                        <input asp-for="MellowWebQtyBanc" class="form-control" type="text" id="mellowWebQtyBanc" name="mellowWebQtyBanc" disabled="@(!Model.MellowFeedable || Model.MellowWebQtyBanc == 0)" />
+                                        <span asp-validation-for="MellowWebQtyBanc" class="text-danger"></span>
+                                    </td>
+                                    <td style="width:5%"></td>
+                                    <td style="width:15%"><label asp-for="MellowWebBancPercentage">Ratio(%) :</label></td>
+                                    <td style="width:25%">
+                                        <input asp-for="MellowWebBancPercentage" class="form-control" type="text" name="mellowWebBancPercentage" id="mellowWebBancPercentage" disabled />
+                                        <span asp-validation-for="MellowWebBancPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td style="width:10%"></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="MellowWebQtyBasc">&nbsp;From BASC(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="MellowWebQtyBasc" class="form-control" type="text" id="mellowWebQtyBasc" name="mellowWebQtyBasc" disabled="@(!Model.MellowFeedable || Model.MellowWebQtyBasc == 0)" />
+                                        <span asp-validation-for="MellowWebQtyBasc" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="MellowWebBascPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="MellowWebBascPercentage" class="form-control" type="text" name="mellowWebBascPercentage" id="mellowWebBascPercentage" disabled />
+                                        <span asp-validation-for="MellowWebBascPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="MellowWebQtyMainsl">&nbsp;From MainSL(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="MellowWebQtyMainsl" class="form-control" type="text" id="mellowWebQtyMainsl" name="mellowWebQtyMainsl" disabled="@(!Model.MellowFeedable || Model.MellowWebQtyMainsl == 0)" />
+                                        <span asp-validation-for="MellowWebQtyMainsl" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="MellowWebMainslPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="MellowWebMainslPercentage" class="form-control" type="text" name="mellowWebMainslPercentage" id="mellowWebMainslPercentage" disabled />
+                                        <span asp-validation-for="MellowWebMainslPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="MellowWebQtyZinusTracy">&nbsp;From ZINUS Tracy(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="MellowWebQtyZinusTracy" class="form-control" type="text" id="mellowWebQtyZinusTracy" name="mellowWebQtyZinusTracy" disabled="@(!Model.MellowFeedable || Model.MellowWebQtyZinusTracy == 0)" />
+                                        <span asp-validation-for="MellowWebQtyZinusTracy" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="MellowWebZinusTracyPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="MellowWebZinusTracyPercentage" class="form-control" type="text" name="mellowWebZinusTracyPercentage" id="mellowWebZinusTracyPercentage" disabled />
+                                        <span asp-validation-for="MellowWebZinusTracyPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="MellowWebQtyZinusChs">&nbsp;From ZinusChs(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="MellowWebQtyZinusChs" class="form-control" type="text" id="mellowWebQtyZinusChs" name="mellowWebQtyZinusChs" disabled="@(!Model.MellowFeedable || Model.MellowWebQtyZinusChs == 0)" />
+                                        <span asp-validation-for="MellowWebQtyZinusChs" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="MellowWebZinusChsPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="MellowWebZinusChsPercentage" class="form-control" type="text" name="mellowWebZinusChsPercentage" id="mellowWebZinusChsPercentage" disabled />
+                                        <span asp-validation-for="MellowWebZinusChsPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>@* 
+                                <tr>
+                                    <td><label asp-for="MellowWebQtySWCAFT">&nbsp;From SWCAFT(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="MellowWebQtySWCAFT" class="form-control" type="text" id="mellowWebQtySwcaft" name="mellowWebQtySwcaft" disabled="@(!Model.MellowFeedable || Model.MellowWebQtySWCAFT == 0)" />
+                                        <span asp-validation-for="MellowWebQtySWCAFT" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="MellowWebSWCAFTPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="MellowWebSWCAFTPercentage" class="form-control" type="text" name="mellowWebSwcaftPercentage" id="mellowWebSwcaftPercentage" disabled />
+                                        <span asp-validation-for="MellowWebSWCAFTPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr> *@
+                            </tbody>
+                        </table>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-radius: 10px; background-color:skyblue; width:50%">&nbsp;eBay</td>
+                    <td style="border-radius: 10px; background-color:skyblue; width:50%">@*&nbsp;Houzz*@</td>
+                </tr>
+                <tr>
+                    <td>
+
+
+                        <table style="width:100%">
+                            <tbody style="border: 1px solid CornflowerBlue;border-radius: 10px;">
+                                <tr>
+                                    <td style="width:20%"><label asp-for="eBayQtyBanc">&nbsp;From BANC(Qty.) :</label></td>
+                                    <td style="width:25%">
+                                        <input asp-for="eBayQtyBanc" class="form-control" type="text" id="eBayQtyBanc" name="eBayQtyBanc" disabled="@(!Model.eBayFeedable || Model.eBayQtyBanc == 0)" />
+                                        <span asp-validation-for="eBayQtyBanc" class="text-danger"></span>
+                                    </td>
+                                    <td style="width:5%"></td>
+                                    <td style="width:15%"><label asp-for="eBayBancPercentage">Ratio(%) :</label></td>
+                                    <td style="width:25%">
+                                        <input asp-for="eBayBancPercentage" class="form-control" type="text" name="eBayBancPercentage" id="eBayBancPercentage" disabled />
+                                        <span asp-validation-for="eBayBancPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td style="width:10%"></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="eBayQtyBasc">&nbsp;From BASC(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="eBayQtyBasc" class="form-control" type="text" id="eBayQtyBasc" name="eBayQtyBasc" disabled="@(!Model.eBayFeedable || Model.eBayQtyBasc == 0)" />
+                                        <span asp-validation-for="eBayQtyBasc" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="eBayBascPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="eBayBascPercentage" class="form-control" type="text" name="eBayBascPercentage" id="eBayBascPercentage" disabled />
+                                        <span asp-validation-for="eBayBascPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="eBayQtyMainsl">&nbsp;From MainSL(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="eBayQtyMainsl" class="form-control" type="text" id="eBayQtyMainsl" name="eBayQtyMainsl" disabled="@(!Model.eBayFeedable || Model.eBayQtyMainsl == 0)" />
+                                        <span asp-validation-for="eBayQtyMainsl" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="eBayMainslPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="eBayMainslPercentage" class="form-control" type="text" name="eBayMainslPercentage" id="eBayMainslPercentage" disabled />
+                                        <span asp-validation-for="eBayMainslPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="eBayQtyZinusTracy">&nbsp;From ZINUS Tracy(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="eBayQtyZinusTracy" class="form-control" type="text" id="eBayQtyZinusTracy" name="eBayQtyZinusTracy" disabled="@(!Model.eBayFeedable || Model.eBayQtyZinusTracy == 0)" />
+                                        <span asp-validation-for="eBayQtyZinusTracy" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="eBayZinusTracyPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="eBayZinusTracyPercentage" class="form-control" type="text" name="eBayZinusTracyPercentage" id="eBayZinusTracyPercentage" disabled />
+                                        <span asp-validation-for="eBayZinusTracyPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="eBayQtyZinusChs">&nbsp;From ZINUS Chs(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="eBayQtyZinusChs" class="form-control" type="text" id="eBayQtyZinusChs" name="eBayQtyZinusChs" disabled="@(!Model.eBayFeedable || Model.eBayQtyZinusChs == 0)" />
+                                        <span asp-validation-for="eBayQtyZinusChs" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="eBayZinusChsPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="eBayZinusChsPercentage" class="form-control" type="text" name="eBayZinusChsPercentage" id="eBayZinusChsPercentage" disabled />
+                                        <span asp-validation-for="eBayZinusChsPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>@* 
+                                <tr>
+                                    <td><label asp-for="eBayQtySWCAFT">&nbsp;From SWCAFT(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="eBayQtySWCAFT" class="form-control" type="text" id="eBayQtySwcaft" name="eBayQtySwcaft" disabled="@(!Model.eBayFeedable || Model.eBayQtySWCAFT == 0)" />
+                                        <span asp-validation-for="eBayQtySWCAFT" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="eBaySWCAFTPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="eBaySWCAFTPercentage" class="form-control" type="text" name="eBaySwcaftPercentage" id="eBaySwcaftPercentage" disabled />
+                                        <span asp-validation-for="eBaySWCAFTPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr> *@
+                            </tbody>
+                        </table>
+
+                    </td>
+                    <td>
+
+
+                        <table style="width:100%">
+                            <tbody style="border: 1px solid CornflowerBlue;border-radius: 10px;">
+                                @*<tr>
+                                    <td style="width:20%"><label asp-for="HouzzQtyBanc">&nbsp;From BANC(Qty.) :</label></td>
+                                    <td style="width:25%">
+                                        <input asp-for="HouzzQtyBanc" class="form-control" type="text" id="houzzQtyBanc" name="houzzQtyBanc" disabled="@(!Model.HouzzFeedable || Model.HouzzQtyBanc == 0)" />
+                                        <span asp-validation-for="HouzzQtyBanc" class="text-danger"></span>
+                                    </td>
+                                    <td style="width:5%"></td>
+                                    <td style="width:15%"><label asp-for="HouzzBancPercentage">Ratio(%) :</label></td>
+                                    <td style="width:25%">
+                                        <input asp-for="HouzzBancPercentage" class="form-control" type="text" name="houzzBancPercentage" id="houzzBancPercentage" disabled />
+                                        <span asp-validation-for="HouzzBancPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td style="width:10%"></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="HouzzQtyBasc">&nbsp;From BASC(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="HouzzQtyBasc" class="form-control" type="text" id="houzzQtyBasc" name="houzzQtyBasc" disabled="@(!Model.HouzzFeedable || Model.HouzzQtyBasc == 0)" />
+                                        <span asp-validation-for="HouzzQtyBasc" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="HouzzBascPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="HouzzBascPercentage" class="form-control" type="text" name="houzzBascPercentage" id="houzzBascPercentage" disabled />
+                                        <span asp-validation-for="HouzzBascPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="HouzzQtyMainsl">&nbsp;From MainSL(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="HouzzQtyMainsl" class="form-control" type="text" id="houzzQtyMainsl" name="houzzQtyMainsl" disabled="@(!Model.HouzzFeedable || Model.HouzzQtyMainsl == 0)" />
+                                        <span asp-validation-for="HouzzQtyMainsl" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="HouzzMainslPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="HouzzMainslPercentage" class="form-control" type="text" name="houzzMainslPercentage" id="houzzMainslPercentage" disabled />
+                                        <span asp-validation-for="HouzzMainslPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><label asp-for="HouzzQtySWCAFT">&nbsp;From SWCAFT(Qty.) :</label></td>
+                                    <td>
+                                        <input asp-for="HouzzQtySWCAFT" class="form-control" type="text" id="houzzQtySwcaft" name="houzzQtySwcaft" disabled="@(!Model.HouzzFeedable || Model.HouzzQtySWCAFT == 0)" />
+                                        <span asp-validation-for="HouzzQtySWCAFT" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                    <td><label asp-for="HouzzSWCAFTPercentage">Ratio(%) :</label></td>
+                                    <td>
+                                        <input asp-for="HouzzSWCAFTPercentage" class="form-control" type="text" name="houzzSwcaftPercentage" id="houzzSwcaftPercentage" disabled />
+                                        <span asp-validation-for="HouzzSWCAFTPercentage" class="text-danger"></span>
+                                    </td>
+                                    <td></td>
+                                </tr>*@
+                            </tbody>
+                        </table>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+
+
+
+        @*<div class="card">
+        <div class="card-header"><b>Feeding Detail</b></div>
+        <div class="card-header">Amazon</div>
+        <div class="card-body">
+        <div class="form-group row">
+
+        <div class="col-sm-2">
+        <label asp-for="AmazonQtyBanc">From BANC(Qty.) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="AmazonQtyBanc" class="form-control" id="amazonQtyBanc" disabled="@(!Model.AmazonFeedable || Model.AmazonQtyBanc == 0)"/>
+        <span asp-validation-for="AmazonQtyBanc" class="text-danger"></span>
+        </div>
+
+        <div class="col-sm-1">
+        <label asp-for="AmazonBancPercentage">Ratio(%) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="AmazonBancPercentage" class="form-control" name="amzRatio" id="amazonRatio" disabled />
+        <span asp-validation-for="AmazonBancPercentage" class="text-danger"></span>
+        </div>
+
+        </div>
+
+        <div class="form-group row">
+
+        <div class="col-sm-2">
+        <label asp-for="AmazonQtyBasc">From BASC(Qty.) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="AmazonQtyBasc" class="form-control" id="amazonQtyBasc" disabled="@(!Model.AmazonFeedable || Model.AmazonQtyBasc == 0)"/>
+        <span asp-validation-for="AmazonQtyBasc" class="text-danger"></span>
+        </div>
+
+        <div class="col-sm-1">
+        <label asp-for="AmazonBascPercentage">Ratio(%) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="AmazonBascPercentage" class="form-control" name="amzRatio" id="amazonRatio" disabled />
+        <span asp-validation-for="AmazonBascPercentage" class="text-danger"></span>
+        </div>
+
+        </div>
+
+
+        <div class="form-group row">
+
+        <div class="col-sm-2">
+        <label asp-for="AmazonQtyMainsl">From MainSL(Qty.) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="AmazonQtyMainsl" class="form-control" id="amazonQtyMainsl" disabled="@(!Model.AmazonFeedable || Model.AmazonQtyMainsl == 0)"/>
+        <span asp-validation-for="AmazonQtyMainsl" class="text-danger"></span>
+        </div>
+
+        <div class="col-sm-1">
+        <label asp-for="AmazonMainslPercentage">Ratio(%) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="AmazonMainslPercentage" class="form-control" name="amzRatio" id="amazonRatio" disabled />
+        <span asp-validation-for="AmazonMainslPercentage" class="text-danger"></span>
+        </div>
+
+        </div>
+
+        <div class="form-group row">
+
+        <div class="col-sm-2">
+        <label asp-for="AmazonQtySWCAFT">From SWCAFT(Qty.) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="AmazonQtySWCAFT" class="form-control" id="amazonQtyMainsl" disabled="@(!Model.AmazonFeedable || Model.AmazonQtySWCAFT == 0)"/>
+        <span asp-validation-for="AmazonQtySWCAFT" class="text-danger"></span>
+        </div>
+
+        <div class="col-sm-1">
+        <label asp-for="AmazonSWCAFTPercentage">Ratio(%) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="AmazonSWCAFTPercentage" class="form-control" name="amzRatio" id="amazonRatio" disabled />
+        <span asp-validation-for="AmazonSWCAFTPercentage" class="text-danger"></span>
+        </div>
+
+        </div>
+
+
+        </div>
+
+        <div class="card-header">Overstock</div>
+        <div class="card-body">
+        <div class="form-group row">
+
+        <div class="col-sm-2">
+        <label asp-for="OverstockQtyBanc">From BANC(Qty.) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="OverstockQtyBanc" class="form-control" id="overstockQtyBanc" disabled ="@(!Model.OverstockFeedable || Model.OverstockQtyBanc == 0)" />
+        <span asp-validation-for="OverstockQtyBanc" class="text-danger"></span>
+        </div>
+
+        <div class="col-sm-1">
+        <label asp-for="OverstockBancPercentage">Ratio(%) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="OverstockBancPercentage" class="form-control" name="overstockBancPercentage" id="overstockBancPercentage" disabled />
+        <span asp-validation-for="OverstockBancPercentage" class="text-danger"></span>
+        </div>
+
+        </div>
+
+        <div class="form-group row">
+
+        <div class="col-sm-2">
+        <label asp-for="OverstockQtyBasc">From BASC(Qty.) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="OverstockQtyBasc" class="form-control" id="overstockQtyBasc" disabled="@(!Model.OverstockFeedable || Model.OverstockQtyBasc == 0)"/>
+        <span asp-validation-for="OverstockQtyBasc" class="text-danger"></span>
+        </div>
+
+        <div class="col-sm-1">
+        <label asp-for="OverstockBascPercentage">Ratio(%) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="OverstockBascPercentage" class="form-control" name="ostRatio" id="overstockRatio" disabled />
+        <span asp-validation-for="OverstockBascPercentage" class="text-danger"></span>
+        </div>
+
+        </div>
+
+
+
+        <div class="form-group row">
+
+        <div class="col-sm-2">
+        <label asp-for="OverstockQtyMainsl">From MainSL(Qty.) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="OverstockQtyMainsl" class="form-control" id="overstockQtyMainsl" disabled ="@(!Model.OverstockFeedable || Model.OverstockQtyMainsl == 0)"/>
+        <span asp-validation-for="OverstockQtyMainsl" class="text-danger"></span>
+        </div>
+
+        <div class="col-sm-1">
+        <label asp-for="OverstockMainslPercentage">Ratio(%) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="OverstockMainslPercentage" class="form-control" name="overstockMainslPercentage" id="overstockMainslPercentage" disabled />
+        <span asp-validation-for="OverstockMainslPercentage" class="text-danger"></span>
+        </div>
+
+        </div>
+
+
+        <div class="form-group row">
+
+        <div class="col-sm-2">
+        <label asp-for="AmazonQtySWCAFT">From SWCAFT(Qty.) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="AmazonQtySWCAFT" class="form-control" id="amazonQtyMainsl" disabled="@(!Model.AmazonFeedable || Model.AmazonQtySWCAFT == 0)"/>
+        <span asp-validation-for="AmazonQtySWCAFT" class="text-danger"></span>
+        </div>
+
+        <div class="col-sm-1">
+        <label asp-for="AmazonSWCAFTPercentage">Ratio(%) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="AmazonSWCAFTPercentage" class="form-control" name="amzRatio" id="amazonRatio" disabled />
+        <span asp-validation-for="AmazonSWCAFTPercentage" class="text-danger"></span>
+        </div>
+
+        </div>
+
+        </div>
+
+        <div class="card-header">Walmart</div>
+        <div class="card-body">
+        <div class="form-group row">
+
+        <div class="col-sm-2">
+        <label asp-for="WalmartQtyBanc">From BANC(Qty.) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="WalmartQtyBanc" class="form-control" id="walmartQtyBanc" disabled ="@(!Model.WalmartFeedable || Model.WalmartQtyBanc == 0)"/>
+        <span asp-validation-for="WalmartQtyBanc" class="text-danger"></span>
+        </div>
+
+        <div class="col-sm-1">
+        <label asp-for="WalmartBancPercentage">Ratio(%) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="WalmartBancPercentage" class="form-control" name="walmartBancPercentage" id="walmartBancPercentage" disabled />
+        <span asp-validation-for="WalmartBancPercentage" class="text-danger"></span>
+        </div>
+
+        </div>
+
+        <div class="form-group row">
+
+        <div class="col-sm-2">
+        <label asp-for="WalmartQtyMainsl">From MainSL(Qty.) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="WalmartQtyMainsl" class="form-control" id="walmartQtyMainsl"  disabled ="@(!Model.WalmartFeedable || Model.WalmartQtyMainsl == 0)"/>
+        <span asp-validation-for="WalmartQtyMainsl" class="text-danger"></span>
+        </div>
+
+        <div class="col-sm-1">
+        <label asp-for="WalmartMainslPercentage">Ratio(%) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="WalmartMainslPercentage" class="form-control" name="walmartMainslPercentage" id="walmartMainslPercentage" disabled />
+        <span asp-validation-for="WalmartMainslPercentage" class="text-danger"></span>
+        </div>
+
+        </div>
+        </div>
+
+
+        <div class="card-header">Wayfair</div>
+        <div class="card-body">
+        <div class="form-group row">
+
+        <div class="col-sm-2">
+        <label asp-for="WayfairQtyBanc">From BANC(Qty.) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="WayfairQtyBanc" class="form-control" id="wayfairQtyBanc"  disabled ="@(!Model.WayfairFeedable || Model.WayfairQtyBanc == 0)"/>
+        <span asp-validation-for="WayfairQtyBanc" class="text-danger"></span>
+        </div>
+
+        <div class="col-sm-1">
+        <label asp-for="WayfairBancPercentage">Ratio(%) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="WayfairBancPercentage" class="form-control" name="wayfairBancPercentage" id="wayfairBancPercentage" disabled />
+        <span asp-validation-for="WayfairBancPercentage" class="text-danger"></span>
+        </div>
+
+        </div>
+
+        <div class="form-group row">
+
+        <div class="col-sm-2">
+        <label asp-for="WayfairQtyMainsl">From MainSL(Qty.) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="WayfairQtyMainsl" class="form-control" id="wayfairQtyMainsl"  disabled ="@(!Model.WayfairFeedable || Model.WayfairQtyMainsl == 0)"/>
+        <span asp-validation-for="WayfairQtyMainsl" class="text-danger"></span>
+        </div>
+
+        <div class="col-sm-1">
+        <label asp-for="WayfairMainslPercentage">Ratio(%) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="WayfairMainslPercentage" class="form-control" name="wayfairMainslPercentage" id="wayfairMainslPercentage" disabled />
+        <span asp-validation-for="WayfairMainslPercentage" class="text-danger"></span>
+        </div>
+        </div>
+        </div>
+
+        <div class="card-header">eBay</div>
+        <div class="card-body">
+        <div class="form-group row">
+
+        <div class="col-sm-2">
+        <label asp-for="eBayQtyBanc">From BANC(Qty.) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="eBayQtyBanc" class="form-control" id="ebayQtyBanc" disabled ="@(!Model.eBayFeedable || Model.eBayQtyBanc == 0)" />
+        <span asp-validation-for="eBayQtyBanc" class="text-danger"></span>
+        </div>
+
+        <div class="col-sm-1">
+        <label asp-for="eBayBancPercentage">Ratio(%) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="eBayBancPercentage" class="form-control" name="ebayBancPercentage" id="ebayBancPercentage" disabled />
+        <span asp-validation-for="eBayBancPercentage" class="text-danger"></span>
+        </div>
+
+        </div>
+
+        <div class="form-group row">
+
+        <div class="col-sm-2">
+        <label asp-for="eBayQtyMainsl">From MainSL(Qty.) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="eBayQtyMainsl" class="form-control" id="ebayQtyMainsl" disabled ="@(!Model.eBayFeedable || Model.eBayQtyMainsl == 0)" />
+        <span asp-validation-for="eBayQtyMainsl" class="text-danger"></span>
+        </div>
+
+        <div class="col-sm-1">
+        <label asp-for="eBayMainslPercentage">Ratio(%) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="eBayMainslPercentage" class="form-control" name="ebayMainslPercentage" id="ebayMainslPercentage" disabled />
+        <span asp-validation-for="eBayMainslPercentage" class="text-danger"></span>
+        </div>
+
+        </div>
+        </div>
+
+        <div class="card-header">BPM Web</div>
+        <div class="card-body">
+        <div class="form-group row">
+
+        <div class="col-sm-2">
+        <label asp-for="BPMWebQtyBanc">From BANC(Qty.) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="BPMWebQtyBanc" class="form-control" id="bpmWebQtyBanc" disabled ="@(!Model.BPMFeedable || Model.BPMWebQtyBanc == 0)" />
+        <span asp-validation-for="BPMWebQtyBanc" class="text-danger"></span>
+        </div>
+
+        <div class="col-sm-1">
+        <label asp-for="BPMWebBancPercentage">Ratio(%) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="BPMWebBancPercentage" class="form-control" name="bpmWebBancPercentage" id="bpmWebBancPercentage" disabled />
+        <span asp-validation-for="BPMWebBancPercentage" class="text-danger"></span>
+        </div>
+
+        </div>
+
+        <div class="form-group row">
+
+        <div class="col-sm-2">
+        <label asp-for="BPMWebQtyMainsl">From MainSL(Qty.) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="BPMWebQtyMainsl" class="form-control" id="bpmWebQtyMainsl" disabled ="@(!Model.BPMFeedable || Model.BPMWebQtyMainsl == 0)" />
+        <span asp-validation-for="BPMWebQtyMainsl" class="text-danger"></span>
+        </div>
+
+        <div class="col-sm-1">
+        <label asp-for="BPMWebMainslPercentage">Ratio(%) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="BPMWebMainslPercentage" class="form-control" name="bpmWebMainslPercentage" id="bpmWebMainslPercentage" disabled />
+        <span asp-validation-for="BPMWebMainslPercentage" class="text-danger"></span>
+        </div>
+
+        </div>
+        </div>
+
+        <div class="card-header">Mellow Web</div>
+        <div class="card-body">
+        <div class="form-group row">
+
+        <div class="col-sm-2">
+        <label asp-for="MellowWebQtyBanc">From BANC(Qty.) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="MellowWebQtyBanc" class="form-control" id="mellowWebQtyBanc" disabled ="@(!Model.MellowFeedable || Model.MellowWebQtyBanc == 0)" />
+        <span asp-validation-for="MellowWebQtyBanc" class="text-danger"></span>
+        </div>
+
+        <div class="col-sm-1">
+        <label asp-for="MellowWebBancPercentage">Ratio(%) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="MellowWebBancPercentage" class="form-control" name="mellowWebBancPercentage" id="mellowWebBancPercentage" disabled />
+        <span asp-validation-for="MellowWebBancPercentage" class="text-danger"></span>
+        </div>
+
+        </div>
+
+        <div class="form-group row">
+
+        <div class="col-sm-2">
+        <label asp-for="MellowWebQtyMainsl">From MainSL(Qty.) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="MellowWebQtyMainsl" class="form-control" id="mellowWebQtyMainsl" disabled ="@(!Model.MellowFeedable || Model.MellowWebQtyMainsl == 0)" />
+        <span asp-validation-for="MellowWebQtyMainsl" class="text-danger"></span>
+        </div>
+
+        <div class="col-sm-1">
+        <label asp-for="MellowWebMainslPercentage">Ratio(%) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="MellowWebMainslPercentage" class="form-control" name="mellowWebMainslPercentage" id="mellowWebMainslPercentage" disabled />
+        <span asp-validation-for="MellowWebMainslPercentage" class="text-danger"></span>
+        </div>
+
+        </div>
+        </div>
+
+
+        <div class="card-header">Houzz</div>
+        <div class="card-body">
+        <div class="form-group row">
+
+        <div class="col-sm-2">
+        <label asp-for="HouzzQtyBanc">From BANC(Qty.) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="HouzzQtyBanc" class="form-control" id="houzzQtyBanc"  disabled ="@(!Model.HouzzFeedable || Model.HouzzQtyBanc == 0)"/>
+        <span asp-validation-for="HouzzQtyBanc" class="text-danger"></span>
+        </div>
+
+        <div class="col-sm-1">
+        <label asp-for="HouzzBancPercentage">Ratio(%) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="HouzzBancPercentage" class="form-control" name="houzzBancPercentage" id="houzzBancPercentage" disabled />
+        <span asp-validation-for="HouzzBancPercentage" class="text-danger"></span>
+        </div>
+
+        </div>
+
+        <div class="form-group row">
+
+        <div class="col-sm-2">
+        <label asp-for="HouzzQtyMainsl">From MainSL(Qty.) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="HouzzQtyMainsl" class="form-control" id="houzzQtyMainsl"  disabled ="@(!Model.HouzzFeedable || Model.HouzzQtyMainsl == 0)"/>
+        <span asp-validation-for="HouzzQtyMainsl" class="text-danger"></span>
+        </div>
+
+        <div class="col-sm-1">
+        <label asp-for="HouzzMainslPercentage">Ratio(%) :</label>
+        </div>
+        <div class="col-sm-1">
+        <input asp-for="HouzzMainslPercentage" class="form-control" name="houzzMainslPercentage" id="houzzMainslPercentage" disabled />
+        <span asp-validation-for="HouzzMainslPercentage" class="text-danger"></span>
+        </div>
+        </div>
+        </div>
+
+
+
+
+
+        </div>
+        *@
+
+
+        <table style="width:100%">
+            <tbody>
+                <tr>
+                    <td width="20%"></td>
+                    <td width="20%"></td>
+                    <td width="20%"></td>
+                    <td width="20%">
+                        <button type="submit" value="Update" class="btn btn-primary form-control">Update</button>
+                    </td>
+                    <td width="20%">
+                        <a asp-controller="Inventory" asp-action="InvFeedsIdx" class="btn btn-success form-control">Back to List</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        @*    <div class="form-group row">
+        <div class="col-3 offset-3">
+        <button type="submit" class="btn btn-primary form-control">Update</button>
+        </div>
+        <div class="col-3">
+        <a asp-controller="Inventory" asp-action="InvFeedsIdx" class="btn btn-success form-control">Back to List</a>
+        </div>
+        </div>*@
+
+
+
+    </form>
+</div>
+
+
+@*<div class="modal"><!-- Place at bottom of page --></div>*@
+@section Scripts{
+    <script>
+        function lastmod() { }
+    </script>
+    <script src="~/js/InvFeedsDetails.js">
+    </script>
+}

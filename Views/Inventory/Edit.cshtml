@@ -1,0 +1,76 @@
+﻿@*@page "/Inventory/edit/{id}"*@
+@model Chameleon.DTOs.Inventory.GetInventoryItemDTO
+
+@{
+  ViewData["Title"] = "Edit";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<br />
+<h2 class="text-info">Update Inventory Item Quantity</h2>
+<br />
+
+<div class="border container" style="padding:30px;">
+  <form method="post" asp-controller="Inventory" asp-action="Edit">
+    <input type="hidden" asp-for="InventoryItemId" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group row">
+      <div class="col-3">
+        <label asp-for="ItemName">SKU</label>
+      </div>
+      <div class="col-6">
+        <input asp-for="ItemName" class="form-control" disabled />
+      </div>
+      <span asp-validation-for="ItemName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-3">
+        <label asp-for="LocName">Location</label>
+      </div>
+      <div class="col-6">
+        <input asp-for="LocName" class="form-control" disabled />
+      </div>
+      <span asp-validation-for="LocName" class="text-danger"></span>
+    </div>
+
+
+    <div class="form-group row">
+      <div class="col-3">
+        <label asp-for="QtyOnHand">Quantity on Hand</label>
+      </div>
+      <div class="col-6">
+        <input asp-for="QtyOnHand" class="form-control" />
+      </div>
+      <span asp-validation-for="QtyOnHand" class="text-danger"></span>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-3">
+        <label asp-for="QtyAvail">Quantity Available</label>
+      </div>
+      <div class="col-6">
+        <input asp-for="QtyAvail" class="form-control" />
+      </div>
+      <span asp-validation-for="QtyAvail" class="text-danger"></span>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-3 offset-3">
+        <input type="submit" value="Update" class="btn btn-primary form-control" />
+      </div>
+      <div class="col-3">
+        @*<a asp-page="/Index" class="btn btn-success form-control">Back to List</a>*@
+        <a asp-controller="Inventory" asp-action="Index" class="btn btn-success form-control">Back to List</a>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+
+@section Scripts {
+  @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

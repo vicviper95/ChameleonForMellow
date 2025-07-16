@@ -1,0 +1,158 @@
+﻿@*@page
+  @model Chameleon.DTOs.Inventory.GetInventoryItemDTO*@
+
+@{
+  ViewData["Title"] = "Inventory Feeds";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>&nbsp;&nbsp;@ViewData["Title"] - Overstock</h1>
+<input type="hidden" id="historyDateHidden" name="historyDateHidden" />
+
+<br />
+
+<div>
+  
+  <h7>&nbsp;&nbsp;<p id="invFeedsRepDate"></p></h7>
+  <div style=" padding-top: 10px">
+    &nbsp;&nbsp;Past Feeds: <input type="text" id="historyDatePicker">
+    <button id="reloadOverstockFeedsHistory"> reload</button>
+  </div>
+</div>
+
+<br />
+
+
+@* <div class="invFeed-container">
+  <div class="col-6">
+    <h2 class="text-info">BANC</h2>
+  </div>
+  <div class="col-12 border p-3">
+    <table id="invFeedsOstBanc" class="table tabel-striped table-bordered display compact" style="width: 100%; font-size: 10px;">
+      <thead>
+        <tr style="font-size: 10px;">
+          <th>Supplier Sku</th>
+          <th>Quantity</th>
+          <th>Warehouse Name</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div> *@
+@* <div class="invFeed-container">
+  <div class="col-6">
+    <div>
+      <h2 class="text-info">BASC</h2>
+    </div>
+  </div>
+  <div class="col-12 border p-3">
+    <table id="invFeedsOstBasc" class="table tabel-striped table-bordered display compact" style="width: 100%; font-size: 10px;">
+      <thead>
+        <tr style="font-size: 10px;">
+          <th>Supplier Sku</th>
+          <th>Quantity</th>
+          <th>Warehouse Name</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div> *@
+<div class="invFeed-container">
+  <div class="col-6">
+    <div>
+      <h2 class="text-info">Main SL</h2>
+    </div>
+  </div>
+  <div class="col-12 border p-3">
+    <table id="invFeedsOstMainsl" class="table tabel-striped table-bordered display compact" style="width: 100%; font-size: 10px;">
+      <thead>
+        <tr style="font-size: 10px;">
+          <th>Supplier Sku</th>
+          <th>Quantity</th>
+          <th>Warehouse Name</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>
+@* <div class="invFeed-container">
+  <div class="col-6">
+    <div>
+      <h2 class="text-info">SW-CAFT</h2>
+    </div>
+  </div>
+  <div class="col-12 border p-3">
+    <table id="invFeedsOstSWCAFT" class="table tabel-striped table-bordered display compact" style="width: 100%; font-size: 10px;">
+      <thead>
+        <tr style="font-size: 10px;">
+          <th>Supplier Sku</th>
+          <th>Quantity</th>
+          <th>Warehouse Name</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div> 
+<div class="invFeed-container">
+  <div class="col-6">
+    <div>
+      <h2 class="text-info">PRISM-CAST</h2>
+    </div>
+  </div>
+  <div class="col-12 border p-3">
+    <table id="invFeedsOstPrismCast" class="table tabel-striped table-bordered display compact" style="width: 100%; font-size: 10px;">
+      <thead>
+        <tr style="font-size: 10px;">
+          <th>Supplier Sku</th>
+          <th>Quantity</th>
+          <th>Warehouse Name</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>*@
+<div class="invFeed-container">
+  <div class="col-6">
+    <div>
+      <h2 class="text-info">ZINUS-TRACY</h2>
+    </div>
+  </div>
+  <div class="col-12 border p-3">
+    <table id="invFeedsOstZinusTracy" class="table tabel-striped table-bordered display compact" style="width: 100%; font-size: 10px;">
+      <thead>
+        <tr style="font-size: 10px;">
+          <th>Supplier Sku</th>
+          <th>Quantity</th>
+          <th>Warehouse Name</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>
+<div class="invFeed-container">
+  <div class="col-6">
+    <div>
+      <h2 class="text-info">ZINUS-CHS</h2>
+    </div>
+  </div>
+  <div class="col-12 border p-3">
+    <table id="invFeedsOstZinusChs" class="table tabel-striped table-bordered display compact" style="width: 100%; font-size: 10px;">
+      <thead>
+        <tr style="font-size: 10px;">
+          <th>Supplier Sku</th>
+          <th>Quantity</th>
+          <th>Warehouse Name</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>
+
+<div class="modal"><!-- For waiting indicator--></div>
+@section Scripts {
+  <script>
+    function lastmod() { }
+  </script>
+  <script src="~/js/InvFeedsOverstockLists.js">
+  </script>
+}

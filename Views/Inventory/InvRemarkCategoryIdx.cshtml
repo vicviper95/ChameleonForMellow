@@ -1,0 +1,268 @@
+﻿@model IEnumerable<Chameleon.Models.InvFeedsRmrkCtgry>
+
+@{
+  ViewData["Title"] = "Inventory Remark Grouping Setting";
+}
+<br />
+<div class="invFeed-container">
+
+  <div id="invFeedsRemarksManageTabs">
+    <div id="tabs-nobg" style="font-size:11px;">
+      <ul>
+        <li><a href="#tabs-1">Inventory SKU Remark Grouping</a></li>
+        <li><a href="#tabs-2">Manage Remarks</a></li>
+      </ul>
+      <div id="tabs-1">
+
+        <table width="100%">
+          <tbody>
+            <tr>
+              <td colspan = "4"></td>
+              <td colspan = "1">
+                <div width="30%" style="float:right">
+                  <span class="blue05">3</span>
+                  <button id="updateInvFeedsRemarkGroupBtn" class="btn btn-primary form-control">Update</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="5"></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <div class="col-4" style="float:left">
+                  <span class="blue01">1</span><span class="blink">Start from Here!</span>
+                </div>
+              </td>
+              <td colspan="3">
+                <div class="col-4" style="float:left">
+                  <span class="blue03">2</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+
+                <table id="invFeedsRemarkGroupItems" class="table tabel-striped table-bordered display compact" style="font-size: 10px">
+                  <thead>
+                    <tr>
+                      <th>Remark ID</th>
+                      <th>Remark</th>
+                      <th>Description</th>
+                      <th>Do Not Feed From MainSL</th>
+                      @* <th>Do Not Feed From SWCAFT</th>
+                      <th>Do Not Feed From BANC</th>
+                      <th>Do Not Feed From BASC</th>*@
+                      <th>Do Not Feed To Amazon</th>
+                      <th>Do Not Feed To Overstock</th>
+                      <th>Do Not Feed To Walmart</th>
+                      <th>Do Not Feed To Wayfair</th>
+                      <th>Do Not Feed To Target</th>
+                      <th>Do Not Feed To HomeDepot</th>
+                      <th>Do Not Feed To eBay</th>
+                      @* <th>Do Not Feed To Houzz</th> *@
+                      <th>Do Not Feed To BPM</th>
+                      <th>Do Not Feed To Mellow</th>
+                    </tr>
+                  </thead>
+                </table>
+
+              </td>
+              <td colspan="3">
+
+                <table id="invFeedsSKURemarkGroupItems" class="table tabel-striped table-bordered display compact" style="font-size: 10px">
+                  <thead>
+                    <tr>
+                      <th>Item No. ID</th>
+                      <th>Group List</th>
+                      <th>Is Edited</th>
+                      <th>Group</th>
+                      <th>BPM SKU</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                </table>
+
+              </td>
+            </tr>
+            <tr>
+              <td colspan="5">
+                <span style="float:left"><h5><strong><p id="invFeedsRemarkGroupSelected"></p></strong></h5></span>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="2">
+
+                <table width="100%">
+                  <tr>
+                    <td>
+                      <div class="form-check" style="font-size: 11px;">
+                        <input class="form-check-input" type="checkbox" id="doNotFeedFromMainsl" name="doNotFeedFromMainsl" disabled />
+                        <label class="form-check-label" style="opacity:1.0;" for="doNotFeedFromMainsl">Do Not Feed from MainSL</label><br>
+                      </div>
+                    </td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check" style="font-size: 11px;">
+                        <input class="form-check-input" type="checkbox" id="doNotFeedFromZinusTracy" name="doNotFeedFromZinusTracy" disabled />
+                        <label class="form-check-label" style="opacity:1.0;" for="doNotFeedFromZinusTracy">Do Not Feed From ZINUS-TRACY</label><br>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-check" style="font-size: 11px;">
+                        <input class="form-check-input" type="checkbox" id="doNotFeedFromZinusChs" name="doNotFeedFromZinusChs" disabled />
+                        <label class="form-check-label" style="opacity:1.0;" for="doNotFeedFromZinusChs">Do Not Feed from ZINUS-CHS</label><br>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" style="line-height:10px;">&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td width="50%">
+                      <div class="form-check" style="font-size: 11px;">
+                        <input class="form-check-input" type="checkbox" id="doNotFeedToAmazon" name="doNotFeedToAmazon" disabled />
+                        <label class="form-check-label" style="opacity:1.0;" for="doNotFeedToAmazon">Do Not Feed to Amazon</label><br>
+                      </div>
+                    </td>
+                    <td width="50%">
+                      <div class="form-check" style="font-size: 11px;">
+                        <input class="form-check-input" type="checkbox" id="doNotFeedToOverstock" name="doNotFeedToOverstock" disabled />
+                        <label class="form-check-label" style="opacity:1.0;" for="doNotFeedToOverstock">Do Not Feed to Overstock</label><br>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td width="50%">
+                      <div class="form-check" style="font-size: 11px;">
+                        <input class="form-check-input" type="checkbox" id="doNotFeedToWalmart" name="doNotFeedToWalmart" disabled />
+                        <label class="form-check-label" style="opacity:1.0;" for="doNotFeedToWalmart">Do Not Feed to Walmart</label><br>
+                      </div>
+                    </td>
+                    <td width="50%">
+                      <div class="form-check" style="font-size: 11px;">
+                        <input class="form-check-input" type="checkbox" id="doNotFeedToWayfair" name="doNotFeedToWayfair" disabled />
+                        <label class="form-check-label" style="opacity:1.0;" for="doNotFeedToWayfair">Do Not Feed to Wayfair</label><br>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td width="50%">
+                      <div class="form-check" style="font-size: 11px;">
+                        <input class="form-check-input" type="checkbox" id="doNotFeedToHomeDepot" name="doNotFeedToHomeDepot" disabled />
+                        <label class="form-check-label" style="opacity:1.0;" for="doNotFeedToHomeDepot">Do Not Feed to Home Depot</label><br>
+                      </div>
+                    </td>
+                    <td width="50%">
+                      <div class="form-check" style="font-size: 11px;">
+                        <input class="form-check-input" type="checkbox" id="doNotFeedToTarget" name="doNotFeedToTarget" disabled />
+                        <label class="form-check-label" style="opacity:1.0;" for="doNotFeedToTarget">Do Not Feed to Target</label><br>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td width="50%">
+                      <div class="form-check" style="font-size: 11px;">
+                        <input class="form-check-input" type="checkbox" id="doNotFeedToeBay" name="doNotFeedToeBay" disabled />
+                        <label class="form-check-label" style="opacity:1.0;" for="doNotFeedToeBay">Do Not Feed to eBay</label><br>
+                      </div>
+
+                    </td>
+                    <td width="50%">
+                      <div class="form-check" style="font-size: 11px;">
+                        <input class="form-check-input" type="checkbox" id="doNotFeedToMellow" name="doNotFeedToMellow" disabled />
+                        <label class="form-check-label" style="opacity:1.0;" for="doNotFeedToMellow">Do Not Feed to Mellow Web</label><br>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td width="50%">
+                      <div class="form-check" style="font-size: 11px;">
+                        <input class="form-check-input" type="checkbox" id="doNotFeedToBPM" name="doNotFeedToBPM" disabled />
+                        <label class="form-check-label" style="opacity:1.0;" for="doNotFeedToBPM">Do Not Feed to BPM Web</label><br>
+                      </div>
+                    </td>
+                    <td width="50%"></td>
+                  </tr>
+                </table>
+
+              </td>
+              <td colspan="3">@* 
+                <table id="invFeedsSKURemarkGroupItems" class="table tabel-striped table-bordered display compact" style="font-size: 10px">
+                  <thead>
+                    <tr>
+                      <th>Item No. ID</th>
+                      <th>Group List</th>
+                      <th>Is Edited</th>
+                      <th>Group</th>
+                      <th>BPM SKU</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                </table> *@
+              </td>
+            </tr>
+            @* <tr>
+              <td colspan="2">
+              </td>
+              <td colspan="3">
+                <div class="col-3 offset-9">
+                  <a asp-controller="Inventory" asp-action="InvMainslBancIdx" class="btn btn-success form-control">Back to List</a>
+                </div>
+              </td>
+            </tr> *@
+
+
+          </tbody>
+        </table>
+
+
+      </div>
+      <div id="tabs-2">
+
+
+        <div class="col-6">
+          <div>
+            <h2 class="text-info">Inventory Feeds Remark Category</h2>
+          </div>
+        </div>
+        <div class="col-12 border p-3">
+          <div class="col-2" style="float:right;">
+            <a asp-action="InvRemarkCategoryUpsrt" asp-controller="Inventory" class="btn btn-info form-control text-white col-2">Add</a>
+          </div>
+          <table id="invFeedsRemarks" class="table tabel-striped table-bordered display compact" style="width:100%">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th style="width: 20%;">Activated</th>
+                <th style="width: 80%;">Remark</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+
+      <div class="col-3 offset-9">
+        <a asp-controller="Inventory" asp-action="InvMainslBancIdx" class="btn btn-success form-control">Back to List</a>
+      </div>
+      <br />
+      <br />
+      <br />
+      <br />
+
+    </div>
+  </div>
+</div>
+
+<div class="modal"><!-- For waiting indicator--></div>
+
+@section Scripts {
+  <script>
+    function lastmod() { }
+  </script>
+  <script src="~/js/InvFeedsRemarkCatList.js">
+  </script>
+}

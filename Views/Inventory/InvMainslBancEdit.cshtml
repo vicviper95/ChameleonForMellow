@@ -1,0 +1,549 @@
+﻿@*@page "/Inventory/edit/{id}"*@
+@model Chameleon.DTOs.Inventory.GetMainslBancInvItemDetailDTO
+
+@{
+  ViewData["Title"] = "Edit";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<br />
+<h3 class="text-info offset-2">&nbsp;&nbsp;Update Warehouses Inventory Item Feeding Rules & Quantity</h3>
+<br />
+
+<div class="border container col-8" style="padding:30px; font-size: 11px;">
+  <form method="post" asp-controller="Inventory" asp-action="mainsl_banc_edit">
+    <input type="hidden" asp-for="GetMainslBancInvItemDTO.InventoryItemId" />
+    <input type="hidden" asp-for="GetMainslBancInvItemDTO.ItemNoId" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group row">
+      <div class="col-7">
+        <input asp-for="remark" class="form-control" disabled />
+      </div>
+      <span asp-validation-for="remark" class="text-danger"></span>
+    </div>
+    <br />
+    <table width="100%">
+      <tbody>
+        <tr>
+          <td width="20%">
+            <label asp-for="GetMainslBancInvItemDTO.ItemName"><h6>SKU</h6></label>
+          </td>
+          <td width="80%">
+            <input asp-for="GetMainslBancInvItemDTO.ItemName" class="form-control" disabled />
+            <span asp-validation-for="GetMainslBancInvItemDTO.ItemName" class="text-danger"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h6>Remark</h6>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <ul>
+              @for (var i = 0; i < Model.remarkList.Count(); i++)
+              {
+                @if (Model.remarkList[i].categoryId < 0)
+                {
+                  <li>@Html.DisplayFor(modelitem => Model.remarkList[i].isActivatedOnThisSKU) @Model.remarkList[i].categoryName</li>
+                }
+                else
+                {
+                  <li><input asp-for="remarkList[i].isActivatedOnThisSKU" id="@Model.remarkList[i].categoryName@Model.remarkList[i].categoryId" disabled/> @Model.remarkList[i].categoryName</li>
+                }
+              }
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h6></h6>
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            
+            <tr>
+              <th colspan="7" style="border-radius: 10px; background-color:skyblue;">
+                <div class="form-check form-switch">
+                  <input asp-for="DoNotFeedFromAll" class="form-check-input" type="checkbox" id="doNotFeedFromAll" />
+                  <label asp-for="DoNotFeedFromAll" class="form-check-label"><b>Do Not Feed from ALL</b></label>
+                  <span asp-validation-for="DoNotFeedFromAll" class="text-danger"></span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody style="border: 1px solid CornflowerBlue;border-radius: 10px;">
+            <tr>
+              <td colspan="7" style="background-color:azure;">BANC</td>
+            </tr>
+            <tr>
+              <td  width="25%">
+                <div class="form-check form-switch">
+                  <input asp-for="DoNotFeedFromBanc" class="form-check-input" type="checkbox" id="doNotFeedFromBanc" />
+                  <label asp-for="DoNotFeedFromBanc" class="form-check-label">Do Not Feed from BANC</label>
+                  <span asp-validation-for="DoNotFeedFromBanc" class="text-danger"></span>
+                </div>
+              </td>
+              <td  width="10%"><label asp-for="GetMainslBancInvItemDTO.QtyAvailBanc">Quantity Available</label></td>
+              <td width="15%">
+                <input asp-for="GetMainslBancInvItemDTO.QtyAvailBanc" class="form-control" id="doNotFeedFromBancQtyAvail" />
+                <span asp-validation-for="GetMainslBancInvItemDTO.QtyAvailBanc" class="text-danger"></span>
+              </td>
+              <td width="10%"><label asp-for="GetMainslBancInvItemDTO.QtyOnHandBanc">Quantity On Hand</label></td>
+              <td  width="15%">
+                <input asp-for="GetMainslBancInvItemDTO.QtyOnHandBanc" class="form-control" id="doNotFeedFromBancQtyOnHand" />
+                <span asp-validation-for="GetMainslBancInvItemDTO.QtyOnHandBanc" class="text-danger"></span>
+              </td>
+              <td width="10%"><label asp-for="GetMainslBancInvItemDTO.StagePOModBanc">Stage PO Qty.</label></td>
+              <td  width="15%">
+                <input asp-for="GetMainslBancInvItemDTO.StagePOModBanc" class="form-control" id="doNotFeedFromBancQtyStagePO" />
+                <span asp-validation-for="GetMainslBancInvItemDTO.StagePOModBanc" class="text-danger"></span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="7" style="background-color:azure;">BASC</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="form-check form-switch">
+                  <input asp-for="DoNotFeedFromBasc" class="form-check-input" type="checkbox" id="doNotFeedFromBasc" />
+                  <label asp-for="DoNotFeedFromBasc" class="form-check-label">Do Not Feed from BASC</label>
+                  <span asp-validation-for="DoNotFeedFromBasc" class="text-danger"></span>
+                </div>
+              </td>
+              <td><label asp-for="GetMainslBancInvItemDTO.QtyAvailBasc">Quantity Available</label></td>
+              <td>
+                <input asp-for="GetMainslBancInvItemDTO.QtyAvailBasc" class="form-control" id="doNotFeedFromBascQtyAvail" />
+                <span asp-validation-for="GetMainslBancInvItemDTO.QtyAvailBasc" class="text-danger"></span>
+              </td>
+              <td><label asp-for="GetMainslBancInvItemDTO.QtyOnHandBasc">Quantity On Hand</label></td>
+              <td>
+                <input asp-for="GetMainslBancInvItemDTO.QtyOnHandBasc" class="form-control" id="doNotFeedFromBascQtyOnHand" />
+                <span asp-validation-for="GetMainslBancInvItemDTO.QtyOnHandBasc" class="text-danger"></span>
+              </td>
+              <td><label asp-for="GetMainslBancInvItemDTO.StagePOModBasc">Stage PO Qty.</label></td>
+              <td>
+                <input asp-for="GetMainslBancInvItemDTO.StagePOModBasc" class="form-control" id="doNotFeedFromBascQtyStagePO" />
+                <span asp-validation-for="GetMainslBancInvItemDTO.StagePOModBasc" class="text-danger"></span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="7" style="background-color:azure;">MainSL</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="form-check form-switch">
+                  <input asp-for="DoNotFeedFromMainsl" class="form-check-input" type="checkbox" id="doNotFeedFromMainsl" />
+                  <label asp-for="DoNotFeedFromMainsl" class="form-check-label">Do Not Feed from Mainsl</label>
+                  <span asp-validation-for="DoNotFeedFromMainsl" class="text-danger"></span>
+                </div>
+              </td>
+              <td><label asp-for="GetMainslBancInvItemDTO.QtyAvailMainsl">Quantity Available</label></td>
+              <td>
+                <input asp-for="GetMainslBancInvItemDTO.QtyAvailMainsl" class="form-control" id="doNotFeedFromMainslQtyAvail" />
+                <span asp-validation-for="GetMainslBancInvItemDTO.QtyAvailMainsl" class="text-danger"></span>
+              </td>
+              <td><label asp-for="GetMainslBancInvItemDTO.QtyOnHandMainsl">Quantity On Hand</label></td>
+              <td>
+                <input asp-for="GetMainslBancInvItemDTO.QtyOnHandMainsl" class="form-control" id="doNotFeedFromMainslQtyOnHand" />
+                <span asp-validation-for="GetMainslBancInvItemDTO.QtyOnHandMainsl" class="text-danger"></span>
+              </td>
+              <td><label asp-for="GetMainslBancInvItemDTO.StagePOModMainsl">Stage PO Qty.</label></td>
+              <td>
+                <input asp-for="GetMainslBancInvItemDTO.StagePOModMainsl" class="form-control" id="doNotFeedFromMainslQtyStagePO" />
+                <span asp-validation-for="GetMainslBancInvItemDTO.StagePOModMainsl" class="text-danger"></span>
+              </td>
+            </tr>
+@*             <tr>
+              <td colspan="7" style="background-color:azure;">SW-CAFT</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="form-check form-switch">
+                  <input asp-for="DoNotFeedFromSwcaft" class="form-check-input" type="checkbox" id="doNotFeedFromSwcaft" />
+                  <label asp-for="DoNotFeedFromSwcaft" class="form-check-label">Do Not Feed from SWCAFT</label>
+                  <span asp-validation-for="DoNotFeedFromSwcaft" class="text-danger"></span>
+                </div>
+              </td>
+              <td><label asp-for="GetMainslBancInvItemDTO.QtyAvailSwcaft">Quantity Available</label></td>
+              <td>
+                <input asp-for="GetMainslBancInvItemDTO.QtyAvailSwcaft" class="form-control" id="doNotFeedFromSwcaftQtyAvail" />
+                <span asp-validation-for="GetMainslBancInvItemDTO.QtyAvailSwcaft" class="text-danger"></span>
+              </td>
+              <td><label asp-for="GetMainslBancInvItemDTO.QtyOnHandSwcaft">Quantity On Hand</label></td>
+              <td>
+                <input asp-for="GetMainslBancInvItemDTO.QtyOnHandSwcaft" class="form-control" id="doNotFeedFromSwcaftQtyOnHand" />
+                <span asp-validation-for="GetMainslBancInvItemDTO.QtyOnHandSwcaft" class="text-danger"></span>
+              </td>
+              <td><label asp-for="GetMainslBancInvItemDTO.StagePOModSwcaft">Stage PO Qty.</label></td>
+              <td>
+                <input asp-for="GetMainslBancInvItemDTO.StagePOModSwcaft" class="form-control" id="doNotFeedFromSwcaftQtyStagePO" />
+                <span asp-validation-for="GetMainslBancInvItemDTO.StagePOModSwcaft" class="text-danger"></span>
+              </td>
+            </tr> *@
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+    <table>
+      <thead>
+        <tr>
+          <th colspan="6" style="border-radius: 10px; background-color:skyblue;">
+              SKU Specific Feeding Rules (Caution! : on Ratio, None and 0 are NOT SAME!)
+          </th>
+         </tr>
+      </thead>
+      <tbody style="border: 1px solid CornflowerBlue;border-radius: 10px;">
+        <tr>
+          <td width="26%">
+            <div class="form-check form-switch">
+              <input asp-for="AmzDoNotFeed" class="form-check-input" type="checkbox" id="amazonDoNotFeed" />
+              <label asp-for="AmzDoNotFeed" class="form-check-label">Do Not Feed to Amazon</label>
+              <span asp-validation-for="AmzDoNotFeed" class="text-danger"></span>
+            </div>
+          </td>
+          <td width="14%">
+            <div class="form-check form-switch">
+              <input asp-for="AmzSKUSpecific" class="form-check-input" type="checkbox" id="amzSKUSpecific" />
+              <label asp-for="AmzSKUSpecific">SKU Specific?</label>
+              <span asp-validation-for="AmzSKUSpecific" class="text-danger"></span>
+            </div>
+          </td>
+          <td width="10%">
+            <label asp-for="AmzCustPercentageTxt"> Ratio(%)</label>
+          </td>
+          <td  width="15%">
+            <input asp-for="AmzCustPercentageTxt" class="form-control" id="amazonRatio" />
+            <span asp-validation-for="AmzCustPercentageTxt" class="text-danger"></span>
+          </td>
+          <td width="20%">
+            <label asp-for="AmzCustZeroOutAt"> Zero Out At</label>
+          </td>
+          <td width="15">
+            <input asp-for="AmzCustZeroOutAt" class="form-control" id="amazonZeroOut" />
+            <span asp-validation-for="AmzCustZeroOutAt" class="text-danger"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-check form-switch">
+              <input asp-for="WlmrtDoNotFeed" class="form-check-input" type="checkbox" id="walmartDoNotFeed" />
+              <label asp-for="WlmrtDoNotFeed" class="form-check-label">Do Not Feed to Walmart</label>
+              <span asp-validation-for="WlmrtDoNotFeed" class="text-danger"></span>
+            </div>
+          </td>
+          <td>
+            <div class="form-check form-switch">
+            <input asp-for="WlmrtSKUSpecific" class="form-check-input" type="checkbox" id="wlmrtSKUSpecific" />
+            <label asp-for="WlmrtSKUSpecific" class="form-check-label">SKU Specific?</label>
+            <span asp-validation-for="WlmrtSKUSpecific" class="text-danger"></span>
+          </div>
+          </td>
+          <td>
+            <label asp-for="WlmrtCustPercentageTxt">Ratio(%)</label>
+          </td>
+          <td>
+            <input asp-for="WlmrtCustPercentageTxt" class="form-control" id="walmartRatio" />
+            <span asp-validation-for="WlmrtCustPercentageTxt" class="text-danger"></span>
+          </td>
+          <td>
+            <label asp-for="WlmrtCustZeroOutAt">Zero Out At</label>
+          </td>
+          <td>
+            <input asp-for="WlmrtCustZeroOutAt" class="form-control" id="walmartZeroOut" />
+            <span asp-validation-for="WlmrtCustZeroOutAt" class="text-danger"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-check form-switch">
+              <input asp-for="WyfrDoNotFeed" class="form-check-input" type="checkbox" id="wayfairDoNotFeed" />
+              <label asp-for="WyfrDoNotFeed" class="form-check-label">Do Not Feed to Wayfair</label>
+              <span asp-validation-for="WyfrDoNotFeed" class="text-danger"></span>
+            </div>
+          </td>
+          <td>
+            <div class="form-check form-switch">
+              <input asp-for="WyfrSKUSpecific" class="form-check-input" type="checkbox" id="wyfrSKUSpecific" />
+              <label asp-for="WyfrSKUSpecific" class="form-check-label">SKU Specific?</label>
+              <span asp-validation-for="WyfrSKUSpecific" class="text-danger"></span>
+            </div>
+          </td>
+          <td>
+            <label asp-for="WyfrCustPercentageTxt">Ratio(%)</label>
+          </td>
+          <td>
+            <input asp-for="WyfrCustPercentageTxt" class="form-control" id="wayfairRatio" />
+            <span asp-validation-for="WyfrCustPercentageTxt" class="text-danger"></span>
+          </td>
+          <td>
+            <label asp-for="WyfrCustZeroOutAt">Zero Out At</label>
+          </td>
+          <td>
+            <input asp-for="WyfrCustZeroOutAt" class="form-control" id="wayfairZeroOut" />
+            <span asp-validation-for="WyfrCustZeroOutAt" class="text-danger"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-check form-switch">
+              <input asp-for="OstDoNotFeed" class="form-check-input" type="checkbox" id="overstockDoNotFeed" />
+              <label asp-for="OstDoNotFeed" class="form-check-label">Do Not Feed to Overstock</label>
+              <span asp-validation-for="OstDoNotFeed" class="text-danger"></span>
+            </div>
+          </td>
+          <td>
+            <div class="form-check form-switch">
+              <input asp-for="OstSKUSpecific" class="form-check-input" type="checkbox" id="ostSKUSpecific" />
+              <label asp-for="OstSKUSpecific" class="form-check-label">SKU Specific?</label>
+              <span asp-validation-for="OstSKUSpecific" class="text-danger"></span>
+            </div>
+          </td>
+          <td>
+            <label asp-for="OstCustPercentageTxt">Ratio(%)</label>
+          </td>
+          <td>
+            <input asp-for="OstCustPercentageTxt" class="form-control" id="overstockRatio" />
+            <span asp-validation-for="OstCustPercentageTxt" class="text-danger"></span>
+          </td>
+          <td>
+            <label asp-for="OstCustZeroOutAt">Zero Out At</label>
+          </td>
+          <td>
+            <input asp-for="OstCustZeroOutAt" class="form-control" id="overstockZeroOut" />
+            <span asp-validation-for="OstCustZeroOutAt" class="text-danger"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-check form-switch">
+              <input asp-for="HomeDepotDoNotFeed" class="form-check-input" type="checkbox" id="homeDepotDoNotFeed" />
+              <label asp-for="HomeDepotDoNotFeed" class="form-check-label">Do Not Feed to Home Depot</label>
+              <span asp-validation-for="HomeDepotDoNotFeed" class="text-danger"></span>
+            </div>
+          </td>
+          <td>
+            <div class="form-check form-switch">
+              <input asp-for="HomeDepotSKUSpecific" class="form-check-input" type="checkbox" id="homeDepotSKUSpecific" />
+              <label asp-for="HomeDepotSKUSpecific" class="form-check-label">SKU Specific?</label>
+              <span asp-validation-for="HomeDepotSKUSpecific" class="text-danger"></span>
+            </div>
+          </td>
+          <td>
+            <label asp-for="HomeDepotCustPercentageTxt">Ratio(%)</label>
+          </td>
+          <td>
+            <input asp-for="HomeDepotCustPercentageTxt" class="form-control" id="homeDepotRatio" />
+            <span asp-validation-for="HomeDepotCustPercentageTxt" class="text-danger"></span>
+          </td>
+          <td>
+            <label asp-for="HomeDepotCustZeroOutAt">Zero Out At</label>
+          </td>
+          <td>
+            <input asp-for="HomeDepotCustZeroOutAt" class="form-control" id="homeDepotZeroOut" />
+            <span asp-validation-for="HomeDepotCustZeroOutAt" class="text-danger"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-check form-switch">
+              <input asp-for="TargetDoNotFeed" class="form-check-input" type="checkbox" id="targetDoNotFeed" />
+              <label asp-for="TargetDoNotFeed" class="form-check-label">Do Not Feed to Target</label>
+              <span asp-validation-for="TargetDoNotFeed" class="text-danger"></span>
+            </div>
+          </td>
+          <td>
+            <div class="form-check form-switch">
+              <input asp-for="TargetSKUSpecific" class="form-check-input" type="checkbox" id="targetSKUSpecific" />
+              <label asp-for="TargetSKUSpecific" class="form-check-label">SKU Specific?</label>
+              <span asp-validation-for="TargetSKUSpecific" class="text-danger"></span>
+            </div>
+          </td>
+          <td>
+            <label asp-for="TargetCustPercentageTxt">Ratio(%)</label>
+          </td>
+          <td>
+            <input asp-for="TargetCustPercentageTxt" class="form-control" id="targetRatio" />
+            <span asp-validation-for="TargetCustPercentageTxt" class="text-danger"></span>
+          </td>
+          <td>
+            <label asp-for="TargetCustZeroOutAt">Zero Out At</label>
+          </td>
+          <td>
+            <input asp-for="TargetCustZeroOutAt" class="form-control" id="targetZeroOut" />
+            <span asp-validation-for="TargetCustZeroOutAt" class="text-danger"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-check form-switch">
+              <input asp-for="eBayDoNotFeed" class="form-check-input" type="checkbox" id="eBayDoNotFeed" />
+              <label asp-for="eBayDoNotFeed" class="form-check-label">Do Not Feed to eBay</label>
+              <span asp-validation-for="eBayDoNotFeed" class="text-danger"></span>
+            </div>
+          </td>
+          <td>
+            <div class="form-check form-switch">
+              <input asp-for="eBaySKUSpecific" class="form-check-input" type="checkbox" id="eBaySKUSpecific" />
+              <label asp-for="eBaySKUSpecific" class="form-check-label">SKU Specific?</label>
+              <span asp-validation-for="eBaySKUSpecific" class="text-danger"></span>
+            </div>
+          </td>
+          <td>
+            <label asp-for="eBayCustPercentageTxt">Ratio(%)</label>
+          </td>
+          <td>
+            <input asp-for="eBayCustPercentageTxt" class="form-control" id="eBayRatio" />
+            <span asp-validation-for="eBayCustPercentageTxt" class="text-danger"></span>
+          </td>
+          <td>
+            <label asp-for="eBayCustZeroOutAt">Zero Out At</label>
+          </td>
+          <td>
+            <input asp-for="eBayCustZeroOutAt" class="form-control" id="eBayZeroOut" />
+            <span asp-validation-for="eBayCustZeroOutAt" class="text-danger"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-check form-switch">
+              <input asp-for="BPMDoNotFeed" class="form-check-input" type="checkbox" id="bpmDoNotFeed" />
+              <label asp-for="BPMDoNotFeed" class="form-check-label">Do Not Feed to BPM Website</label>
+              <span asp-validation-for="BPMDoNotFeed" class="text-danger"></span>
+            </div>
+          </td>
+          <td>
+            <div class="form-check form-switch">
+              <input asp-for="BPMSKUSpecific" class="form-check-input" type="checkbox" id="bpmSKUSpecific" />
+              <label asp-for="BPMSKUSpecific" class="form-check-label">SKU Specific?</label>
+              <span asp-validation-for="BPMSKUSpecific" class="text-danger"></span>
+            </div>
+          </td>
+          <td>
+            <label asp-for="BPMCustPercentageTxt">Ratio(%)</label>
+          </td>
+          <td>
+            <input asp-for="BPMCustPercentageTxt" class="form-control" id="bpmRatio" />
+            <span asp-validation-for="BPMCustPercentageTxt" class="text-danger"></span>
+          </td>
+          <td>
+            <label asp-for="BPMCustZeroOutAt">Zero Out At</label>
+          </td>
+          <td>
+            <input asp-for="BPMCustZeroOutAt" class="form-control" id="bpmZeroOut" />
+            <span asp-validation-for="BPMCustZeroOutAt" class="text-danger"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="form-check form-switch">
+              <input asp-for="MellowDoNotFeed" class="form-check-input" type="checkbox" id="mellowDoNotFeed" />
+              <label asp-for="MellowDoNotFeed" class="form-check-label">Do Not Feed to Mellow Website</label>
+              <span asp-validation-for="MellowDoNotFeed" class="text-danger"></span>
+            </div>
+          </td>
+          <td>
+            <div class="form-check form-switch">
+            <input asp-for="MellowSKUSpecific" class="form-check-input" type="checkbox" id="mellowSKUSpecific" />
+            <label asp-for="MellowSKUSpecific" class="form-check-label">SKU Specific?</label>
+            <span asp-validation-for="MellowSKUSpecific" class="text-danger"></span>
+          </div>
+          </td>
+          <td>
+            <label asp-for="MellowCustPercentageTxt">Ratio(%)</label>
+          </td>
+          <td>
+            <input asp-for="MellowCustPercentageTxt" class="form-control" id="mellowRatio" />
+            <span asp-validation-for="MellowCustPercentageTxt" class="text-danger"></span>
+          </td>
+          <td>
+            <label asp-for="MellowCustZeroOutAt">Zero Out At</label>
+          </td>
+          <td>
+            <input asp-for="MellowCustZeroOutAt" class="form-control" id="mellowZeroOut" />
+            <span asp-validation-for="MellowCustZeroOutAt" class="text-danger"></span>
+          </td>
+        </tr>
+@*        <tr>
+          <td>
+            <div class="form-check form-switch">
+            <input asp-for="HouzzDoNotFeed" class="form-check-input" type="checkbox" id="houzzDoNotFeed" />
+              <label asp-for="HouzzDoNotFeed" class="form-check-label">Do Not Feed to Houzz</label>
+              <span asp-validation-for="HouzzDoNotFeed" class="text-danger"></span>
+            </div>
+          </td>
+          <td>
+            <div class="form-check form-switch">
+            <input asp-for="HouzzSKUSpecific" class="form-check-input" type="checkbox" id="houzzSKUSpecific" />
+            <label asp-for="HouzzSKUSpecific" class="form-check-label">SKU Specific?</label>
+            <span asp-validation-for="HouzzSKUSpecific" class="text-danger"></span>
+          </div>
+          </td>
+          <td>
+            <label asp-for="HouzzCustPercentageTxt">Ratio(%)</label>
+          </td>
+          <td>
+            <input asp-for="HouzzCustPercentageTxt" class="form-control" id="houzzRatio" />
+            <span asp-validation-for="HouzzCustPercentageTxt" class="text-danger"></span>
+          </td>
+          <td>
+            <label asp-for="HouzzCustZeroOutAt">Zero Out At</label>
+          </td>
+          <td>
+            <input asp-for="HouzzCustZeroOutAt" class="form-control" id="houzzZeroOut" />
+            <span asp-validation-for="HouzzCustZeroOutAt" class="text-danger"></span>
+          </td>
+        </tr>*@
+      </tbody>
+    </table>
+
+   
+    <br />
+  @*
+    <div class="form-group row">
+      <div class="col-3 offset-3">
+        <button type="submit" value="Update" class="btn btn-primary form-control">Update</button>
+      </div>
+      <div class="col-3">
+        <a asp-controller="Inventory" asp-action="InvMainslBancIdx" class="btn btn-success form-control">Back to List</a>
+      </div>
+    </div>
+    *@
+    <table  style="width:100%">
+      <tbody>
+        <tr>
+          <td width="20%"></td>
+          <td width="20%"></td>
+          <td width="20%"></td>
+          <td width="20%">
+            <button type="submit" value="Update" class="btn btn-primary form-control">Update</button>
+          </td>
+          <td width="20%">
+            <a asp-controller="Inventory" asp-action="InvMainslBancIdx" class="btn btn-success form-control">Back to List</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+</div>
+
+
+@section Scripts {
+  @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+  <script>
+    function lastmod() { }
+  </script>
+  <script type="text/javascript">
+    var remarkArray = [];
+    var something;
+
+  </script>
+  <script src="~/js/InvFeedsSKURuleCheck.js">
+  </script>
+}

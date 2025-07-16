@@ -1,0 +1,87 @@
+﻿@model Chameleon.DTOs.Inventory.InvFeedsSKUStatusDTO
+
+@{
+  ViewData["Title"] = "Mellow Home SKU Feeding Status";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h3 class="text-info offset-sm-1">&nbsp;&nbsp;Mellow Home SKU Feeding Status List</h3>
+
+<div id="mellowFeedingStatusTabs">
+  <div id="tabs-nobg" style="font-size: 11px;">
+    <ul>
+      <li><a href="#tabs-1">Manage SKUs Manually </a></li>
+      <li><a href="#tabs-2">Manage Automatically by Import</a></li>
+    </ul>
+    <div id="tabs-1">
+      <div class="container-fluid">
+        <div class="container-fluid">
+          <button id="updateInvFeedsMellowSKUStatusBtn" class="btn btn-primary" style="float:right">Update</button>
+          <br />
+          <table id="invFeedsMellowSKUFeedingStatusItems" class="table tabel-striped table-bordered display compact" style="font-size: 11px">
+            <thead>
+              <tr>
+                <th>Item No. ID</th>
+                <th>ICR ID</th>
+                <th>Feeds?</th>
+                <th>BPM SKU</th>
+                <th>Item Status</th>
+                <th>Mellow SKU</th>
+                <th>Description</th>
+                <th>Last Modified By</th>
+                <th>Last Modified Time</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div id="tabs-2">
+
+      @*<div class="border container" style="padding:10px; font-size:12px">*@
+      <div class="container-fluid">
+        <br />
+        <h6>Import SKU List</h6>
+        <input type="file" class="file" id="SKUCSVAttachment" onclick="openSKUCSVAttachment()" />
+        <h6>*You can just use Shopify import/export file to update a feeding SKU list.</h6>
+      </div>
+      <hr />
+
+      <div class="container-fluid">
+        <h5>Conflicted SKU List</h5>
+        <br />
+        <table id="invFeedsMellowSKUFeedingConflictedItems" class="table tabel-striped table-bordered display compact" style="font-size: 11px">
+          <thead>
+            <tr>
+              <th>Is Resolved</th>
+              <th>Conflict Type</th>
+              <th>BPM SKU</th>
+              <th>Item Status</th>
+              <th>Mellow Home SKU</th>
+              <th>Description</th>
+              <th>Last Modified By</th>
+              <th>Last Modified Time</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+
+<br />
+<br />
+<br />
+
+
+<div class="modal"><!-- Place at bottom of page --></div>
+@section Scripts {
+  @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+  <script>
+    function lastmod() { }
+  </script>
+  <script src="~/js/InvFeedsMellowSKUFeedingStatusList.js">
+  </script>
+}

@@ -1,0 +1,191 @@
+﻿@{
+  ViewData["Title"] = "Inventory Feeds Comparing";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h3 class="text-info offset-sm-1">&nbsp;&nbsp;Comparing user-made with Chameleon-generated</h3>
+
+<div id="compareInvFeedsTabs">
+  <div id="tabs-nobg" style="font-size: 11px;">
+    <ul>
+      <li><a href="#tabs-1">Amazon, Overstock, Target, &#38; Walmart</a></li>
+      <li><a href="#tabs-2">Wayfair</a></li>
+      <li><a href="#tabs-3">HomeDepot</a></li>
+    </ul>
+    <div id="tabs-1">
+      <div class="container-fluid">
+        <div class="container-fluid">
+
+          <div class="dropdown">
+            <h6><span class="blue01">1</span>Import Amazon, Overstock, Target, &#38; Walmart</h6>
+            <a href="~/etc/compare_feeds_import.csv" download="compare_feeds_import.csv">
+              <button style="font-size: 11px">Download an Import Example File</button>
+            </a>
+            <br />
+            <hr />
+            <br />
+            <label for="customerId"><span class="blue02">2</span>Choose a customer :</label>
+            <select name="customerId" id="customerId">
+              <option value="none">------------</option>
+              <option value="5">Amazon</option>
+              <option value="21">Overstock</option>
+              <option value="26">Walmart</option>
+              <option value="51">Target</option>
+            </select>
+
+            <label for="warehouseId"><span class="blue03">3</span>Choose a warehouse :</label>
+            <select name="warehouseId" id="warehouseId">
+              <option value="none">------------</option>
+              <option value="4">BANC</option>
+              <option value="62">BASC</option>
+              <option value="25">MainSL</option>
+              <option value="54">SWCA-FT</option>
+            </select>
+
+            <div style=" padding-top: 10px">
+              <span class="blue04">4</span>Choose Feeds Date : <input type="text" id="fromDatePicker">
+            </div>
+            <div>
+              <span class="blue05">5</span>
+              <input type="file" class="file" id="UserFeedsAttachment" onclick="openFEEDSCSVAttachment()" />
+            </div>
+          </div>
+
+          <br />
+          <table id="invFeedsCompareUserAutoItems" class="table tabel-striped table-bordered display compact" style="font-size: 11px;">
+            <thead>
+              <tr>
+                <th>BPM SKU</th>
+                <th>Item Status</th>
+                <th>Description</th>
+                <th>Inv. Qty.</th>
+                <th>Customer SKU</th>
+                <th>User Feeds Qty.</th>
+                <th>Auto Feeds Qty</th>
+                <th>Applied Rule</th>
+                <th>etc</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div id="tabs-2">
+
+      @*<div class="border container" style="padding:10px; font-size:12px">*@
+      <div class="container-fluid">
+        <div class="container-fluid">
+          <div class="dropdown">
+            <br />
+            <h6><span class="blue01">1</span>Import Wayfair Feeds</h6>
+            <a href="~/etc/wayfair_feeds_import.csv" download="wayfair_feeds_import.csv">
+              <button style="font-size: 11px">Download an Import Example File</button>
+            </a>
+            <hr />
+            <div style="padding-top: 10px"><span class="blue03">2</span>
+              Choose Feeds Date : <input type="text" id="fromWayfairDatePicker">
+            </div>
+            <div>
+              <span class="blue05">3</span>
+              <input type="file" class="file" id="UserFeedsWayfairAttachment" onclick="openWFEEDSCSVAttachment()" />
+            </div>
+          </div>
+          <hr />
+        </div>
+        <h5>Conflicted SKU List</h5>
+        <br />
+        <table id="invFeedsCompareWayfairUserAutoItems" class="table tabel-striped table-bordered display compact" style="font-size: 11px">
+          <thead>
+            <tr>
+              <th>BPM SKU</th>
+              <th>Item Status</th>
+              <th>Description</th>
+              <th>Inv. Qty. Banc</th>
+              <th>Inv. Qty. MainSL</th>
+              <th>Customer SKU</th>
+              <th>User BANC Feeds Qty.</th>
+              <th>Auto BANC Feeds Qty</th>
+              <th>Applied Rule BANC</th>
+              <th>User MainSL Feeds Qty.</th>
+              <th>Auto MainSL Feeds Qty</th>
+              <th>Applied Rule MainSL</th>
+              <th>etc</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+     </div>@*The end of tab 2*@
+
+     
+    <div id="tabs-3">
+
+      @*<div class="border container" style="padding:10px; font-size:12px">*@
+      <div class="container-fluid">
+        <div class="container-fluid">
+          <div class="dropdown">
+            <br />
+            <h6><span class="blue01">1</span>Import HomeDepot Feeds</h6>
+            <a href="~/etc/homedepot_feeds_import.csv" download="homedepot_feeds_import.csv">
+              <button style="font-size: 11px">Download an Import Example File</button>
+            </a>
+            <hr />
+            <div style="padding-top: 10px"><span class="blue03">2</span>
+              Choose Feeds Date : <input type="text" id="fromHomeDepotDatePicker">
+            </div>
+            <div>
+              <span class="blue05">3</span>
+              <input type="file" class="file" id="UserFeedsHomeDepotAttachment" onclick="openHDFEEDSCSVAttachment()" />
+            </div>
+          </div>
+          <hr />
+        </div>
+        <h5>Conflicted SKU List</h5>
+        <br />
+        <table id="invFeedsCompareHomeDepotUserAutoItems" class="table tabel-striped table-bordered display compact" style="font-size: 11px">
+          <thead>
+            <tr>
+              <th>BPM SKU</th>
+              <th>Item Status</th>
+              <th>Description</th>
+              <th>Inv. Qty. MainSL</th>
+              <th>Inv. Qty. SWCAFT</th>
+              <th>Inv. Qty. BANC</th>
+              <th>Inv. Qty. BASC</th>
+              <th>Customer SKU</th>
+              <th>User MainSL Feeds Qty.</th>
+              <th>Auto MainSL Feeds Qty</th>
+              <th>Applied Rule MainSL</th>
+              <th>User SWCAFT Feeds Qty.</th>
+              <th>Auto SWCAFT Feeds Qty</th>
+              <th>Applied Rule SWCAFT</th>
+              <th>User BANC Feeds Qty.</th>
+              <th>Auto BANC Feeds Qty</th>
+              <th>Applied Rule BANC</th>
+              <th>User BASC Feeds Qty.</th>
+              <th>Auto BASC Feeds Qty</th>
+              <th>Applied Rule BASC</th>
+              <th>etc</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+     </div>@*The end of tab 3*@
+
+  </div>
+</div>
+<br />
+
+<br />
+<br />
+<br />
+
+
+<div class="modal"><!-- Place at bottom of page --></div>
+@section Scripts {
+  <script>
+    function lastmod() { }
+  </script>
+  <script src="~/js/InvFeedsComparingUserAuto.js">
+  </script>
+}

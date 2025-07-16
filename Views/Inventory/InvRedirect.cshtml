@@ -1,0 +1,42 @@
+﻿@*@page
+  @model Chameleon.DTOs.Inventory.GetInventoryItemDTO*@
+
+@{
+  ViewData["Title"] = "Inventory";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h1>@ViewData["Title"]</h1>*@
+
+<br />
+<div style="text-align:center">
+  <h1>Sorry, You do not have enough permission to proceed this page.</h1>
+  <br />
+  <br />
+  <img src="~/img/Denied.png" alt="Denied" width="595" height="595">
+</div>
+@*
+    <div class="container row p-0 m-0">
+      <div class="col-6">
+        <h2 class="text-info">Inventory Item List</h2>
+      </div>
+      <div class="col-12 border p-3">
+
+        <table id="inventoryItems" class="table tabel-striped table-bordered display compact" style="width:100%">
+          <thead>
+            <tr>
+              <th>SKU</th>
+              <th>Qty on Hand</th>
+              <th>Qty Avail.</th>
+              <th>Location</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+  @section Scripts{
+    <script src="~/js/inventoryList.js">
+    </script>
+  }
+
+*@

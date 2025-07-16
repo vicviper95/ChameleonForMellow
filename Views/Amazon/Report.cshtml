@@ -1,0 +1,46 @@
+﻿@*@page
+    @model Chameleon.DTOs.Inventory.GetInventoryItemDTO*@
+
+@{
+    ViewData["Title"] = "Amazon OB Weekly";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div id="amz-ob-tab">
+    <div id="tabs-nobg" style="font-size: 15px;">
+        <ul>
+            <li><a href="#tabs-1">Summary</a></li>
+            <li><a href="#tabs-2">Inventory</a></li>
+            <li><a href="#tabs-3">Sales</a></li>
+        </ul>
+        <div id="tabs-1" style="height:600px">
+            <div class="container-fluid" style="font-size: 11px;">
+                <h6>Import Summary CSV</h6>
+                <input type="file" class="file" id="CSVAttachment" onclick="openCSVAttachment()" />
+            </div>
+        </div>
+        <div id="tabs-2" style="height:600px">
+            <div class="container-fluid" style="font-size: 11px;">
+                <h6>Import Inventory CSV</h6>
+                <input type="file" class="file" id="CSVAttachment" onclick="openCSVAttachment()" />
+            </div>
+            <div class="container-fluid" style="font-size: 11px;">
+                <h6>Import </h6>
+                <input type="file" class="file" id="CSVAttachment" onclick="openCSVAttachment()" />
+            </div>
+        </div>
+        <div id="tabs-3" style="height:600px">
+            <div class="container-fluid" style="font-size: 11px;">
+                <h6>Import Inventory CSV</h6>
+                <input type="file" class="file" id="CSVAttachment" onclick="openCSVAttachment()" />
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/sales/AmazonObReport.js">
+    </script>
+}

@@ -1,0 +1,41 @@
+﻿@{
+  ViewData["Title"] = "PO E-ULD Reference";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>&nbsp;&nbsp;&nbsp;@ViewData["Title"]</h1>
+<br />
+
+<br />
+
+<div class="d-grid gap-3 table-purchase">
+  <table class="table-purchase" style="width:100%">
+<thead>
+  <tr>
+    <th>Vendor Production Leadtime</th>
+    <th>Default Port-Orig. per Vendor</th>
+    <th>Port-Orig. to Port-Dest. Ocean Sailing Days</th>
+    <th>Port-Dest. to Warehouse InLand Trasport Days</th>
+    <th>Default Port-Dest. per Warehouse</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+@*<div class="modal"><!-- Place at bottom of page --></div>*@
+@section Scripts{
+<script>
+  function lastmod() { }
+</script>
+<script src="~/js/purchase/POEULDReference.js">
+</script>
+}

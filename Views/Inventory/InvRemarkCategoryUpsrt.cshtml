@@ -1,0 +1,214 @@
+﻿@*@page "/Inventory/edit/{id}"*@
+@model Chameleon.DTOs.Inventory.InvFeedsRemarkCategory
+
+@{
+    ViewData["Title"] = (Model.categoryId != 0 ? "Edit" : "Create");
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<br />
+<h2 class="text-info">&nbsp;&nbsp;@(Model.categoryId != 0 ? "Update":"Create") Remark Category</h2>
+<br />
+
+<div class="border container" style="padding:30px;">
+  <form method="post" asp-controller="Inventory" asp-action="mainsl_banc_feeds_remark">
+        @if (Model.categoryId != 0)
+        {
+          <input type="hidden" asp-for="categoryId" />
+        }
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-check row">
+      <div class="col-2">
+      </div>
+      <div class="col-7 offset-2">
+        <input asp-for="isActivatedOnThisSKU" class="form-check-input" type="checkbox" />
+        <label asp-for="isActivatedOnThisSKU">Activated</label>
+      </div>
+      <span asp-validation-for="isActivatedOnThisSKU" class="text-danger"></span>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-3">
+        <label asp-for="categoryName">Category Name</label>
+      </div>
+      <div class="col-sm-6">
+        <input asp-for="categoryName" class="form-control" />
+        <span asp-validation-for="categoryName" class="text-danger"></span>
+      </div>
+    </div>
+    <br />
+
+    <div class="card">
+      <div class="card-header">Remark Attributes</div>
+      <div class="card-body">
+        <div class="form-group row">
+          <div class="col-sm-3 form-check form-switch" style="float: right">
+            <input asp-for="MainslDoNotFeed" class="form-check-input" type="checkbox" id="mainslDoNotFeed" />
+            <label asp-for="MainslDoNotFeed">Do Not Feed from MainSL</label>
+            <span asp-validation-for="MainslDoNotFeed" class="text-danger"></span>
+          </div>
+        </div>
+
+        @* <div class="form-group row">
+          <div class="col-sm-3 form-check form-switch" style="float: right">
+            <input asp-for="SwcaftDoNotFeed" class="form-check-input" type="checkbox" id="swcaftDoNotFeed" />
+            <label asp-for="SwcaftDoNotFeed">Do Not Feed from SWCAFT</label>
+            <span asp-validation-for="SwcaftDoNotFeed" class="text-danger"></span>
+          </div>
+        </div> 
+
+        <div class="form-group row">
+          <div class="col-sm-3 form-check form-switch" style="float: right">
+            <input asp-for="BancDoNotFeed" class="form-check-input" type="checkbox" id="bancDoNotFeed" />
+            <label asp-for="BancDoNotFeed">Do Not Feed from BANC</label>
+            <span asp-validation-for="BancDoNotFeed" class="text-danger"></span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-3 form-check form-switch" style="float: right">
+            <input asp-for="BascDoNotFeed" class="form-check-input" type="checkbox" id="bascDoNotFeed" />
+            <label asp-for="BascDoNotFeed">Do Not Feed from BASC</label>
+            <span asp-validation-for="BascDoNotFeed" class="text-danger"></span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-3 form-check form-switch" style="float: right">
+            <input asp-for="PrismCastDoNotFeed" class="form-check-input" type="checkbox" id="prismCastDoNotFeed" />
+            <label asp-for="PrismCastDoNotFeed">Do Not Feed from PRISM CAST</label>
+            <span asp-validation-for="PrismCastDoNotFeed" class="text-danger"></span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-3 form-check form-switch" style="float: right">
+            <input asp-for="PrismCaltDoNotFeed" class="form-check-input" type="checkbox" id="prismCaltDoNotFeed" />
+            <label asp-for="PrismCaltDoNotFeed">Do Not Feed from PRISM CALT</label>
+            <span asp-validation-for="PrismCaltDoNotFeed" class="text-danger"></span>
+          </div>
+        </div>*@
+        <div class="form-group row">
+          <div class="col-sm-3 form-check form-switch" style="float: right">
+            <input asp-for="ZinusTracyDoNotFeed" class="form-check-input" type="checkbox" id="zinusTracyDoNotFeed" />
+            <label asp-for="ZinusTracyDoNotFeed">Do Not Feed from ZINUS TRACY</label>
+            <span asp-validation-for="ZinusTracyDoNotFeed" class="text-danger"></span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-3 form-check form-switch" style="float: right">
+            <input asp-for="ZinusChsDoNotFeed" class="form-check-input" type="checkbox" id="zinusChsDoNotFeed" />
+            <label asp-for="ZinusChsDoNotFeed">Do Not Feed from ZINUS CHS</label>
+            <span asp-validation-for="ZinusChsDoNotFeed" class="text-danger"></span>
+          </div>
+        </div>
+        <br/>
+        <div class="form-group row">
+          <div class="col-sm-3 form-check form-switch" style="float: right">
+            <input asp-for="AmazonDoNotFeed" class="form-check-input" type="checkbox" id="amazonDoNotFeed" />
+            <label asp-for="AmazonDoNotFeed">Do Not Feed to Amazon</label>
+            <span asp-validation-for="AmazonDoNotFeed" class="text-danger"></span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-3 form-check form-switch" style="float: right">
+            <input asp-for="WalmartDoNotFeed" class="form-check-input" type="checkbox" id="walmartDoNotFeed" />
+            <label asp-for="WalmartDoNotFeed">Do Not Feed to Walmart</label>
+            <span asp-validation-for="WalmartDoNotFeed" class="text-danger"></span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-3 form-check form-switch" style="float: right">
+            <input asp-for="WayfairDoNotFeed" class="form-check-input" type="checkbox" id="eBayDoNotFeed" />
+            <label asp-for="WayfairDoNotFeed">Do Not Feed to Wayfair</label>
+            <span asp-validation-for="WayfairDoNotFeed" class="text-danger"></span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-3 form-check form-switch" style="float: right">
+            <input asp-for="OverstockDoNotFeed" class="form-check-input" type="checkbox" id="overstockDoNotFeed" />
+            <label asp-for="OverstockDoNotFeed">Do Not Feed to Overstock</label>
+            <span asp-validation-for="OverstockDoNotFeed" class="text-danger"></span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-3 form-check form-switch" style="float: right">
+            <input asp-for="eBayDoNotFeed" class="form-check-input" type="checkbox" id="wayfairDoNotFeed" />
+            <label asp-for="eBayDoNotFeed">Do Not Feed to eBay</label>
+            <span asp-validation-for="eBayDoNotFeed" class="text-danger"></span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-3 form-check form-switch" style="float: right">
+            <input asp-for="HomeDepotDoNotFeed" class="form-check-input" type="checkbox" id="homeDepotDoNotFeed" />
+            <label asp-for="HomeDepotDoNotFeed">Do Not Feed to Home Depot</label>
+            <span asp-validation-for="HomeDepotDoNotFeed" class="text-danger"></span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-3 form-check form-switch" style="float: right">
+            <input asp-for="TargetDoNotFeed" class="form-check-input" type="checkbox" id="targetDoNotFeed" />
+            <label asp-for="TargetDoNotFeed">Do Not Feed to Target</label>
+            <span asp-validation-for="TargetDoNotFeed" class="text-danger"></span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-3 form-check form-switch" style="float: right">
+            <input asp-for="BPMDoNotFeed" class="form-check-input" type="checkbox" id="bpmDoNotFeed" />
+            <label asp-for="BPMDoNotFeed">Do Not Feed to BPM Website</label>
+            <span asp-validation-for="BPMDoNotFeed" class="text-danger"></span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-3 form-check form-switch" style="float: right">
+            <input asp-for="MellowDoNotFeed" class="form-check-input" type="checkbox" id="mellowDoNotFeed" />
+            <label asp-for="MellowDoNotFeed" class="form-check-label">Do Not Feed to Mellow Website</label>
+            <span asp-validation-for="MellowDoNotFeed" class="text-danger"></span>
+          </div>
+        </div>
+
+@*        <div class="form-group row">
+          <div class="col-sm-3 form-check form-switch" style="float: right">
+            <input asp-for="HouzzDoNotFeed" class="form-check-input" type="checkbox" id="houzzDoNotFeed" />
+            <label asp-for="HouzzDoNotFeed">Do Not Feed to Houzz</label>
+            <span asp-validation-for="HouzzDoNotFeed" class="text-danger"></span>
+          </div>
+        </div>*@
+
+      </div>
+    </div>
+
+    <table  style="width:100%">
+<tbody>
+  <tr>
+    <td width="20%"></td>
+    <td width="20%"></td>
+    <td width="20%"></td>
+    <td width="20%">
+        <button type="submit" class="btn btn-primary form-control">@(Model.categoryId != 0? "Update":"Create")</button>
+    </td>
+    <td width="20%">
+        <a asp-controller="Inventory" asp-action="InvRemarkCategoryIdx" class="btn btn-success form-control">Back to List(Cancel)</a>
+    </td>
+  </tr>
+</tbody>
+</table>
+
+
+  </form>
+</div>
+
+
+@section Scripts {
+  @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

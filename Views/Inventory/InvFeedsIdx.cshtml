@@ -1,0 +1,214 @@
+﻿@*@page
+  @model Chameleon.DTOs.Inventory.GetInventoryItemDTO*@
+
+@{
+  ViewData["Title"] = "Inventory Feeds";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>&nbsp;&nbsp;&nbsp;@ViewData["Title"]</h1>
+<br />
+<h4 class="offset-1"><p style ="font-size: 18px ;" id="lastUpdateDateInfo"></p></h4>
+<input type="hidden" id="fromDateHidden" name="fromDateHidden" />
+<input type="hidden" id="toDateHidden" name="toDateHidden" />
+<input type="hidden" id="feedsStatusHidden" name="isFeedsStatusHidden" />
+<input type="hidden" id="todayHidden" name="todayHidden" />
+
+
+<br />
+<div class="invFeed-container">
+    @*<h2 class="text-info">Inventory Feeds</h2>*@
+    <table>
+<thead>
+  <tr>@*
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>*@
+    <td width="25%"></td>
+    <td width="25%">&nbsp;&nbsp;&nbsp;</td>
+    <td width="25%">&nbsp;&nbsp;&nbsp;</td>
+    <td width="25%">
+        Past Feeds: <input type="text" id="historyDatePicker">
+        <button id="reloadInvFeedsHistory"> reload</button>
+    </td>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td><p id="invFeedsRepDate"></p></tdposition:relative;>
+    <td></td>
+    <td></td>
+    <td>Stage PO (positive) Margin: <input type="text" id="stagePOMargin" name="stagePOMargin"></td>
+  </tr>
+  <tr>
+    <td>
+        @*<a href="~/etc/Inventory_Feeds_Import_Sample.csv" download="Inventory_Feeds_User_Import_Sample.csv">
+          <button type="button" class="btn btn-primary btn-sm" style="float:left">Download a Sample Import File</button></a>*@
+    </td>
+    <td></td>
+    <td></td>
+    <td>
+        <div class="form-check form-switch" style="float: right">
+        <input class="form-check-input" type="checkbox" id="stagePOCurInvCheck">
+        <label class="form-check-label" for="stagePOCurInvCheck">Stage PO Qty. > Current Inventory Qty.</label>
+        </div>
+       @* <input type="checkbox" id="stagePOCurInvCheck" name="stagePOCurInvCheck" value="stagePOCurInvCh">
+          <label for="stagePOCurInvCheck"> Stage PO > Current Inventory</label>*@
+    </td>
+  </tr>
+  <tr>
+    <td>        
+        <input id="ImportInvFeedsFromUser" onclick="importInvFeedsFromUser()" type="file" class="btn btn-primary btn-sm file" style="float:left" />
+    </td>
+    <td></td>
+    <td>
+    </td>
+    <td>
+        @*<input type="button" id="bttnForApprove" class="btn btn-primary" style="float: right" value="Approve" />*@
+        <button type="button" id="bttnForApproveEmail" class="btn btn-primary" style="float: right" value="Approve">Approve</button>
+    </td>
+  </tr>
+</tbody>
+</table>
+
+<div class="modal fade" id="approveModal" role="dialog" data-backdrop="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" id="modal-close-btn" data-bs-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Adding any message?</h4>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-group">
+        <label class="modal_note">Message:</label>
+        <input class="form-control form-control-sm" id="myMessageInput" />
+        </div>
+      </div>
+
+      <div class="modal-footer narr_footer">
+       <button type="button" id="approveEmail" class="btn btn-primary" data-bs-dismiss="modal">Approve</button>
+       <button type="button" class="btn btn-danger" id="modal-cancel-bttn" data-bs-dismiss="modal">Cancel</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+  <br />
+  <br />
+
+
+
+  <div class="col-12 border p-3">
+    <table id="invFeedsItems" class="table tabel-striped table-bordered display compact table-invFeed table-inventory-feeding" style="width:100%">
+      <thead>
+        <tr>
+          <th class="table-inventory-feeding-locked">ID</th>
+          <th class="table-inventory-feeding-locked">SKU</th>
+          @* <th class="table-inventory-feeding-locked">Qty Avail.(BANC)</th>
+          <th class="table-inventory-feeding-locked">Qty Avail.(BASC)</th> *@
+          <th class="table-inventory-feeding-locked">Qty Avail.(MAINSL)</th>
+@*           <th class="table-inventory-feeding-locked">Qty Avail.(SW-CAFT)</th> 
+           <th class="table-inventory-feeding-locked">Qty Avail.(PRISM-CAST)</th>
+          <th class="table-inventory-feeding-locked">Qty Avail.(PRISM-CALT)</th> *@
+          <th class="table-inventory-feeding-locked">Qty Avail.(ZINUS-TRACY)</th>
+          <th class="table-inventory-feeding-locked">Qty Avail.(ZINUS-CHS)</th>
+          <th class="table-inventory-feeding-locked">Qty Avail. (CastleGate)</th>
+          @* <th class="table-inventory-feeding-locked">Total Stage PO Qty.(BANC)</th>
+          <th class="table-inventory-feeding-locked">Total Stage PO Qty.(BASC)</th> *@
+          <th class="table-inventory-feeding-locked">Total Stage PO Qty.(MAINSL)</th>
+          @* <th class="table-inventory-feeding-locked">Total Stage PO Qty.(SW-CAFT)</th> 
+          <th class="table-inventory-feeding-locked">Total Stage PO Qty.(PRISM-CAST)</th>
+          <th class="table-inventory-feeding-locked">Total Stage PO Qty.(PRISM-CALT)</th>*@
+          <th class="table-inventory-feeding-locked">Total Stage PO Qty.(ZINUS-TRACY)</th>
+          <th class="table-inventory-feeding-locked">Total Stage PO Qty.(ZINUS-CHS)</th>
+          @* <th class="table-inventory-feeding">Amazon Qty.(BN)</th>
+          <th class="table-inventory-feeding">Amazon Qty.(BS)</th> *@
+          <th class="table-inventory-feeding">Amazon Qty.(M)</th>
+         @*  <th class="table-inventory-feeding">Amazon Qty.(S)</th> 
+          <th class="table-inventory-feeding">Amazon Qty.(PST)</th>
+          <th class="table-inventory-feeding">Amazon Qty.(PLT)</th>*@
+          <th class="table-inventory-feeding">Amazon Qty.(ZT)</th>
+          <th class="table-inventory-feeding">Amazon Qty.(ZC)</th>
+          @* <th class="table-inventory-feeding">Walmart Qty.(BN)</th>
+          <th class="table-inventory-feeding">Walmart Qty.(BS)</th> *@
+          <th class="table-inventory-feeding">Walmart Qty.(M)</th>
+          @* <th class="table-inventory-feeding">Walmart Qty.(S)</th> 
+          <th class="table-inventory-feeding">Walmart Qty.(PST)</th>
+          <th class="table-inventory-feeding">Walmart Qty.(PLT)</th>*@
+          <th class="table-inventory-feeding">Walmart Qty.(ZT)</th>
+          <th class="table-inventory-feeding">Walmart Qty.(ZC)</th>
+          @* <th class="table-inventory-feeding">Wayfair Qty.(BN)</th>
+          <th class="table-inventory-feeding">Wayfair Qty.(BS)</th> *@
+          <th class="table-inventory-feeding">Wayfair Qty.(M)</th>
+         @*  <th class="table-inventory-feeding">Wayfair Qty.(S)</th> 
+          <th class="table-inventory-feeding">Wayfair Qty.(PST)</th>
+          <th class="table-inventory-feeding">Wayfair Qty.(PLT)</th>*@
+          <th class="table-inventory-feeding">Wayfair Qty.(ZT)</th>
+          <th class="table-inventory-feeding">Wayfair Qty.(ZC)</th>
+          @* <th class="table-inventory-feeding">Overstock Qty.(BN)</th>
+          <th class="table-inventory-feeding">Overstock Qty.(BS)</th> *@
+          <th class="table-inventory-feeding">Overstock Qty.(M)</th>
+         @*  <th class="table-inventory-feeding">Overstock Qty.(S)</th> 
+          <th class="table-inventory-feeding">Overstock Qty.(PST)</th>
+          <th class="table-inventory-feeding">Overstock Qty.(PLT)</th>*@
+          <th class="table-inventory-feeding">Overstock Qty.(ZT)</th>
+          <th class="table-inventory-feeding">Overstock Qty.(ZC)</th>
+          @* <th class="table-inventory-feeding">HomeDepot Qty.(BN)</th>
+          <th class="table-inventory-feeding">HomeDepot Qty.(BS)</th> *@
+          <th class="table-inventory-feeding">HomeDepot Qty.(M)</th>
+          @* <th class="table-inventory-feeding">HomeDepot Qty.(S)</th> 
+          <th class="table-inventory-feeding">HomeDepot Qty.(PST)</th>
+          <th class="table-inventory-feeding">HomeDepot Qty.(PLT)</th>*@
+          <th class="table-inventory-feeding">HomeDepot Qty.(ZT)</th>
+          <th class="table-inventory-feeding">HomeDepot Qty.(ZC)</th>
+          @* <th class="table-inventory-feeding">Target Qty.(BN)</th>
+          <th class="table-inventory-feeding">Target Qty.(BS)</th> *@
+          <th class="table-inventory-feeding">Target Qty.(M)</th>
+         @*  <th class="table-inventory-feeding">Target Qty.(S)</th> 
+          <th class="table-inventory-feeding">Target Qty.(PST)</th>
+          <th class="table-inventory-feeding">Target Qty.(PLT)</th>*@
+          <th class="table-inventory-feeding">Target Qty.(ZT)</th>
+          <th class="table-inventory-feeding">Target Qty.(ZC)</th>
+          @* <th class="table-inventory-feeding">eBay Qty.(BN)</th>
+          <th class="table-inventory-feeding">eBay Qty.(BS)</th> *@
+          <th class="table-inventory-feeding">eBay Qty.(M)</th>
+         @*  <th class="table-inventory-feeding">eBay Qty.(S)</th> 
+          <th class="table-inventory-feeding">eBay Qty.(PST)</th>
+          <th class="table-inventory-feeding">eBay Qty.(PLT)</th>*@
+          <th class="table-inventory-feeding">eBay Qty.(ZT)</th>
+          <th class="table-inventory-feeding">eBay Qty.(ZC)</th>
+          @* <th class="table-inventory-feeding">BPM Qty.(BN)</th>
+          <th class="table-inventory-feeding">BPM Qty.(BS)</th> *@
+          <th class="table-inventory-feeding">BPM Qty.(M)</th>
+        @*   <th class="table-inventory-feeding">BPM Qty.(S)</th> 
+          <th class="table-inventory-feeding">BPM Qty.(PST)</th>
+          <th class="table-inventory-feeding">BPM Qty.(PLT)</th>*@
+          <th class="table-inventory-feeding">BPM Qty.(ZT)</th>
+          <th class="table-inventory-feeding">BPM Qty.(ZC)</th>
+          @* <th class="table-inventory-feeding">Mellow Qty.(BN)</th>
+          <th class="table-inventory-feeding">Mellow Qty.(BS)</th> *@
+          <th class="table-inventory-feeding">Mellow Qty.(M)</th>
+         @*  <th class="table-inventory-feeding">Mellow Qty.(S)</th> 
+          <th class="table-inventory-feeding">Mellow Qty.(PST)</th>
+          <th class="table-inventory-feeding">Mellow Qty.(PLT)</th>*@
+          <th class="table-inventory-feeding">Mellow Qty.(ZT)</th>
+          <th class="table-inventory-feeding">Mellow Qty.(ZC)</th>
+@*          <th class="table-inventory-feeding">Houzz Qty.(BN)</th>
+          <th class="table-inventory-feeding">Houzz Qty.(BS)</th>
+          <th class="table-inventory-feeding">Houzz Qty.(M)</th>
+          <th class="table-inventory-feeding">Houzz Qty.(S)</th>*@
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>
+<div class="modal"><!-- Place at bottom of page --></div>
+@section Scripts{
+  <script>
+    function lastmod() { }
+  </script>
+  <script src="~/js/InvFeedsList.js">
+  </script>
+}

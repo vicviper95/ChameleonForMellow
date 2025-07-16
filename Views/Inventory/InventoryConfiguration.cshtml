@@ -1,0 +1,26 @@
+﻿@*@page "/Inventory/edit/{id}"*@
+
+
+<br />
+<h2 class="text-info offset-1">Inventory (Feeding) Configuration</h2>
+<br />
+
+<div class="border container" style="padding:30px;">
+  <h6>BPM Import</h6>
+  <input type="file" class="file" id="bpmAttachment" style="display: none;" onchange="fileSelected(this)" />
+  <input type="button" class="file" id="btnBPMAttachment" onclick="openBPMAttachment()" value="File" />
+</div>
+
+<div class="border container" style="padding:30px;">
+  <h6>Mellow Import</h6>
+  <input type="file" class="file" id="MellowAttachment" style="display: none;" onchange="fileSelected(this)" />
+  <input type="button" class="file" id="btnMellowAttachment" onclick="openMellowAttachment()" value="File" />
+</div>
+
+@section Scripts {
+  <script>
+    function lastmod() { }
+  </script>
+  <script src="~/js/importBPMMellow.js">
+  </script>
+}

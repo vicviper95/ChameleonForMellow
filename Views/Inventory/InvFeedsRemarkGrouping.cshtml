@@ -1,0 +1,141 @@
+﻿<h2 class="text-info offset-sm-1">Inventory SKU Remark Grouping</h2>
+<br />
+<div class="col-1 offset-9">
+  <span class="blue05">3</span>
+  <button id="updateInvFeedsRemarkGroupBtn" class="btn btn-primary form-control">Update</button>
+</div>
+<br />
+<div class="container-fluid">
+
+
+  <div class="container-fluid">
+    <div class="col-4" style="float:left">
+      <span class="blue02">1</span>
+      <table id="invFeedsRemarkGroupItems" class="table tabel-striped table-bordered display compact" style="font-size: 10px">
+        <thead>
+          <tr>
+            <th>Remark ID</th>
+            <th>Remark</th>
+            <th>Description</th>
+            <th>Do Not Feed To Amazon</th>
+            <th>Do Not Feed To Overstock</th>
+            <th>Do Not Feed To Walmart</th>
+            <th>Do Not Feed To Wayfair</th>
+            <th>Do Not Feed To eBay</th>
+            <th>Do Not Feed To Houzz</th>
+            <th>Do Not Feed To BPM</th>
+            <th>Do Not Feed To Mellow</th>
+          </tr>
+        </thead>
+      </table>
+      <hr />
+      <h7><p id="invFeedsRemarkGroupSelected"></p>
+      </h7><div class="row col-12" style="font-size: 11px;">
+        <div class="form-check col-6">
+          <input class="form-check-input" type="checkbox" id="doNotFeedFromMainsl" name="doNotFeedFromMainsl" disabled />
+          <label class="form-check-label" for="doNotFeedFromMainsl">Do Not Feed from MainSL</label><br>
+        </div>
+        <div class="form-check col-6">
+          <input class="form-check-input" type="checkbox" id="doNotFeedFromSwcaft" name="doNotFeedFromSwcaft" disabled />
+          <label class="form-check-label" for="doNotFeedFromSwcaft">Do Not Feed from SW-CAFT</label><br>
+        </div>
+      </div>
+
+      <div class="row col-12" style="font-size: 11px;">
+        <div class="form-check col-6">
+          <input class="form-check-input" type="checkbox" id="doNotFeedFromBanc" name="doNotFeedFromBanc" disabled />
+          <label class="form-check-label" for="doNotFeedFromBanc">Do Not Feed From BANC</label><br>
+        </div>
+        <div class="form-check col-6">
+          <input class="form-check-input" type="checkbox" id="doNotFeedFromBasc" name="doNotFeedFromBasc" disabled />
+          <label class="form-check-label" for="doNotFeedFromBasc">Do Not Feed from BASC</label><br>
+        </div>
+      </div>
+
+      <br />
+      <div class="row col-12" style="font-size: 11px;">
+        <div class="form-check col-6">
+          <input class="form-check-input" type="checkbox" id="doNotFeedToAmazon" name="doNotFeedToAmazon" disabled />
+          <label class="form-check-label" for="doNotFeedToAmazon">Do Not Feed to Amazon</label><br>
+        </div>
+        <div class="form-check col-6">
+          <input class="form-check-input" type="checkbox" id="doNotFeedToWayfair" name="doNotFeedToWayfair" disabled />
+          <label class="form-check-label" for="doNotFeedToWayfair">Do Not Feed to Wayfair</label><br>
+        </div>
+      </div>
+
+      <div class="row col-12" style="font-size: 11px;">
+        <div class="form-check col-6">
+          <input class="form-check-input" type="checkbox" id="doNotFeedToWalmart" name="doNotFeedToWalmart" disabled />
+          <label class="form-check-label" for="doNotFeedToWalmart">Do Not Feed to Walmart</label><br>
+        </div>
+        <div class="form-check col-6">
+          <input class="form-check-input" type="checkbox" id="doNotFeedToOverstock" name="doNotFeedToOverstock" disabled />
+          <label class="form-check-label" for="doNotFeedToOverstock">Do Not Feed to Overstock</label><br>
+        </div>
+      </div>
+
+      <div class="row col-12" style="font-size: 11px;">
+        <div class="form-check col-6">
+          <input class="form-check-input" type="checkbox" id="doNotFeedToHomeDepot" name="doNotFeedToHomeDepot" disabled />
+          <label class="form-check-label" for="doNotFeedToHomeDepot">Do Not Feed to Home Depot</label><br>
+        </div>
+        <div class="form-check col-6">
+          <input class="form-check-input" type="checkbox" id="doNotFeedToTarget" name="doNotFeedToTarget" disabled />
+          <label class="form-check-label" for="doNotFeedToTarget">Do Not Feed to Target</label><br>
+        </div>
+      </div>
+
+      <div class="row col-12" style="font-size: 11px;">
+        <div class="form-check col-6">
+          <input class="form-check-input" type="checkbox" id="doNotFeedToeBay" name="doNotFeedToeBay" disabled />
+          <label class="form-check-label" for="doNotFeedToeBay">Do Not Feed to eBay</label><br>
+        </div>
+        <div class="form-check col-6">
+          <input class="form-check-input" type="checkbox" id="doNotFeedToHouzz" name="doNotFeedToHouzz" disabled />
+          <label class="form-check-label" for="doNotFeedToHouzz">Do Not Feed to Houzz</label><br>
+        </div>
+      </div>
+
+      <div class="row col-12" style="font-size: 11px;">
+        <div class="form-check col-6 form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="doNotFeedToBPM" name="doNotFeedToBPM" disabled />
+          <label class="form-check-label opacity-100" for="doNotFeedToBPM">Do Not Feed to BPM Web</label><br>
+        </div>
+        <div class="form-check col-6 form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="doNotFeedToMellow" name="doNotFeedToMellow" disabled />
+          <label class="form-check-label opacity-100" for="doNotFeedToMellow">Do Not Feed to Mellow Web</label><br>
+        </div>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <div class="col-6 offset-md-4 row">
+    <span class="blue03">2</span>
+    <table id="invFeedsSKURemarkGroupItems" class="table tabel-striped table-bordered display compact" style="font-size: 10px">
+      <thead>
+        <tr>
+          <th>Item No. ID</th>
+          <th>Group List</th>
+          <th>Is Edited</th>
+          <th>Group</th>
+          <th>BPM SKU</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+
+</div>
+
+<div class="modal"><!-- For waiting indicator--></div>
+
+@section Scripts{
+  <script>
+    function lastmod() { }
+  </script>
+  <script src="~/js/InvFeedsRemarkGroupingLists.js">
+  </script>
+}

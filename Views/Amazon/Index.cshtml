@@ -1,0 +1,211 @@
+﻿@*@page
+    @model Chameleon.DTOs.Inventory.GetInventoryItemDTO*@
+
+
+<button id="buttom-task" class="buttom-no-stle job-task circle" style="font-size: 35px">
+    <i class="fas fa-tasks"></i>
+</button>
+
+<div id="popup-reponse">
+    @*style="background-color: #A9EFFC; border-top-left-radius: 25px; border-top-right-radius: 25px;"*@
+    <div style="position: relative; float: right;border-radius: 25px;">
+        <button id="close-response" style="position: relative; float: right; font-size: 30px; top: -10px; background: none; color: inherit; border: none; padding: 0; cursor: pointer; outline: inherit; right: 20px; top: 10px">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    <h3 style="padding: 20px;">Task Result</h3>
+    <div style="padding-top: 10px; width: 100%;">
+        <div style="position: relative; float: left; width: 45%; padding-left: 10px;">
+            <table id="succeed-table" class="display" style="font-size: 12px; width: 100%; overflow-y: auto; "></table>
+        </div>
+        <div style="position: relative; float: left; width: 45%; padding-left: 20px;">
+            <table id="fail-table" class="display" style="font-size: 12px; width: 100%;"></table>
+        </div>
+    </div>
+</div>
+
+<div id="popup-task">
+    <div style="position: relative; float:right">
+        <button id="close-task" style="position: relative; float: right; font-size: 30px; top: -10px; background: none; color: inherit; border: none; padding: 0; cursor: pointer; outline: inherit; right: 20px; top: 10px">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    <table id="task-table" class="display" style="font-size: 12px; width: 100%;"></table>
+</div>
+
+<div id="popup-error">
+    <div style="position: relative; float:right">
+        <button id="closePopup-error" style="position: relative; float: right; font-size: 30px; top: -10px; background: none; color: inherit; border: none; padding: 0; cursor: pointer; outline: inherit; right: 20px; top: 10px">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    <div style="margin-top: 100px; padding-top: 20px; padding-right: 20px; padding-left: 20px; background-color: white">
+        <h2>Amazon Error Detector</h2>
+        <button id="retrySync" class="tableIcon" style="right: 40px; font-size: 35px">
+            <i class="fas fa-sync-alt" title="Retry Sync SO"></i>
+        </button>
+        <table id="ErrTable" class="table tabel-striped table-bordered display compact" style="font-size: 12px; width: 100%;">
+            <thead>
+                <tr style="background-color: #DEF5FC">
+                    <th>Action</th>
+                    <th>Error Type</th>
+                    <th>SO Number</th>
+                    <th>Customer</th>
+                    <th>Market SKU</th>
+                    <th>Detail</th>
+                    @*                    <th>Solved</th>*@
+                    <th>Created Time</th>
+                    @*<th>Resolved Time</th>*@
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<div id="popupNS">
+    <div style="position: relative; float:right">
+        <button id="closeNS" style="position: relative; float: right; font-size: 30px; top: -10px; background: none; color: inherit; border: none; padding: 0; cursor: pointer; outline: inherit; right: 20px; top: 10px">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    <div style="margin-top: 100px; padding-top: 20px; padding-right: 20px; padding-left: 20px; background-color: white">
+        <h2>Netsuite's PO Monitor</h2>
+        <button id="sync-to-ns" class="tableIcon" style="right: 40px; font-size: 35px">
+            <i class="fas fa-sync-alt" title="Retry Sync SO"></i>
+        </button>
+        <table id="MissPoTable" class="table tabel-striped table-bordered display compact" style="font-size: 12px; width: 100%;">
+            <thead>
+                <tr>
+                    <th>Customer</th>
+                    <th>Order No</th>
+                    <th>Order Time</th>
+        </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<div class="description amz-api-error">
+    <div style="margin-left:10px">
+        <h4>Error Detector</h4>
+        <p style="font-size:20px; padding-left:5px">
+            This function shows what kind of error occured when there is a Problem in
+            Syncronizing the Amazon Purchase List from Amazon to the database and suggest ways to resolve.
+        </p>
+    </div>
+</div>
+
+<div class="description amz-ns-monitor">
+    <div style="margin-left:10px">
+        <h4>Netsuite's List of PO Monitor</h4>
+        <p style="font-size:20px; padding-left:5px">
+            This is function show what list of purchase orders is not syncronized from EDI.
+            User can send the list to Netsuite.
+
+        </p>
+    </div>
+</div>
+
+<div class="description amz-sync-po">
+    <div style="margin-left:10px">
+        <h4>Get Purchase Orders</h4>
+        <p style="font-size:20px; padding-left:5px">
+            This is function to get customer's Purchase Order from Amazon and save it to DB
+        </p>
+    </div>
+</div>
+
+@{
+    ViewData["Title"] = "Amazon PO";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="position:relative; float:right; right:10px">
+    @*<div id="ds_lastSyncTime" class="ribbon-highlight">
+    </div>*@
+    <div id="dir_lastSyncTime" class="ribbon-highlight">
+    </div>
+</div>
+<h2>@ViewData["Title"]</h2>
+
+<div class="col-12 border p-3">
+    <div style="margin-bottom:10px">
+        from:<input type="text" id="fromDate" autocomplete="off">
+        end:<input type="text" id="toDate" autocomplete="off">
+        @*<button id="reloadByDate"> reload</button>*@
+        <button id="button-errorDetect" class="tableIcon" style="right:5px; font-size:35px">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span id="errCount" class="errCountIcon" style="font-size:15px"></span>
+        </button>
+        @*<button id="button-errorNS" class="tableIcon" style="right:20px; font-size:35px">
+            <i class="fas fa-tasks"></i>
+        </button>*@
+        @*<button id="" class="tableIcon" style="right: 40px; font-size: 35px">
+            <i class="fas fa-truck" title="Send Shipment Notification"></i>
+            </button>
+            <button id="" class="tableIcon" style="right: 60px; font-size: 35px">
+                <i class="fas fa-file-import" title="Send Ack"></i>
+            </button>*@
+    <button id="button-errorNS" class="tableIcon" style="right: 20px; font-size: 35px; margin-top:-4px">
+        @*<i class="fas fa-paper-plane"></i>*@
+        <img src="~/img/NetSuiteLogo.png"  width="35" height="35">
+    </button>
+        <button id="syncAPI" class="tableIcon" style="right: 40px; font-size: 35px">
+            <i class="fas fa-exchange-alt"></i>
+        </button>
+    </div>
+    <table id="amz_SO_Ordr" class="table tabel-striped table-bordered display compact" style="font-size: 15px;">
+        <thead>
+            <tr style="background-color: #DEF5FC">
+                <th></th>
+                <th>Id</th>
+                <th>Customer</th>
+                <th>Order NO</th>
+                <th>SKU</th>
+                <th>SO Date</th>
+                <th>Window Start</th>
+                <th>Window End</th>
+                <th>Ship Date</th>
+                <th>Carrier</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Qty</th>
+                <th>Unite Price</th>
+                <th>Total Price</th>
+                <th>Source</th>
+            </tr>
+        </thead>
+    </table>
+    @*<button id="frm-example">check</button>*@
+    <div class="modal"><!-- For waiting indicator--></div>
+</div>
+
+<div id="amz-graphTabs">
+    <div id="tabs-nobg" style="font-size: 15px;">
+        <ul>
+            <li><a href="#tabs-1">Count</a></li>
+            <li><a href="#tabs-2">Total Price</a></li>
+        </ul>
+        <div id="tabs-1" style="height:600px">
+            <canvas id="chartData" width="400" height="500"></canvas>
+        </div>
+        <div id="tabs-2" style="height:600px">
+            <table style="border: 1px solid black; position: relative; float: right;">
+                <tr style="border: 1px solid black;">
+                    <th>
+                        Total Price
+                    </th>
+                </tr>
+                <tr style="border: 1px solid black;">
+                    <td id="totalPrice"></td>
+                </tr>
+            </table>
+            <canvas id="chartPrice" width="400" height="500"></canvas>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/sales/AmazonPoList.js">
+    </script>
+}

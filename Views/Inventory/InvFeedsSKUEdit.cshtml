@@ -1,0 +1,402 @@
+﻿@*@page "/Inventory/edit/{id}"*@
+@model Chameleon.DTOs.Inventory.InvFeedsSKUDetailDTO
+
+@{
+  ViewData["Title"] = "Edit";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<br />
+<h3 class="text-info offset-2">&nbsp;&nbsp;Update Inventory Feeds Quantity</h3>
+<br />
+
+<div class="border container" style="padding:30px;">
+  <form method="post" asp-controller="Inventory" asp-action="inv_feeds_edit">
+    <input type="hidden" asp-for="GetMainslBancInvItemDetailDTO.GetMainslBancInvItemDTO.InventoryItemId" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <input type="hidden" asp-for="GetMainslBancInvItemDetailDTO.GetMainslBancInvItemDTO" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <table width="100%">
+      <tbody>
+        <tr>
+          <td width="20%">
+            <label asp-for="GetMainslBancInvItemDetailDTO.GetMainslBancInvItemDTO.ItemName"><h6>SKU</h6></label>
+          </td>
+          <td width="80%">
+            <input asp-for="GetMainslBancInvItemDetailDTO.GetMainslBancInvItemDTO.ItemName" class="form-control" disabled />
+            <span asp-validation-for="GetMainslBancInvItemDetailDTO.GetMainslBancInvItemDTO.ItemName" class="text-danger"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Remark</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Remark</td>
+          <td>
+            <ul>
+        @for (var i = 0; i < Model.GetMainslBancInvItemDetailDTO.remarkList.Count(); i++)
+        {
+          @if (Model.GetMainslBancInvItemDetailDTO.remarkList[i].categoryId < 0)
+          {
+            <li>@Html.DisplayFor(modelitem => Model.GetMainslBancInvItemDetailDTO.remarkList[i].isActivatedOnThisSKU) @Model.GetMainslBancInvItemDetailDTO.remarkList[i].categoryName</li>
+          }
+          else
+          {
+            <li><input asp-for="GetMainslBancInvItemDetailDTO.remarkList[i].isActivatedOnThisSKU" disabled /> @Model.GetMainslBancInvItemDetailDTO.remarkList[i].categoryName</li>
+          }
+        }
+
+      </ul>
+          </td>
+        </tr>
+      </tbody>
+   </table>
+
+
+
+    <div class="form-group row">
+      <div class="col-9">
+        <input asp-for="GetMainslBancInvItemDetailDTO.remark" class="form-control" disabled />
+      </div>
+      <span asp-validation-for="GetMainslBancInvItemDetailDTO.remark" class="text-danger"></span>
+    </div>
+    <br />@*
+    <div class="form-group row">
+      <div class="col-3">
+        <label asp-for="GetMainslBancInvItemDetailDTO.GetMainslBancInvItemDTO.ItemName"><h6>SKU</h6></label>
+      </div>
+      <div class="col-6">
+        <input asp-for="GetMainslBancInvItemDetailDTO.GetMainslBancInvItemDTO.ItemName" class="form-control" disabled />
+      </div>
+      <span asp-validation-for="GetMainslBancInvItemDetailDTO.GetMainslBancInvItemDTO.ItemName" class="text-danger"></span>
+    </div>
+    <div class="form-group row">
+      <h6>Remark</h6>
+      <ul>
+        @for (var i = 0; i < Model.GetMainslBancInvItemDetailDTO.remarkList.Count(); i++)
+        {
+          @if (Model.GetMainslBancInvItemDetailDTO.remarkList[i].categoryId < 0)
+          {
+            <li>@Html.DisplayFor(modelitem => Model.GetMainslBancInvItemDetailDTO.remarkList[i].isActivatedOnThisSKU) @Model.GetMainslBancInvItemDetailDTO.remarkList[i].categoryName</li>
+          }
+          else
+          {
+            <li><input asp-for="GetMainslBancInvItemDetailDTO.remarkList[i].isActivatedOnThisSKU" disabled /> @Model.GetMainslBancInvItemDetailDTO.remarkList[i].categoryName</li>
+          }
+        }
+
+      </ul>
+    </div>*@
+        <table width="100%">
+      <tbody>
+        <tr>
+          <td width="20%">
+            <label asp-for="GetMainslBancInvItemDetailDTO.GetMainslBancInvItemDTO.ItemName"><h6>SKU</h6></label>
+          </td>
+          <td width="80%">
+            <input asp-for="GetMainslBancInvItemDetailDTO.GetMainslBancInvItemDTO.ItemName" class="form-control" disabled />
+            <span asp-validation-for="GetMainslBancInvItemDetailDTO.GetMainslBancInvItemDTO.ItemName" class="text-danger"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>Remark</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Remark</td>
+          <td>
+            <ul>
+        @for (var i = 0; i < Model.GetMainslBancInvItemDetailDTO.remarkList.Count(); i++)
+        {
+          @if (Model.GetMainslBancInvItemDetailDTO.remarkList[i].categoryId < 0)
+          {
+            <li>@Html.DisplayFor(modelitem => Model.GetMainslBancInvItemDetailDTO.remarkList[i].isActivatedOnThisSKU) @Model.GetMainslBancInvItemDetailDTO.remarkList[i].categoryName</li>
+          }
+          else
+          {
+            <li><input asp-for="GetMainslBancInvItemDetailDTO.remarkList[i].isActivatedOnThisSKU" disabled /> @Model.GetMainslBancInvItemDetailDTO.remarkList[i].categoryName</li>
+          }
+        }
+
+      </ul>
+          </td>
+        </tr>
+      </tbody>
+   </table>
+    <h6></h6>
+    <div class=" form-group row">
+      <div class="col-sm-3">
+        <input asp-for="GetMainslBancInvItemDetailDTO.DoNotFeedFromAll" class="form-check-input" type="checkbox" id="doNotFeedFromAll" />
+        <label asp-for="GetMainslBancInvItemDetailDTO.DoNotFeedFromAll"><b>Do Not Feed from ALL</b></label>
+        <span asp-validation-for="GetMainslBancInvItemDetailDTO.DoNotFeedFromAll" class="text-danger"></span>
+      </div>
+    </div>
+
+    <h6>BANC</h6>
+    <div class=" form-group row">
+      <div class="col-sm-3">
+        <input asp-for="GetMainslBancInvItemDetailDTO.DoNotFeedFromBanc" class="form-check-input" type="checkbox" id="doNotFeedFromBanc" />
+        <label asp-for="GetMainslBancInvItemDetailDTO.DoNotFeedFromBanc">Do Not Feed from BANC</label>
+        <span asp-validation-for="GetMainslBancInvItemDetailDTO.DoNotFeedFromBanc" class="text-danger"></span>
+      </div>
+      <div class="col-sm-2">
+        <label asp-for="GetMainslBancInvItemDetailDTO.GetMainslBancInvItemDTO.QtyOnHandBanc">Quantity On Hand</label>
+      </div>
+      <div class="col-sm-2">
+        <input asp-for="GetMainslBancInvItemDetailDTO.GetMainslBancInvItemDTO.QtyOnHandBanc" class="form-control" id="doNotFeedFromBancQtyOnHand" />
+        <span asp-validation-for="GetMainslBancInvItemDetailDTO.GetMainslBancInvItemDTO.QtyOnHandBanc" class="text-danger"></span>
+      </div>
+      <div class="col-sm-2">
+        <label asp-for="GetMainslBancInvItemDetailDTO.GetMainslBancInvItemDTO.QtyAvailBanc">Quantity Available</label>
+      </div>
+      <div class="col-sm-2">
+        <input asp-for="GetMainslBancInvItemDetailDTO.GetMainslBancInvItemDTO.QtyAvailBanc" class="form-control" id="doNotFeedFromBancQtyAvail" />
+        <span asp-validation-for="GetMainslBancInvItemDetailDTO.GetMainslBancInvItemDTO.QtyAvailBanc" class="text-danger"></span>
+      </div>
+    </div>
+
+    <h6>Mainsl</h6>
+    <div class="form-group row">
+      <div class="col-sm-3">
+        <input asp-for="GetMainslBancInvItemDetailDTO.DoNotFeedFromMainsl" class="form-check-input" type="checkbox" id="doNotFeedFromMainsl" />
+        <label asp-for="GetMainslBancInvItemDetailDTO.DoNotFeedFromMainsl">Do Not Feed from Mainsl</label>
+        <span asp-validation-for="GetMainslBancInvItemDetailDTO.DoNotFeedFromMainsl" class="text-danger"></span>
+      </div>
+      <div class="col-sm-2">
+        <label asp-for="GetMainslBancInvItemDetailDTO.GetMainslBancInvItemDTO.QtyOnHandMainsl">Quantity On Hand</label>
+      </div>
+      <div class="col-sm-2">
+        <input asp-for="GetMainslBancInvItemDetailDTO.GetMainslBancInvItemDTO.QtyOnHandMainsl" class="form-control" id="doNotFeedFromMainslQtyOnHand" />
+        <span asp-validation-for="GetMainslBancInvItemDetailDTO.GetMainslBancInvItemDTO.QtyOnHandMainsl" class="text-danger"></span>
+      </div>
+      <div class="col-sm-2">
+        <label asp-for="GetMainslBancInvItemDetailDTO.GetMainslBancInvItemDTO.QtyAvailMainsl">Quantity Available</label>
+      </div>
+      <div class="col-sm-2">
+        <input asp-for="GetMainslBancInvItemDetailDTO.GetMainslBancInvItemDTO.QtyAvailMainsl" class="form-control" id="doNotFeedFromMainslQtyAvail" />
+        <span asp-validation-for="GetMainslBancInvItemDetailDTO.GetMainslBancInvItemDTO.QtyAvailMainsl" class="text-danger"></span>
+      </div>
+    </div>
+    <br />
+    <h6>SKU Specific Feeding Rules (Caution! : on Ratio, None &Aacute; 0 are NOT SAME!)</h6>
+    <div class="form-group row">
+      <div class="col-sm-3">
+        <input asp-for="GetMainslBancInvItemDetailDTO.AmzDoNotFeed" class="form-check-input" type="checkbox" id="amazonDoNotFeed" />
+        <label asp-for="GetMainslBancInvItemDetailDTO.AmzDoNotFeed">Do Not Feed to Amazon</label>
+        <span asp-validation-for="GetMainslBancInvItemDetailDTO.AmzDoNotFeed" class="text-danger"></span>
+      </div>
+      <div class="col-sm-1">
+        <label asp-for="GetMainslBancInvItemDetailDTO.AmzCustPercentageTxt">Ratio(%)</label>
+      </div>
+      <div class="col-sm-1">
+        <input asp-for="GetMainslBancInvItemDetailDTO.AmzCustPercentageTxt" class="form-control" name="amzRatio" id="amazonRatio" />
+        <span asp-validation-for="GetMainslBancInvItemDetailDTO.AmzCustPercentageTxt" class="text-danger"></span>
+      </div>
+      <div class="col-sm-2">
+        <label asp-for="GetMainslBancInvItemDetailDTO.AmzCustZeroOutAt">Zero Out At</label>
+      </div>
+      <div class="col-sm-1">
+        <input asp-for="GetMainslBancInvItemDetailDTO.AmzCustZeroOutAt" class="form-control" id="amazonZeroOut" />
+        <span asp-validation-for="GetMainslBancInvItemDetailDTO.AmzCustZeroOutAt" class="text-danger"></span>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-3">
+        <input asp-for="GetMainslBancInvItemDetailDTO.WyfrDoNotFeed" class="form-check-input" type="checkbox" id="wayfairDoNotFeed" />
+        <label asp-for="GetMainslBancInvItemDetailDTO.WyfrDoNotFeed">Do Not Feed to Wayfair</label>
+        <span asp-validation-for="GetMainslBancInvItemDetailDTO.WyfrDoNotFeed" class="text-danger"></span>
+      </div>
+      <div class="col-sm-1">
+        <label asp-for="GetMainslBancInvItemDetailDTO.WyfrCustPercentageTxt">Ratio(%)</label>
+      </div>
+      <div class="col-sm-1">
+        <input asp-for="GetMainslBancInvItemDetailDTO.WyfrCustPercentageTxt" class="form-control" id="wayfairRatio" />
+        <span asp-validation-for="GetMainslBancInvItemDetailDTO.WyfrCustPercentageTxt" class="text-danger"></span>
+      </div>
+      <div class="col-sm-2">
+        <label asp-for="GetMainslBancInvItemDetailDTO.WyfrCustZeroOutAt">Zero Out At</label>
+      </div>
+      <div class="col-sm-1">
+        <input asp-for="GetMainslBancInvItemDetailDTO.WyfrCustZeroOutAt" class="form-control" id="wayfairZeroOut" />
+        <span asp-validation-for="GetMainslBancInvItemDetailDTO.WyfrCustZeroOutAt" class="text-danger"></span>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-3">
+        <input asp-for="GetMainslBancInvItemDetailDTO.WlmrtDoNotFeed" class="form-check-input" type="checkbox" id="walmartDoNotFeed" />
+        <label asp-for="GetMainslBancInvItemDetailDTO.WlmrtDoNotFeed">Do Not Feed to Walmart</label>
+        <span asp-validation-for="GetMainslBancInvItemDetailDTO.WlmrtDoNotFeed" class="text-danger"></span>
+      </div>
+      <div class="col-sm-1">
+        <label asp-for="GetMainslBancInvItemDetailDTO.WlmrtCustPercentageTxt">Ratio(%)</label>
+      </div>
+      <div class="col-sm-1">
+        <input asp-for="GetMainslBancInvItemDetailDTO.WlmrtCustPercentageTxt" class="form-control" id="walmartRatio" />
+        <span asp-validation-for="GetMainslBancInvItemDetailDTO.WlmrtCustPercentageTxt" class="text-danger"></span>
+      </div>
+      <div class="col-sm-2">
+        <label asp-for="GetMainslBancInvItemDetailDTO.WlmrtCustZeroOutAt">Zero Out At</label>
+      </div>
+      <div class="col-sm-1">
+        <input asp-for="GetMainslBancInvItemDetailDTO.WlmrtCustZeroOutAt" class="form-control" id="walmartZeroOut" />
+        <span asp-validation-for="GetMainslBancInvItemDetailDTO.WlmrtCustZeroOutAt" class="text-danger"></span>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-3">
+        <input asp-for="GetMainslBancInvItemDetailDTO.OstDoNotFeed" class="form-check-input" type="checkbox" id="overstockDoNotFeed" />
+        <label asp-for="GetMainslBancInvItemDetailDTO.OstDoNotFeed">Do Not Feed to Overstock</label>
+        <span asp-validation-for="GetMainslBancInvItemDetailDTO.OstDoNotFeed" class="text-danger"></span>
+      </div>
+      <div class="col-sm-1">
+        <label asp-for="GetMainslBancInvItemDetailDTO.OstCustPercentageTxt">Ratio(%)</label>
+      </div>
+      <div class="col-sm-1">
+        <input asp-for="GetMainslBancInvItemDetailDTO.OstCustPercentageTxt" class="form-control" id="overstockRatio" />
+        <span asp-validation-for="GetMainslBancInvItemDetailDTO.OstCustPercentageTxt" class="text-danger"></span>
+      </div>
+      <div class="col-sm-2">
+        <label asp-for="GetMainslBancInvItemDetailDTO.OstCustZeroOutAt">Zero Out At</label>
+      </div>
+      <div class="col-sm-1">
+        <input asp-for="GetMainslBancInvItemDetailDTO.OstCustZeroOutAt" class="form-control" id="overstockZeroOut" />
+        <span asp-validation-for="GetMainslBancInvItemDetailDTO.OstCustZeroOutAt" class="text-danger"></span>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-3">
+        <input asp-for="GetMainslBancInvItemDetailDTO.eBayDoNotFeed" class="form-check-input" type="checkbox" id="eBayDoNotFeed" />
+        <label asp-for="GetMainslBancInvItemDetailDTO.eBayDoNotFeed">Do Not Feed to eBay</label>
+        <span asp-validation-for="GetMainslBancInvItemDetailDTO.eBayDoNotFeed" class="text-danger"></span>
+      </div>
+      <div class="col-sm-1">
+        <label asp-for="GetMainslBancInvItemDetailDTO.eBayCustPercentageTxt">Ratio(%)</label>
+      </div>
+      <div class="col-sm-1">
+        <input asp-for="GetMainslBancInvItemDetailDTO.eBayCustPercentageTxt" class="form-control" id="eBayRatio" />
+        <span asp-validation-for="GetMainslBancInvItemDetailDTO.eBayCustPercentageTxt" class="text-danger"></span>
+      </div>
+      <div class="col-sm-2">
+        <label asp-for="GetMainslBancInvItemDetailDTO.eBayCustZeroOutAt">Zero Out At</label>
+      </div>
+      <div class="col-sm-1">
+        <input asp-for="GetMainslBancInvItemDetailDTO.eBayCustZeroOutAt" class="form-control" id="eBayZeroOut" />
+        <span asp-validation-for="GetMainslBancInvItemDetailDTO.eBayCustZeroOutAt" class="text-danger"></span>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-3">
+        <input asp-for="GetMainslBancInvItemDetailDTO.BPMDoNotFeed" class="form-check-input" type="checkbox" id="bpmDoNotFeed" />
+        <label asp-for="GetMainslBancInvItemDetailDTO.BPMDoNotFeed">Do Not Feed to BPM Website</label>
+        <span asp-validation-for="GetMainslBancInvItemDetailDTO.BPMDoNotFeed" class="text-danger"></span>
+      </div>
+      <div class="col-sm-1">
+        <label asp-for="GetMainslBancInvItemDetailDTO.BPMCustPercentageTxt">Ratio(%)</label>
+      </div>
+      <div class="col-sm-1">
+        <input asp-for="GetMainslBancInvItemDetailDTO.BPMCustPercentageTxt" class="form-control" id="bpmRatio" />
+        <span asp-validation-for="GetMainslBancInvItemDetailDTO.BPMCustPercentageTxt" class="text-danger"></span>
+      </div>
+      <div class="col-sm-2">
+        <label asp-for="GetMainslBancInvItemDetailDTO.BPMCustZeroOutAt">Zero Out At</label>
+      </div>
+      <div class="col-sm-1">
+        <input asp-for="GetMainslBancInvItemDetailDTO.BPMCustZeroOutAt" class="form-control" id="bpmZeroOut" />
+        <span asp-validation-for="GetMainslBancInvItemDetailDTO.BPMCustZeroOutAt" class="text-danger"></span>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-3">
+        <input asp-for="GetMainslBancInvItemDetailDTO.MellowDoNotFeed" class="form-check-input" type="checkbox" id="mellowDoNotFeed" />
+        <label asp-for="GetMainslBancInvItemDetailDTO.MellowDoNotFeed">Do Not Feed to Mellow Website</label>
+        <span asp-validation-for="GetMainslBancInvItemDetailDTO.MellowDoNotFeed" class="text-danger"></span>
+      </div>
+      <div class="col-sm-1">
+        <label asp-for="GetMainslBancInvItemDetailDTO.MellowCustPercentageTxt">Ratio(%)</label>
+      </div>
+      <div class="col-sm-1">
+        <input asp-for="GetMainslBancInvItemDetailDTO.MellowCustPercentageTxt" class="form-control" id="mellowRatio" />
+        <span asp-validation-for="GetMainslBancInvItemDetailDTO.MellowCustPercentageTxt" class="text-danger"></span>
+      </div>
+      <div class="col-sm-2">
+        <label asp-for="GetMainslBancInvItemDetailDTO.MellowCustZeroOutAt">Zero Out At</label>
+      </div>
+      <div class="col-sm-1">
+        <input asp-for="GetMainslBancInvItemDetailDTO.MellowCustZeroOutAt" class="form-control" id="mellowZeroOut" />
+        <span asp-validation-for="GetMainslBancInvItemDetailDTO.MellowCustZeroOutAt" class="text-danger"></span>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-3">
+        <input asp-for="GetMainslBancInvItemDetailDTO.HouzzDoNotFeed" class="form-check-input" type="checkbox" id="houzzDoNotFeed" />
+        <label asp-for="GetMainslBancInvItemDetailDTO.HouzzDoNotFeed">Do Not Feed to Houzz</label>
+        <span asp-validation-for="GetMainslBancInvItemDetailDTO.HouzzDoNotFeed" class="text-danger"></span>
+      </div>
+      <div class="col-sm-1">
+        <label asp-for="GetMainslBancInvItemDetailDTO.HouzzCustPercentageTxt">Ratio(%)</label>
+      </div>
+      <div class="col-sm-1">
+        <input asp-for="GetMainslBancInvItemDetailDTO.HouzzCustPercentageTxt" class="form-control" id="houzzRatio" />
+        <span asp-validation-for="GetMainslBancInvItemDetailDTO.HouzzCustPercentageTxt" class="text-danger"></span>
+      </div>
+      <div class="col-sm-2">
+        <label asp-for="GetMainslBancInvItemDetailDTO.HouzzCustZeroOutAt">Zero Out At</label>
+      </div>
+      <div class="col-sm-1">
+        <input asp-for="GetMainslBancInvItemDetailDTO.HouzzCustZeroOutAt" class="form-control" id="houzzZeroOut" />
+        <span asp-validation-for="GetMainslBancInvItemDetailDTO.HouzzCustZeroOutAt" class="text-danger"></span>
+      </div>
+    </div>
+    @*
+     <div class="form-group row">
+       <div class="col-3">
+         <label asp-for="GetMainslBancInvItemDTO.QtyAvailMainsl">Quantity Available</label>
+       </div>
+       <div class="col-6">
+         <input asp-for="GetMainslBancInvItemDTO.QtyAvailMainsl" class="form-control" />
+       </div>
+       <span asp-validation-for="GetMainslBancInvItemDTO.QtyAvailMainsl" class="text-danger"></span>
+     </div>
+
+    <div class="form-group row">
+       <div class="col-3">
+         <label asp-for="GetMainslBancInvItemDTO.QtyAvailMainsl">Quantity Available</label>
+       </div>
+       <div class="col-6">
+         <input asp-for="GetMainslBancInvItemDTO.QtyAvailMainsl" class="form-control" />
+       </div>
+       <span asp-validation-for="GetMainslBancInvItemDTO.QtyAvailMainsl" class="text-danger"></span>
+     </div>*@
+    <br />
+    <div class="form-group row">
+      <div class="col-3 offset-3">
+        <button type="submit" value="Update" class="btn btn-primary form-control">Update</button>
+      </div>
+      <div class="col-3">
+        @*<a asp-page="/Index" class="btn btn-success form-control">Back to List</a>*@
+        <a asp-controller="Inventory" asp-action="InvFeedsIdx" class="btn btn-success form-control">Back to List</a>
+      </div>
+    </div>
+
+
+
+  </form>
+</div>
+
+
+@section Scripts {
+  @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+  <script>
+    function lastmod() { }
+  </script>
+}

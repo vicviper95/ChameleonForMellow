@@ -1,0 +1,85 @@
+﻿@model Chameleon.DTOs.Inventory.InvFeedsSKUStatusDTO
+
+@{
+  ViewData["Title"] = "Sets SKU Feeding Status";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h3 class="text-info offset-sm-1">&nbsp;&nbsp;Sets SKU Feeding Status List</h3>
+ <h5 class="text-danger offset-sm-1">Single Click : Get Detail; Double Click : Select/Deselect a Set SKU</h5>
+ <h5 class="text-danger offset-sm-1">Do Not Forget to click 'Update'</h5>
+<div class="invFeed-container">
+  <div class="container-fluid">
+            <button id="updateInvFeedsSetsSKUStatusBtn" class="btn btn-primary" style="float:right">Update</button>
+            <br />
+            <table id="invFeedsSetsSKUStatusItems" class="table tabel-striped table-bordered display compact" style="font-size: 11px">
+              <thead>
+                <tr>
+                  <th>Item No. ID</th>
+                  <th>Feeds?</th>
+                  <th>BPM SKU</th>
+                  <th>Item Status</th>
+                  <th>Description</th>
+                  <th>Last Modified By</th>
+                  <th>Last Modified Time</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+</div>
+
+<div class="invFeed-container">
+  <div class="col-12 border p-3">
+<table style="width:100%">
+<tbody>
+  <tr>
+    <th style="width:25%">
+      BPM SKU (Parent): 
+      <p id="itemParentSku" name="itemParentSku"></p>
+    </th>
+    <th style="width:75%" colspan="3">Description : <p id="itemParentDescription" name="itemParentDescription"></p></th>
+  </tr>
+  <tr>
+    <td style="width:25%">BPM SKU (1st Child) :<p id="childItemSku01" name="childItemSku01"></p></td>
+    <td style="width:60%" colspan="2">Descrition: <p id="childItemDescription01" name="childItemDescription01"></p></td>
+    <td style="width:15%">Qty. :<p id="childItemQty01" name="childItemQty01"></p></td>
+  </tr>
+  <tr>
+    <td style="width:25%">BPM SKU (2nd Child) :<p id="childItemSku02" name="childItemSku02"></p></td>
+    <td style="width:60%" colspan="2">Descrition: <p id="childItemDescription02" name="childItemDescription02"></p></td>
+    <td style="width:15%">Qty. :<p id="childItemQty02" name="childItemQty02"></p></td>
+  </tr>
+  <tr>
+    <td style="width:25%">BPM SKU (3rd Child) :<p id="childItemSku03" name="childItemSku03"></p></td>
+    <td style="width:60%" colspan="2">Descrition: <p id="childItemDescription03" name="childItemDescription03"></p></td>
+    <td style="width:15%">Qty. :<p id="childItemQty03" name="childItemQty03"></p></td>
+  </tr>
+  <tr>
+    <td style="width:25%">BPM SKU (4th Child) :<p id="childItemSku04" name="childItemSku04"></p></td>
+    <td style="width:60%" colspan="2">Descrition: <p id="childItemDescription04" name="childItemDescription04"></p></td>
+    <td style="width:15%">Qty. :<p id="childItemQty04" name="childItemQty04"></p></td>
+  </tr>
+  <tr>
+    <td style="width:25%">BPM SKU (5th Child) :<p id="childItemSku05" name="childItemSku05"></p></td>
+    <td style="width:60%" colspan="2">Descrition: <p id="childItemDescription05" name="childItemDescription05"></p></td>
+    <td style="width:15%">Qty. :<p id="childItemQty05" name="childItemQty05"></p></td>
+  </tr>
+</tbody>
+</table>
+</div>
+</div>
+
+        <div class="col-3 offset-9">
+          <a asp-controller="Inventory" asp-action="InvMainslBancIdx" class="btn btn-success form-control">Back to List</a>
+        </div>
+
+<div class="modal"><!-- Place at bottom of page --></div>
+@section Scripts {
+  @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+  <script>
+    function lastmod() { }
+  </script>
+  <script src="~/js/InvFeedsSKUSetsStatusList.js">
+  </script>
+}

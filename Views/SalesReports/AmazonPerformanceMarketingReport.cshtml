@@ -1,0 +1,120 @@
+﻿@{
+    ViewData["Title"] = "Amazon Performance Marketing Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>&nbsp;&nbsp;&nbsp;@ViewData["Title"]</h1>
+<br />
+
+<br />
+
+<input type="hidden" id="amazonAdReportId" name="amazonAdReportId" />
+<input type="hidden" id="amazonAdReportDetailId" name="amazonAdReportDetailId" />
+
+
+<table style="width:100%">
+  <thead>
+  <tbody>
+    <tr>
+      <td width="80%">
+      </td>
+      <td width="20%">
+        <input id="ImportAmzPerfRep" onclick="importAmzPerfRepFromUser()" type="file" class="btn btn-primary btn-sm file" style="float:left" />
+      </td>
+    </tr>
+    <tr>
+      <td width="65%">
+        Main
+      </td>
+      <td width="35%">
+        SKUs
+      </td>
+    </tr>
+    <tr>
+      <td width="65%">
+        <div class="invFeed-container">
+          <div class="col-12 border p-3">
+            <table id="amzAdReportItems" class="table tabel-striped table-bordered display compact table-invFeed table-inventory-feeding" style="width:100%">
+              <thead>
+                <tr>
+                  <th class="table-inventory-feeding-locked">ID</th>
+                  @*<th class="table-inventory-feeding-locked">Start Date</th>*@
+                  <th class="table-inventory-feeding-locked">End Date</th>
+                  <th class="table-inventory-feeding-locked">Campaign Name</th>
+                  <th class="table-inventory-feeding-locked">Ad Group Name</th>
+                  @*<th class="table-inventory-feeding-locked">Currency</th>*@
+                  <th class="table-inventory-feeding-locked">Created Date</th>
+                  <th class="table-inventory-feeding-locked">Last Modified Date</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+        </div>
+      </td>
+      <td width="35%">
+        <div class="invFeed-container">
+          <div class="col-12 border p-3">
+            <table id="amzAdRepSkuItems" class="table tabel-striped table-bordered display compact table-invFeed table-inventory-feeding" style="width:100%">
+              <thead>
+                <tr>
+                  <th class="table-inventory-feeding-locked">ID</th>
+                  <th class="table-inventory-feeding-locked">Start Date</th>
+                  <th class="table-inventory-feeding-locked">Portfolio Name</th>
+                  <th class="table-inventory-feeding-locked">Advertised ASIN</th>
+                  <th class="table-inventory-feeding-locked">Created Date</th>
+                  <th class="table-inventory-feeding-locked">Last Modified Date</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+        </div>
+
+      </td>
+    </tr>
+    <tr>
+      <td colspan="1">
+        Detail(History)
+      </td>
+    </tr>
+    <tr>
+      <td colspan="1">
+        <div class="invFeed-container">
+          <div class="col-12 border p-3">
+            <table id="amzAdRepSkuHistoryItems" class="table tabel-striped table-bordered display compact table-invFeed table-inventory-feeding" style="width:100%">
+              <thead>
+                <tr>
+                  <th class="table-inventory-feeding-locked">ID</th>
+                  <th class="table-inventory-feeding-locked">Impressions</th>
+                  <th class="table-inventory-feeding-locked">Clicks</th>
+                  <th class="table-inventory-feeding-locked">Click Thru Rate (CTR)</th>
+                  <th class="table-inventory-feeding-locked">Cost Per Click (CPC)</th>
+                  <th class="table-inventory-feeding-locked">Spend</th>
+                  <th class="table-inventory-feeding-locked">14 Day Total Sales</th>
+                  <th class="table-inventory-feeding-locked">Total Advertising Cost of Sales(ACOS)</th>
+                  <th class="table-inventory-feeding-locked">Total Return on Advertising Spend (ROAS)</th>
+                  <th class="table-inventory-feeding-locked">14 Day Total Orders (#)</th>
+                  <th class="table-inventory-feeding-locked">14 Day Total Units (#)</th>
+                  <th class="table-inventory-feeding-locked">14 Day Converstion Rate</th>
+                  <th class="table-inventory-feeding-locked">Imported Date</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+@section Scripts{
+    <script>
+      function lastmod() { }
+    </script>
+    <script src="~/js/salesreports/AmzPerfMrktRep.js">
+    </script>
+}

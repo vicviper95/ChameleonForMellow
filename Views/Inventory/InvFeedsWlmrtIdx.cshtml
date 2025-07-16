@@ -1,0 +1,170 @@
+﻿@{
+  ViewData["Title"] = "Walmart Inventory Feeds";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>&nbsp;&nbsp;@ViewData["Title"] - Walmart</h1>
+<input type="hidden" id="historyDateHidden" name="historyDateHidden" />
+<div style=" padding-top: 10px">
+  <h7>&nbsp;&nbsp;<p id="invFeedsRepDate"></p></h7>
+  &nbsp;&nbsp;Past Feeds: <input type="text" id="historyDatePicker">
+  <button id="reloadWalmartFeedsHistory"> reload</button>
+</div>
+<br/>
+<h7><p id="invFeedsRepDate"></p></h7>
+<br />
+@* <div class="invFeed-container">
+  <div class="col-6">
+    <div>
+      <h2 class="text-info">BANC</h2>
+    </div>
+  </div>
+  <div class="col-12 border p-3">
+    <table id="invFeedsWalmartBanc" class="table tabel-striped table-bordered display compact" style="width: 100%; font-size: 10px;">
+      <thead>
+        <tr style="font-size: 10px;">
+          <th>SKU</th>
+          <th>Availability Code</th>
+          <th>Quantity</th>
+          <th>Fulfillment Lag Time</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div> *@
+
+@* <div class="invFeed-container">
+  <div class="col-6">
+    <div>
+      <h2 class="text-info">BASC</h2>
+    </div>
+
+  </div>
+  <div class="col-12 border p-3">
+    <table id="invFeedsWalmartBasc" class="table tabel-striped table-bordered display compact" style="width: 100%; font-size: 10px;">
+      <thead>
+        <tr style="font-size: 10px;">
+          <th>SKU</th>
+          <th>Availability Code</th>
+          <th>Quantity</th>
+          <th>Fulfillment Lag Time</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div> *@
+
+<div class="invFeed-container">
+  <div class="col-6">
+    <div>
+      <h2 class="text-info">Main SL</h2>
+    </div>
+
+  </div>
+  <div class="col-12 border p-3">
+    <table id="invFeedsWalmartMainsl" class="table tabel-striped table-bordered display compact" style="width: 100%; font-size: 10px;">
+      <thead>
+        <tr style="font-size: 10px;">
+          <th>SKU</th>
+          <th>Availability Code</th>
+          <th>Quantity</th>
+          <th>Fulfillment Lag Time</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>
+
+@* <div class="invFeed-container">
+  <div class="col-6">
+    <div>
+      <h2 class="text-info">SW-CAFT</h2>
+    </div>
+
+  </div>
+  <div class="col-12 border p-3">
+    <table id="invFeedsWalmartSwcaft" class="table tabel-striped table-bordered display compact" style="width: 100%; font-size: 10px;">
+      <thead>
+        <tr style="font-size: 10px;">
+          <th>SKU</th>
+          <th>Availability Code</th>
+          <th>Quantity</th>
+          <th>Fulfillment Lag Time</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>
+
+<div class="invFeed-container">
+  <div class="col-6">
+    <div>
+      <h2 class="text-info">PRISM-CAST</h2>
+    </div>
+
+  </div>
+  <div class="col-12 border p-3">
+    <table id="invFeedsWalmartPrismCast" class="table tabel-striped table-bordered display compact" style="width: 100%; font-size: 10px;">
+      <thead>
+        <tr style="font-size: 10px;">
+          <th>SKU</th>
+          <th>Availability Code</th>
+          <th>Quantity</th>
+          <th>Fulfillment Lag Time</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div> *@
+
+<div class="invFeed-container">
+  <div class="col-6">
+    <div>
+      <h2 class="text-info">ZINUS-Tracy</h2>
+    </div>
+
+  </div>
+  <div class="col-12 border p-3">
+    <table id="invFeedsWalmartZinusTracy" class="table tabel-striped table-bordered display compact" style="width: 100%; font-size: 10px;">
+      <thead>
+        <tr style="font-size: 10px;">
+          <th>SKU</th>
+          <th>Availability Code</th>
+          <th>Quantity</th>
+          <th>Fulfillment Lag Time</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>
+
+<div class="invFeed-container">
+  <div class="col-6">
+    <div>
+      <h2 class="text-info">ZINUS-CHS</h2>
+    </div>
+
+  </div>
+  <div class="col-12 border p-3">
+    <table id="invFeedsWalmartZinusChs" class="table tabel-striped table-bordered display compact" style="width: 100%; font-size: 10px;">
+      <thead>
+        <tr style="font-size: 10px;">
+          <th>SKU</th>
+          <th>Availability Code</th>
+          <th>Quantity</th>
+          <th>Fulfillment Lag Time</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>
+
+<div class="modal"><!-- For waiting indicator--></div>
+
+@section Scripts {
+  <script>
+    function lastmod() { }
+  </script>
+  <script src="~/js/InvFeedsWalmartLists.js">
+  </script>
+}

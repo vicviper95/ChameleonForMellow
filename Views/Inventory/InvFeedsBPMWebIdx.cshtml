@@ -1,0 +1,59 @@
+﻿
+@{
+  ViewData["Title"] = "Inventory Feeds";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>&nbsp;&nbsp;@ViewData["Title"] - BPM Web</h1>
+<input type="hidden" id="historyDateHidden" name="historyDateHidden" />
+
+<br />
+<div class="invFeed-container">
+  <div class="col-6">
+    <div>
+      <h2 class="text-info">BPM Web Inventory Feeds</h2>
+      <h7><p id="invFeedsRepDate"></p></h7>
+    </div>
+
+    <div style=" padding-top: 10px">
+      Past Feeds: <input type="text" id="historyDatePicker">
+      <button id="reloadBPMWebFeedsHistory"> reload</button>
+    </div>
+  </div>
+  <div class="col-12 border p-3">
+
+    <table id="invFeedsBPMWebItems" class="table tabel-striped table-bordered display compact" style="width: 100%; font-size: 10px;">
+      <thead>
+        <tr style="font-size: 10px">
+          <th>Handle</th>
+          <th>Title</th>
+          <th>Option1 Name</th>
+          <th>Option1 Value</th>
+          <th>Option2 Name</th>
+          <th>Option2 Value</th>
+          <th>Option3 Name</th>
+          <th>Option3 Value</th>
+          <th>SKU</th>
+          <th>HS Code</th>
+          <th>COO</th>
+          <th>Location</th>
+          <th>Incoming</th>
+          <th>Unavailable</th>
+          <th>Committed</th>
+          <th>Available</th>
+          <th>On hand</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>
+
+<div class="modal"><!-- For waiting indicator--></div>
+
+@section Scripts{
+  <script>
+    function lastmod() { }
+  </script>
+  <script src="~/js/InvFeedsBPMWebList.js">
+  </script>
+}
