@@ -33,15 +33,15 @@ namespace Chameleon.Services.AmazonService.AmazonLib {
     public AWSAuthenticationCredentials awsAuthenticationCredentials = new AWSAuthenticationCredentials
     {
       AccessKeyId = "",
-      SecretKey = "",
+      //SecretKey = "",
       Region = "us-east-1"
     };
 
     public LWAAuthorizationCredentials lwaAuthCreds = new LWAAuthorizationCredentials
     {
       ClientId = "amzn1.application-oa2-client.2eecbdb458e2430fb9c361afd6993386",
-      ClientSecret = "",
-      RefreshToken = "",
+     // ClientSecret = "",
+     // RefreshToken = "",
       Endpoint = new Uri("https://api.amazon.com/auth/o2/token")
     };
 
